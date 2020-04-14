@@ -1,0 +1,45 @@
+{
+  "pages":[
+    "pages/index/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "聚橙网",
+    "navigationBarTextStyle":"black"
+  },
+
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#e40077",
+    "backgroundColor": "#fff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/selectedHome.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "剧院",
+        "iconPath": "images/juyuan.png",
+        "selectedIconPath": "images/juyuanSelected.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mineSelected.png"
+      }
+    ],
+    "position": "bottom"
+  },
+
+
+
+
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
