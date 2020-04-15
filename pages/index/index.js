@@ -66,6 +66,9 @@ Page({
       },
       success:(data)=>{
         console.log("data----",data);
+      },
+      fail:(err)=>{
+        console.log("err",err);
       }
     })
   }
