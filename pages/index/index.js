@@ -9,7 +9,15 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+
+
+
+    classifyList:[]
+
+
+
+
   },
   //事件处理函数
   bindViewTap: function() {
@@ -54,6 +62,13 @@ Page({
       hasUserInfo: true
     })
   },
+
+
+
+
+
+
+  
   fetchData:function(){
     console.log("111111")
     httpsUtil({
@@ -65,7 +80,10 @@ Page({
         referer: 2,
       },
       success:(data)=>{
-        console.log("data----",data);
+        console.log("data----",data.data.data.classify_list);
+        this.setData({
+          classifyList:data.data.data.classify_list
+        })
       },
       fail:(err)=>{
         console.log("err",err);
