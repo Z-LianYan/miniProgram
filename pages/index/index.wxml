@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <!-- <view class="userinfo">
+	<!-- <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
@@ -11,13 +11,24 @@
     <text class="user-motto">{{motto}}</text>
   </view> -->
 
-  <view class="classify_list_box">
-    <view wx:for="{{classifyList}}" class="classify_item">
-      <image class="classify_image" src="{{item.pic}}" mode="cover"></image>
-      {{item.name}}
-    </view>
+	<view class="search_box">123</view>
   
-  </view>
+	<view class="content_box index_content_box_box">
+
+		<view class="classify_list_box clearfix">
+			<view wx:for="{{classifyList}}" wx:for-item="items" wx:for-index="idx" class="classify_item {{(idx+1)%5==0?'':'classify_item_margin_right'}}" wx:key="key">
+				<image class="classify_image" src="{{items.pic}}" mode="cover"></image>
+				<view>{{items.name}}</view>
+			</view>
+
+		</view>
+
+
+  <view style="height:900rpx;background:red;">12312312</view>
+
+
+	</view>
+
 
 
 </view>

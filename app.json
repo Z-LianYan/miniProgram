@@ -1,7 +1,8 @@
 {
   "pages":[
-    "pages/index/index"
-  ],
+    "pages/index/index",
+    "pages/mine/mine"
+  ], 
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#b4d5be",
@@ -28,7 +29,7 @@
         "selectedIconPath": "images/juyuanSelected.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/mine/mine",
         "text": "我的",
         "iconPath": "images/mine.png",
         "selectedIconPath": "images/mineSelected.png"

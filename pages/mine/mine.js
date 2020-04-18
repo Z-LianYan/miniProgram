@@ -82,7 +82,7 @@ Page({
       success:(data)=>{
         console.log("data----",data.data.data.classify_list);
         this.setData({
-          classifyList:data.data.data.classify_list.splice(0,9)
+          classifyList:data.data.data.classify_list
         })
       },
       fail:(err)=>{

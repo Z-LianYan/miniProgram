@@ -1,11 +1,3 @@
-.search_box{
-  position: fixed;
-  top: 0;
-  height: 80rpx;
-  width: 100vw;
-  background-color: #fff;
-}
-
 .classify_list_box{
   font-size: 20rpx;
   padding: 20rpx 20rpx 5rpx 20rpx;
@@ -26,9 +18,4 @@
   width:80rpx;
   height: 80rpx;
   margin-bottom: 15rpx;
-}
-
-
-.index_content_box_box{
-  padding-top: 80rpx;
 }

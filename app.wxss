@@ -1,13 +1,23 @@
 /**app.wxss**/
 .container {
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   /* align-items: center; */
   /* justify-content: space-between; */
   /* padding: 200rpx 0; */
   box-sizing: border-box;
-
-  background-color: #ccc;
-
 } 
+
+.content_box{
+  flex: 1;
+  background-color: #ccc;
+}
+
+.clearfix:after{/*伪元素是行内元素 清除浮动方法*/
+  content: "";
+  display: block;
+  height: 0;
+  clear:both;
+  visibility: hidden;
+}

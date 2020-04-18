@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<view class="container">
+	<view class="content_box">
+		<view class="classify_list_box clearfix">
+			<view wx:for="{{classifyList}}" wx:for-item="items" wx:for-index="idx" class="classify_item {{(idx+1)%5==0?'':'classify_item_margin_right'}}" wx:key="key">
+				<image class="classify_image" src="{{items.pic}}" mode="cover"></image>
+				<view>{{items.name}}</view>
+			</view>
+		</view>
+
+    <view style="height:900rpx;background:red;">12312312</view>
+
+
+
+
+
+
+	</view>
+
+
+
+</view>
