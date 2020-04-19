@@ -1,10 +1,42 @@
+
+
 .search_box{
   position: fixed;
   top: 0;
-  height: 80rpx;
+  /* height: 80rpx; */
   width: 100vw;
   background-color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
 }
+
+.search_box .location_box{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 120rpx;
+}
+.van-search__content{
+  border-radius: 10px;
+  background-color: red;
+}
+
+.search_box .search_content{
+  width: 500rpx;
+}
+
+.calendar{
+  width:90rpx;
+  text-align: right;
+}
+
+
+.index_content_box_box{
+  padding-top: 54px;
+}
+
+
 
 .classify_list_box{
   font-size: 20rpx;
@@ -29,6 +61,3 @@
 }
 
 
-.index_content_box_box{
-  padding-top: 80rpx;
-}

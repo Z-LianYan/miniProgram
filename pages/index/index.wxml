@@ -11,7 +11,20 @@
     <text class="user-motto">{{motto}}</text>
   </view> -->
 
-	<view class="search_box">123</view>
+	<view class="search_box">
+    <view class="location_box">
+      <van-icon name="location" color="#ff833b" size="20"/>
+      <text>广州</text>
+    </view>
+    
+    <van-search 
+    custom-class="search_content" 
+    disabled 
+    placeholder="搜索热门演出" ></van-search>
+
+    <van-icon class="calendar" name="calender-o" color="#ff833b" size="30"/>
+    
+  </view>
   
 	<view class="content_box index_content_box_box">
 
@@ -23,7 +36,7 @@
 
 		</view>
 
-
+  
   <view style="height:900rpx;background:red;">12312312</view>
 
 

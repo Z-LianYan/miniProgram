@@ -75,14 +75,14 @@ Page({
       url:'/home/index/getClassifyHome',
       data:{
         city_id: 10130,
-        abbreviation: 'ZZh',
+        abbreviation: "GZ",
         version: '6.1.1',
         referer: 2,
       },
       success:(data)=>{
-        console.log("data----",data.data.data.classify_list);
+        console.log("data----",data.data.data);
         this.setData({
-          classifyList:data.data.data.classify_list.splice(0,9)
+          classifyList:data.data.data.classify_list.splice(0,8)
         })
       },
       fail:(err)=>{
