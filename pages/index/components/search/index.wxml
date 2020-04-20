@@ -1,0 +1,16 @@
+<!--pages/index/components/search/index.wxml-->
+<view class="search_box">
+    <view class="location_box">
+      <van-icon name="location" color="#ff833b" size="20" />
+      <text class="city">广州</text>
+    </view>
+
+    <van-search custom-class="search_content" disabled placeholder="搜索热门演出"></van-search>
+
+    <view class="calendar">
+      <van-icon  name="calender-o" color="#ff833b" size="30" />
+    </view>
+
+    
+
+</view>

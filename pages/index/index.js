@@ -3,6 +3,7 @@
 const app = getApp()
 
 const httpsUtil = require('../../utils/httpsUtil');
+const API = require('../../constant/api');
 
 Page({
   data: {
@@ -13,10 +14,8 @@ Page({
 
 
 
-    classifyList:[]
-
-
-
+    classifyList:[],
+    slide_list:[],
 
   },
   //事件处理函数
@@ -25,7 +24,7 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
+  onLoad: function () {// 生命周期函数--监听页面加载
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -64,15 +63,10 @@ Page({
   },
 
 
-
-
-
-
-  
   fetchData:function(){
     console.log("111111")
     httpsUtil({
-      url:'/home/index/getClassifyHome',
+      url: API.GET_CLASSIFY_LIST,
       data:{
         city_id: 10130,
         abbreviation: "GZ",
@@ -80,14 +74,16 @@ Page({
         referer: 2,
       },
       success:(data)=>{
-        console.log("data----",data.data.data);
+        // console.log("data----",data.data.data);
         this.setData({
-          classifyList:data.data.data.classify_list.splice(0,8)
+          classifyList:data.data.data.classify_list.splice(0,8),
+          slide_list: data.data.data.slide_list
         })
       },
       fail:(err)=>{
         console.log("err",err);
       }
     })
-  }
+  },
+
 })

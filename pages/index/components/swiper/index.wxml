@@ -1,2 +1,10 @@
 <!--pages/index/components/swiper/index.wxml-->
-<text>pages/index/components/swiper/index.wxml</text>
+<view class="swiper_wrapper">
+  <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{2000}}" duration="{{500}}" circular="{{true}}">
+    <block wx:for="{{slide_list}}" wx:key="*this">
+      <swiper-item>
+        <image style="width:100vw;height:100%;" src="{{item.image_url}}" mode="cover"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>

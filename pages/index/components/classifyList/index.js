@@ -1,10 +1,10 @@
-// pages/index/components/swiper/index.js
+// pages/index/components/classifyList/index.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    slide_list:{
+    classifyList:{
       type: Array,
       value: []
     }

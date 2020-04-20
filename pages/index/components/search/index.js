@@ -1,13 +1,13 @@
-// pages/index/components/swiper/index.js
+// pages/index/components/search/index.js
 Component({
+  options: {
+    styleIsolation: 'shared'
+  },
   /**
    * 组件的属性列表
    */
   properties: {
-    slide_list:{
-      type: Array,
-      value: []
-    }
+
   },
 
   /**

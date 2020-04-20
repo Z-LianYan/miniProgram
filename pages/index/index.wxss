@@ -1,63 +1,22 @@
 
-
-.search_box{
-  position: fixed;
-  top: 0;
-  /* height: 80rpx; */
-  width: 100vw;
-  background-color: #fff;
-  display: flex;
-  align-items: center;
-  padding: 0 20rpx;
-}
-
-.search_box .location_box{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 120rpx;
-}
-.van-search__content{
-  border-radius: 10px;
-  background-color: red;
-}
-
-.search_box .search_content{
-  width: 500rpx;
-}
-
-.calendar{
-  width:90rpx;
-  text-align: right;
-}
-
-
 .index_content_box_box{
   padding-top: 54px;
 }
 
 
 
-.classify_list_box{
-  font-size: 20rpx;
-  padding: 20rpx 20rpx 5rpx 20rpx;
+.page-section-spacing{
+  margin-top: 60rpx;
 }
-
-.classify_list_box .classify_item{
-  width: 130rpx;
-  height: 130rpx;
-  float: left;
-  text-align: center;
-  margin-bottom: 15rpx;
+.scroll-view_H{
+  white-space: nowrap;
 }
-.classify_list_box .classify_item_margin_right{
-  margin-right: 15rpx;
+.scroll-view-item{
+  height: 300rpx;
 }
-
-.classify_list_box .classify_image{
-  width:80rpx;
-  height: 80rpx;
-  margin-bottom: 15rpx;
+.scroll-view-item_H{
+  display: inline-block;
+  width: 100%;
+  height: 300rpx;
 }
-
 

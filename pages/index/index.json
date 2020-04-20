@@ -1,7 +1,9 @@
 {
   "navigationBarTitleText": "首页",
   "usingComponents": {
-    "van-icon":"/components/dist/icon/index",
-    "van-search": "/components/dist/search/index"
+    "my-search": "/pages/index/components/search/index",
+    "my-swiper": "/pages/index/components/swiper/index",
+    "my-classify-list": "/pages/index/components/classifyList/index",
+    "my-hot-list": "/pages/index/components/hot/index"
   }
 }

@@ -1,6 +1,6 @@
 //app.js
 App({
-  onLaunch: function () {
+  onLaunch: function () {//全局只触发一次
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -33,6 +33,23 @@ App({
       }
     })
   },
+
+  onShow: function () {//小程序初始化完成后，触发onShow方法 ，从后台进入前台显示，触发onShow方法
+    console.log('App onShow');
+
+  },
+
+  onHide: function () {//小程序从前台进入后台，触发onHide方法
+    console.log('App onHide');
+
+  },
+  onError: function () {
+    console.log('App onError');
+
+  },
+
+
+
   globalData: {
     userInfo: null
   }

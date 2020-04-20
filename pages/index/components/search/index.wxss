@@ -1,0 +1,40 @@
+/* pages/index/components/search/index.wxss */
+
+.search_box{
+  position: fixed;
+  top: 0;
+  /* height: 80rpx; */
+  width: 711rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20rpx;
+  z-index: 100;
+}
+
+.search_box .location_box{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 120rpx;
+}
+
+.search_box .location_box .city{
+  font-size: 30rpx;
+}
+
+
+.van-search__content{
+  border-radius: 50rpx;
+  background-color: #ccc;
+}
+
+.search_box .search_content{
+  width: 500rpx;
+}
+
+.search_box .calendar{
+  width:70rpx;
+  text-align: right;
+}

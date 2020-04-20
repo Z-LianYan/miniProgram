@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-icon": "/components/dist/icon/index",
+    "van-search": "/components/dist/search/index"
+  }
+}
