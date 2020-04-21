@@ -1,0 +1,23 @@
+/* components/myCell/index.wxss */
+
+.mycell_wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 20rpx;
+}
+
+.mycell_wrapper .left_title{
+  font-size: 45.96rpx;
+  font-weight: bolder;
+}
+
+.mycell_wrapper .right_content{
+  display: flex;
+  align-items: center;
+  color: rgb(136, 132, 132);
+}
+
+.right_arrow{
+  margin-left: 10rpx;
+}

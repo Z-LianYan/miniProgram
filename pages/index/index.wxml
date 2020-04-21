@@ -1,29 +1,39 @@
 <!--index.wxml-->
-<view class="container">
-  <!-- <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<scroll-view 
+class="scroll-view_H" 
+scroll-y="true" 
+lower-threshold="{{100}}"
+bindscrolltolower="scrolltolower">
+  <view class="container">
+    <!-- <view class="userinfo">
+      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <block wx:else>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      </block>
+    </view>
+    <view class="usermotto">
+      <text class="user-motto">{{motto}}</text>
+    </view> -->
+
+    <my-search/>
+
+    <view class="content_box index_content_box_box">
+
+      
+
+        <my-swiper slide_list="{{slide_list}}" />
+
+        <my-classify-list classifyList="{{classifyList}}" />
+
+        <my-hot-list hot_list="{{hot_list}}" bindonAllCheck="onHotAllCheck"/>
+
+        <my-recommend recommend_list="{{recommend_list}}"/>
+      
+      
+
+    </view>
+
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view> -->
 
-  <my-search/>
-
-  <view class="content_box index_content_box_box">
-
-    <my-swiper slide_list="{{slide_list}}" />
-
-    <my-classify-list classifyList="{{classifyList}}" />
-
-
-    <my-hot-list/>
-
-
-
-  </view>
-
-</view>
+</scroll-view>

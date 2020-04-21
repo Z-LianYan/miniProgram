@@ -1,0 +1,70 @@
+/* pages/index/components/recommend/index.wxss */
+
+.recommend_wrapper{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.recommend_wrapper .recommend_item{
+  width: 339rpx;
+  display: flex;
+  flex-flow: column;
+  margin-bottom: 32rpx;
+
+}
+.recommend_wrapper .recommend_item:nth-child(odd){
+  margin-right: 32rpx;
+}
+.recommend_wrapper .recommend_item .recommend_image{
+  width: 100%;
+  height: 462.96rpx;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+}
+
+.recommend_wrapper .recommend_item .content{
+  padding: 20rpx;
+  background: #fff;
+  border: 2rpx solid #ebebeb;
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+}
+
+.recommend_wrapper .recommend_item .content .recom_title{
+  white-space:pre-line;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 40rpx;
+}
+
+.recommend_wrapper .recommend_item .content .sponsor{
+  width: 80rpx;
+  display: inline-block;
+  background: #ff8c37;
+  border-radius: 20rpx; 
+  text-align: center;
+  margin-right: 15rpx;
+  color: #fff;
+  font-size: 25rpx;
+}
+.recommend_wrapper .recommend_item .content .date_txt{
+  color: #666;
+  font-size: 25rpx;
+}
+
+.recommend_wrapper .recommend_item .content .min_price{
+  color: #FF6743;
+  margin-right: 10rpx;
+}
+
+.recommend_wrapper .recommend_item .content .price_txt{
+  color: #666;
+  font-size: 23rpx;
+}
+
+.van_tag{
+  margin-right: 10rpx;
+}

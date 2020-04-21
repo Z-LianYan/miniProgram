@@ -4,15 +4,13 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* justify-content: space-between; */
-  /* padding: 200rpx 0; */
   box-sizing: border-box;
+  font-size: 28rpx;
 } 
 
 .content_box{
   flex: 1;
-  background-color: #ccc;
+  background-color: #fff;
 }
 
 .clearfix:after{/*伪元素是行内元素 清除浮动方法*/
@@ -21,4 +19,23 @@
   height: 0;
   clear:both;
   visibility: hidden;
+}
+
+
+.padding_lr{
+  padding: 0 20rpx;
+}
+.padding_tb{
+  padding: 20rpx 0;
+}
+
+.padding_trbl{
+  padding: 20rpx 20rpx;
+}
+
+.padding_l{
+  padding-left: 20rpx;
+}
+.padding_r{
+  padding-left: 20rpx;
 }

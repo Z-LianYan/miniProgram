@@ -1,0 +1,30 @@
+<!--pages/index/components/recommend/index.wxml-->
+<view wx:if="{{recommend_list.length}}">
+  <my-cell leftTitle="为你推荐"/>
+  <view class="padding_trbl recommend_wrapper">
+    <view class="recommend_item" wx:for="{{recommend_list}}" wx:for-item="items" wx:key="*this">
+      <image class="recommend_image" src="{{items.pic}}" mode="cover"></image>
+      <view class="content">
+        <view class="recom_title">
+          <text class="sponsor" wx:if="{{items.method==1}}">主办</text>
+          <text>{{items.name}}</text>
+        </view>
+        <text class="date_txt">{{items.date_scope}}</text>
+        <view>
+          <text class="min_price">¥ {{items.min_price}}</text>
+          <text class="price_txt">起</text>
+          <view wx:if="{{items.support_desc.length}}" style="margin-top:10rpx;">
+            <van-tag 
+            custom-class="van_tag" 
+            round 
+            type="warning" 
+            wx:for="{{items.support_desc}}" 
+            wx:for-item="itm" 
+            wx:key="*this">{{itm}}</van-tag>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+

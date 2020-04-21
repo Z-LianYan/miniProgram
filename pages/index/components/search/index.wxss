@@ -3,13 +3,11 @@
 .search_box{
   position: fixed;
   top: 0;
-  /* height: 80rpx; */
-  width: 711rpx;
+  width: 714rpx;
   background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20rpx;
   z-index: 100;
 }
 

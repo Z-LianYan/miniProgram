@@ -3,6 +3,7 @@
 const app = getApp()
 
 const httpsUtil = require('../../utils/httpsUtil');
+const util = require('../../utils/util.js');
 const API = require('../../constant/api');
 
 Page({
@@ -16,6 +17,8 @@ Page({
 
     classifyList:[],
     slide_list:[],
+    hot_list:[],
+    recommend_list: [],
 
   },
   //事件处理函数
@@ -51,7 +54,12 @@ Page({
         }
       })
     }
-    this.fetchData()
+
+    this.fetchData();
+
+    this.getRecommendList();
+
+    this.fetchHotList();
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -85,5 +93,85 @@ Page({
       }
     })
   },
+
+
+  getRecommendList:function(){
+    httpsUtil({
+      url: API.GET_RECOMMEND_FOR_YOU,
+      data: {
+        city_id: 3,
+        category: "",
+        keywords: "",
+        venue_id: "",
+        start_time: "",
+        page: 1,
+        referer_type: "index",
+        version: "6.1.1",
+        referer: 2,
+      },
+      success: (data) => {
+        console.log("data----recommend", data.data.data);
+        let list = data.data.data.list
+        for (let i = 0; i < list.length;i++){
+          // list[i].date_scope = this.handleDateFormat(list[i].start_show_timestamp)
+          list[i].date_scope = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D") + " - " + util.formatDate(list[i].end_show_timestamp * 1000, "M.D");
+        }
+        this.setData({
+          recommend_list: list,
+        })
+        
+      },
+      fail: (err) => {
+        console.log("err", err);
+      }
+    })
+  },
+
+  fetchHotList:function(){
+    httpsUtil({
+      url: API.GET_HOT_LIST,
+      data: {
+        city_id: 3,
+        version: '6.1.1',
+        referer: 2
+      },
+      success: (data) => {
+        // console.log("data----", data.data.data);
+        this.setData({
+          hot_list: data.data.data.hots_show_list,
+        })
+      },
+      fail: (err) => {
+        console.log("err", err);
+      }
+    })
+  },
+
+
+  handleDateFormat(date){
+    // let len = date.length;
+    // if(!len) return;
+    // let start_date = date[0].toString().substr(0, 4) + "." + date[0].toString().substr(4, 2) + "." + date[0].toString().substr(6, 2);
+    // // let end_date = date[len].toString().substr(0, 4) + "." + date[len].toString().substr(4, 2) + "." + date[len].toString().substr(6, 2);
+    // return start_date;
+    util.formatDate(date)
+  },
+
+
+  scrolltolower:function(){
+    console.log("123888")
+  },
+
+
+
+  onHotAllCheck:function(){
+    console.log("热门全部")
+  }
+
+
+
+
+
+
 
 })

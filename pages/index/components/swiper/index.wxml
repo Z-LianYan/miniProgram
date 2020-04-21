@@ -1,5 +1,5 @@
 <!--pages/index/components/swiper/index.wxml-->
-<view class="swiper_wrapper">
+<view class="swiper_wrapper" wx:if="{{slide_list.length}}">
   <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{2000}}" duration="{{500}}" circular="{{true}}">
     <block wx:for="{{slide_list}}" wx:key="*this">
       <swiper-item>

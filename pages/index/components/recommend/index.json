@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "my-cell": "/components/myCell/index",
+    "van-tag": "/components/dist/tag/index"
+  }
+}

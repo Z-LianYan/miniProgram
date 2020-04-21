@@ -1,14 +1,9 @@
 /* pages/index/components/hot/index.wxss */
 
 .hot_wrapper{
-  height:900rpx;
-  padding:20rpx 20rpx;
+  /* padding:20rpx 0 20rpx 20rpx; */
 }
-.hot_wrapper .hot_title{
-  font-size: 30rpx;
-  font-weight: bold;
-  padding: 10rpx;
-}
+
 .hot_wrapper .scroll_box{
   white-space: nowrap; 
   display: flex
@@ -22,6 +17,14 @@
 
 .hot_wrapper .scroll_box .scroll_item .hot_image{
   width: 100%;
-  height: 136px;
+  height: 272rpx;
   border-radius: 10rpx;
+}
+.hot_wrapper .scroll_box .scroll_item .hot_desc{
+  white-space:pre-line;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }

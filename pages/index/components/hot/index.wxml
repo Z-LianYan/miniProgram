@@ -1,16 +1,15 @@
 <!--pages/index/components/hot/index.wxml-->
-<view class="hot_wrapper">
-  <text class="hot_title">热门演出</text>
-  <scroll-view
-    scroll-x="true" 
-    class="scroll_box">
-      <!--  display: inline-block-->
-      <view class="scroll_item" wx:for="{{hot_list}}"  wx:key="{{key}}">
+<view class="hot_container" wx:if="{{hot_list.length}}">
+
+  <my-cell leftTitle="热门演出" rightTitle="全部" isLeftArrow="true" bindonRightEvent="onRightEvent"/>
+
+  <view class="hot_wrapper padding_l padding_tb">
+
+    <scroll-view scroll-x="true" class="scroll_box">
+      <view class="scroll_item" wx:for="{{hot_list}}" wx:key="*this">
         <image class="hot_image" src="{{item.pic}}" mode="cover"></image>
-        <view class="hot_desc">{{item.show_name}}</view>
+        <text class="hot_desc">{{item.show_name}}</text>
       </view>
-      <!-- <view style="background: green; width: 200px; height: 100px; display: inline-block"></view>
-      <view style="background: blue; width: 200px; height: 100px; display: inline-block"></view>
-      <view style="background: yellow; width: 200px; height: 100px; display: inline-block"></view> -->
     </scroll-view>
+  </view>
 </view>

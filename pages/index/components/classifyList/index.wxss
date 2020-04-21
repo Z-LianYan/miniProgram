@@ -2,13 +2,13 @@
 
 .classify_list_box{
   font-size: 28rpx;
-  padding: 20rpx 20rpx 5rpx 20rpx;
+  /* padding: 20rpx 20rpx 5rpx 20rpx; */
   overflow: hidden;
 }
 
 .classify_list_box .classify_item{
   width: 130rpx;
-  height: 130rpx;
+  height: 140rpx;
   float: left;
   text-align: center;
   margin-bottom: 15rpx;

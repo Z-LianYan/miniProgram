@@ -1,11 +1,11 @@
 <!--pages/index/components/classifyList/index.wxml-->
-<view class="classify_list_box clearfix">
+<view class="classify_list_box padding_trbl clearfix" wx:if="{{classifyList.length}}">
   <view 
   wx:for="{{classifyList}}" 
   wx:for-item="items" 
   wx:for-index="idx" 
   class="classify_item {{(idx+1)%5==0?'':'classify_item_margin_right'}}" 
-  wx:key="key">
+  wx:key="*this">
     <image class="classify_image" src="{{items.pic}}" mode="cover"></image>
     <view>{{items.name}}</view>
   </view>

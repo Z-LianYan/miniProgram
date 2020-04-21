@@ -1,21 +1,24 @@
 // pages/index/components/hot/index.js
 
-const httpsUtil = require('../../../../utils/httpsUtil');
-const API = require('../../../../constant/api');
-
 Component({
+  options: {
+    styleIsolation: 'shared'//表示页面 wxss 样式将影响到自定义组件
+  },
   /**
    * 组件的属性列表
    */
   properties: {
-
+    hot_list:{
+      type:Array,
+      value:[]
+    }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    hot_list: []
+    
   },
 
   /**
@@ -23,38 +26,18 @@ Component({
    */
   methods: {
 
-
+    onRightEvent:function(){
+      this.triggerEvent('onAllCheck', {})
+    }
 
   },
 
 
   lifetimes: {
 
-    created() {
-      console.log("created", this.data.toView);
-    },
+    created() {},
 
-    attached() {
-      httpsUtil({
-        url: API.GET_HOT_LIST,
-        data: {
-          city_id: 3,
-          version: '6.1.1',
-          referer: 2
-        },
-        success: (data) => {
-          console.log("data----", data.data.data);
-          this.setData({
-            hot_list: data.data.data.hots_show_list,
-          })
-        },
-        fail: (err) => {
-          console.log("err", err);
-        }
-      })
-
-      console.log("attached", this.data.toView);
-    },
+    attached() {},
 
     ready() {
       console.log("ready");

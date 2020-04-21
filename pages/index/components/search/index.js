@@ -1,6 +1,6 @@
 // pages/index/components/search/index.js
 Component({
-  options: {
+  options: {//要覆盖ui组件样式需要的设置
     styleIsolation: 'shared'
   },
   /**
