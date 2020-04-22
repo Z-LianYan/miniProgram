@@ -34,8 +34,12 @@
 }
 
 .theater_item_box .theater_info .info_wrapper .info_box .theater_name{
-  font-size: 45rpx;
+  width: 400rpx;
+  font-size: 40rpx;
   font-weight: bolder;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .theater_item_box .theater_info .info_wrapper .info_box .sale_count{
@@ -45,11 +49,10 @@
 
 .theater_scroll_view{
   white-space: nowrap;
+  padding-top: 30rpx;
 }
 
 .theater_scroll_view .steps_wrapper{
   width: 100%;
   display: inline-block;
-  background:pink;
-  margin-right: 20rpx;
 }

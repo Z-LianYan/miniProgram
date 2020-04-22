@@ -4,15 +4,15 @@
   <view class="content_box padding_lr">
 
 
-    <view class="theater_item_box padding_trbl">
+    <view class="theater_item_box padding_trbl" wx:for="{{theater_list}}" wx:key="*this">
       <view class="theater_info">
         <view class="info_wrapper">
-          <van-image round style="margin-top:12rpx;" width="100rpx" height="100rpx" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+          <van-image round style="margin-top:12rpx;" width="100rpx" height="100rpx" src="{{item.pic}}" />
 
 
           <view class="info_box">
-            <view class="theater_name">121</view>
-            <view class="sale_count">999</view>
+            <view class="theater_name">{{item.name}}</view>
+            <view class="sale_count">{{item.count}} 场在售演出</view>
           </view>
         </view>
         <van-icon name="ellipsis" size="35" />
@@ -20,9 +20,7 @@
 
       <scroll-view scroll-x="true" class="theater_scroll_view">
         <view class="steps_wrapper">
-        
-         <my-steps steps="{{ steps }}"/>
-        
+         <my-steps steps="{{ theater_list[0].showList }}"/>
         </view>
 
       </scroll-view>

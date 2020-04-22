@@ -1,5 +1,44 @@
 /* components/mySteps/index.wxss */
 
 .my_steps_wrapper{
-  
+  display: flex;
+  height: 100rpx;
+  /* background-color: pink; */
+  align-items: flex-end;
 }
+.my_steps_wrapper .steps_box{
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 50rpx;
+}
+
+.steps_line{
+  width: 120rpx;
+  height: 5rpx;
+  background-color: #ccc;
+}
+
+.steps_point{
+  display: inline-block;
+  width: 12rpx;
+  height: 12rpx;
+  background-color: #999;
+  border-radius: 6rpx;
+}
+
+.steps_text{
+  color: #ccc;
+}
+
+.steps_item{
+  display:inline-block;
+  text-align:center;
+  justify-content: center;
+}
+
+.steps_img{
+  width: 240rpx;
+  height: 322.68rpx;
+}
+

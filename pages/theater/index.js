@@ -14,29 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    theater_list:[],
-
-
-    steps: [
-      {
-        text: '步骤一',
-        desc: '描述信息'
-      },
-      {
-        text: '步骤二',
-        desc: '描述信息'
-      },
-      {
-        text: '步骤三',
-        desc: '描述信息'
-      },
-      {
-        text: '步骤四',
-        desc: '描述信息'
-      }
-    ]
-
-
+    theater_list:[]
 
   },
 
