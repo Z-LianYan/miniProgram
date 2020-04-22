@@ -89,5 +89,24 @@ Page({
         console.log("err",err);
       }
     })
+  },
+
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading()
+    console.log("123456789")
+    wx.stopPullDownRefresh()
+
+    // wx.startPullDownRefresh()
+
+    setTimeout(() => { wx.hideNavigationBarLoading()},2000)
   }
+
+
+
+
+
+
+
+
+
 })

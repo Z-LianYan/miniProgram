@@ -1,0 +1,35 @@
+<!--pages/theater/index.wxml-->
+<view class="container">
+  <view class="theater_header">剧院</view>
+  <view class="content_box padding_lr">
+
+
+    <view class="theater_item_box padding_trbl">
+      <view class="theater_info">
+        <view class="info_wrapper">
+          <van-image round style="margin-top:12rpx;" width="100rpx" height="100rpx" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+
+
+          <view class="info_box">
+            <view class="theater_name">121</view>
+            <view class="sale_count">999</view>
+          </view>
+        </view>
+        <van-icon name="ellipsis" size="35" />
+      </view>
+
+      <scroll-view scroll-x="true" class="theater_scroll_view">
+        <view class="steps_wrapper">
+        
+         <my-steps steps="{{ steps }}"/>
+        
+        </view>
+
+      </scroll-view>
+
+
+    </view>
+
+
+  </view>
+</view>

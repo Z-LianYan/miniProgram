@@ -5,8 +5,7 @@
 }
 
 .hot_wrapper .scroll_box{
-  white-space: nowrap; 
-  display: flex
+  white-space: nowrap;
 }
 
 .hot_wrapper .scroll_box .scroll_item{

@@ -1,0 +1,55 @@
+/* pages/theater/index.wxss */
+
+.theater_header{
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  border-bottom: 1rpx solid #ccc;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  font-weight: bold;
+
+}
+.theater_item_box{
+  margin-top: 80rpx;
+  border: 1rpx solid #ccc;
+  box-shadow: 0.5rpx 1rpx 5rpx 0.5rpx #ccc;
+  border-radius: 10rpx;
+}
+
+.theater_item_box .theater_info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.theater_item_box .theater_info .info_wrapper{
+  display: flex;
+  align-items: center;
+  /* line-height: 100rpx; */
+}
+
+.theater_item_box .theater_info .info_wrapper .info_box{
+  margin-left: 15rpx;
+}
+
+.theater_item_box .theater_info .info_wrapper .info_box .theater_name{
+  font-size: 45rpx;
+  font-weight: bolder;
+}
+
+.theater_item_box .theater_info .info_wrapper .info_box .sale_count{
+  color: #666;
+  font-size: 25rpx;
+}
+
+.theater_scroll_view{
+  white-space: nowrap;
+}
+
+.theater_scroll_view .steps_wrapper{
+  width: 100%;
+  display: inline-block;
+  background:pink;
+  margin-right: 20rpx;
+}

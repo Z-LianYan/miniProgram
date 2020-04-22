@@ -13,12 +13,26 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
 
+    recommendOptions:{
+      city_id: 3,
+      category: "",
+      keywords: "",
+      venue_id: "",
+      start_time: "",
+      page: 1,
+      referer_type: "index",
+      version: "6.1.1",
+      referer: 2,
+    },
+
 
 
     classifyList:[],
     slide_list:[],
     hot_list:[],
     recommend_list: [],
+
+    isLoading:true
 
   },
   //事件处理函数
@@ -98,27 +112,26 @@ Page({
   getRecommendList:function(){
     httpsUtil({
       url: API.GET_RECOMMEND_FOR_YOU,
-      data: {
-        city_id: 3,
-        category: "",
-        keywords: "",
-        venue_id: "",
-        start_time: "",
-        page: 1,
-        referer_type: "index",
-        version: "6.1.1",
-        referer: 2,
-      },
+      data: this.data.recommendOptions,
       success: (data) => {
-        console.log("data----recommend", data.data.data);
+        console.log("data----recommend", data.data);
         let list = data.data.data.list
         for (let i = 0; i < list.length;i++){
-          // list[i].date_scope = this.handleDateFormat(list[i].start_show_timestamp)
           list[i].date_scope = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D") + " - " + util.formatDate(list[i].end_show_timestamp * 1000, "M.D");
         }
+        
         this.setData({
-          recommend_list: list,
+          recommend_list: this.data.recommend_list.concat(list)
         })
+        
+        if (this.data.recommend_list.length == data.data.data.total){
+          console.log("------", this.data.recommend_list.length ,data.data.data.total)
+          setTimeout(()=>{
+            console.log("我是定时器", this.data.isLoading);
+            this.setData({isLoading: false})
+          },1000)
+        }
+        
         
       },
       fail: (err) => {
@@ -148,30 +161,20 @@ Page({
   },
 
 
-  handleDateFormat(date){
-    // let len = date.length;
-    // if(!len) return;
-    // let start_date = date[0].toString().substr(0, 4) + "." + date[0].toString().substr(4, 2) + "." + date[0].toString().substr(6, 2);
-    // // let end_date = date[len].toString().substr(0, 4) + "." + date[len].toString().substr(4, 2) + "." + date[len].toString().substr(6, 2);
-    // return start_date;
-    util.formatDate(date)
-  },
-
-
   scrolltolower:function(){
-    console.log("123888")
+
+    if (this.data.isLoading) {
+      this.setData({
+        'recommendOptions.page':this.data.recommendOptions.page+1
+      })
+      this.getRecommendList();
+    };
+
   },
-
-
 
   onHotAllCheck:function(){
     console.log("热门全部")
-  }
-
-
-
-
-
+  },
 
 
 })

@@ -16,7 +16,7 @@
             <view>
               <text class="min_price">¥ {{items.min_price}}</text>
               <text class="price_txt">起</text>
-              <view wx:if="{{items.support_desc.length}}" style="margin-top:10rpx;">
+              <view wx:if="{{items.support_desc.length}}" class="support_desc">
                 <van-tag 
                 custom-class="van_tag" 
                 round 
@@ -45,7 +45,7 @@
           <view>
             <text class="min_price">¥ {{items.min_price}}</text>
             <text class="price_txt">起</text>
-            <view wx:if="{{items.support_desc.length}}" style="margin-top:10rpx;">
+            <view wx:if="{{items.support_desc.length}}" class="support_desc">
               <van-tag 
               custom-class="van_tag" 
               round 

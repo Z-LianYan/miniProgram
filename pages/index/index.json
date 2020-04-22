@@ -5,7 +5,8 @@
     "my-swiper": "/pages/index/components/swiper/index",
     "my-classify-list": "/pages/index/components/classifyList/index",
     "my-hot-list": "/pages/index/components/hot/index",
-    "my-recommend": "/pages/index/components/recommend/index"
-    
+    "my-recommend": "/pages/index/components/recommend/index",
+    "van-loading": "/components/dist/loading/index"
   }
+  
 }
