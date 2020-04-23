@@ -1,0 +1,14 @@
+
+.item_wrapper{
+    padding: 20rpx;
+    display: flex;
+    background-color: #fff;
+    box-shadow: 0.5rpx 0.5rpx 50rpx 1rpx #e0e0e0;
+    margin-top: 30rpx;
+    border-radius: 5rpx;
+}
+
+.label_wrap{
+    width: 177.5rpx;
+    text-align: center;
+}

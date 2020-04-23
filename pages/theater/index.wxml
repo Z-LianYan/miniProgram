@@ -14,6 +14,7 @@
             <view class="theater_name">121</view>
             <view class="sale_count">999</view>
           </view>
+          
         </view>
         <van-icon name="ellipsis" size="35" />
       </view>

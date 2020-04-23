@@ -1,21 +1,107 @@
-.classify_list_box{
-  font-size: 20rpx;
-  padding: 20rpx 20rpx 5rpx 20rpx;
+.mine_bg{
+  width: 100vw;
+  height: 419rpx;
+  position: relative;
 }
 
-.classify_list_box .classify_item{
-  width: 130rpx;
-  height: 130rpx;
-  float: left;
+
+.mine_header{
+  width: 710rpx;
+  height: 419rpx;
+  position: absolute;
+}
+
+
+.mine_set_wrapper{
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.userinfo_box{
+  background-color: #fff;
+  border-radius: 10rpx;
+  box-shadow: 0.5rpx 0.5rpx 50rpx 1rpx #e0e0e0;
+}
+.name_avatar_id{
+  display: flex;
+}
+
+.name_avatar_id .avatar{
+  position: relative;
+  top:-50rpx;
+}
+.name_id{
+  margin-left: 10rpx;
+}
+
+.name_id .username{
+    font-size: 40rpx;
+    font-weight: bolder;
+}
+.name_id .user_id{
+  color: #999;
+  font-size: 25rpx;
+}
+.vip_tag_wrapper{
+  text-align: right;
+}
+
+.vip_tag_wrapper .vip_grade{
+  background: #e40077;
+  padding: 10rpx 20rpx;
+  border-top-left-radius: 30rpx;
+  border-bottom-left-radius: 30rpx;
+  position: relative;
+  right: -20rpx;
+  color: #fff;
+}
+
+.account_info{
+  margin-top: 20rpx;
+  display: flex;
+}
+.account_info .info_item{
+  width: 161.5rpx;
+  height: 100rpx;
+  /* background: pink; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+
+.account_info .info_item:last-child .separate{
+  display: none;
+}
+
+
+
+
+.account_info .info_item .num_title{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
   text-align: center;
-  margin-bottom: 15rpx;
-}
-.classify_list_box .classify_item_margin_right{
-  margin-right: 15rpx;
 }
 
-.classify_list_box .classify_image{
-  width:80rpx;
-  height: 80rpx;
-  margin-bottom: 15rpx;
+.account_info .info_item .num_title .title{
+  font-size: 25rpx;
+  color: #666;
+}
+
+
+.account_info .info_item .num_title .num_cou{
+  font-weight: bolder;
+  color: #e40077;
+}
+
+.account_info .info_item .separate{
+  background: #ebedf0;
+  height: 50rpx;
+  width: 2rpx;
 }

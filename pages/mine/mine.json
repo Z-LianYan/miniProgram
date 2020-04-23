@@ -1,4 +1,8 @@
 {
   "enablePullDownRefresh": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "van-image": "/components/dist/image/index",
+    "van-icon": "/components/dist/icon/index",
+    "my-mine-item": "/pages/mine/item/item"
+  }
 }

@@ -1,0 +1,7 @@
+
+<view class="item_wrapper">
+  <view class="label_wrap" wx:for="{{list}}" wx:key="*this">
+    <van-icon name="{{item.icon}}" size="25"/>
+    <view class="label">{{item.label}}</view>
+  </view>
+</view>
