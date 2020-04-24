@@ -10,5 +10,57 @@
 
 .label_wrap{
     width: 177.5rpx;
+    height: 120rpx;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
     text-align: center;
 }
+
+
+
+@font-face {
+    font-family: 'iconfont';  /* project id 1778027 */
+    src: url('//at.alicdn.com/t/font_1778027_9e6ml7a61ae.eot');
+    src: url('//at.alicdn.com/t/font_1778027_9e6ml7a61ae.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1778027_9e6ml7a61ae.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1778027_9e6ml7a61ae.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1778027_9e6ml7a61ae.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1778027_9e6ml7a61ae.svg#iconfont') format('svg');
+  }
+  
+  .iconfont {
+    font-family: "iconfont" !important;
+    font-size: 50rpx;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-feedback:before {
+    content: "\e646";
+  }
+  
+  .icon-people:before {
+    content: "\e6aa";
+  }
+  
+  .icon-help:before {
+    content: "\e672";
+  }
+  
+  .icon-address:before {
+    content: "\e608";
+  }
+  
+  .icon-order:before {
+    content: "\e602";
+  }
+  
+  .icon-ticketholder:before {
+    content: "\e641";
+  }
+  
+  .icon-cardpackage:before {
+    content: "\e668";
+  }

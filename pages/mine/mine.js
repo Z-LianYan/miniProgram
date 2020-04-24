@@ -3,6 +3,7 @@
 const app = getApp()
 
 const httpsUtil = require('../../utils/httpsUtil');
+const API = require('../../constant/api');
 
 Page({
   data: {
@@ -16,22 +17,12 @@ Page({
       title:"优惠券",
       total:0
     }],
-    itemList:[{
-      icon:"orders-o",
-      label:"我的订单"
-    },{
-      icon:"coupon-o",
-      label:"我的票夹"
-    },{
-      icon:"idcard",
-      label:"我的卡包"
-    },{
-      icon:"location-o",
-      label:"收获地址"
-    }]
+    userInfo:{},
+    itemList:[]
   },
   onLoad: function () {
-    // this.fetchData()
+    this.fetchMenuItem(),
+    this.fetchUserInfo()
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -43,25 +34,53 @@ Page({
   },
 
 
-
-
-
-
-  
-  fetchData:function(){
-    console.log("111111")
+  fetchMenuItem:function(){
     httpsUtil({
-      url:'/home/index/getClassifyHome',
+      url:API.GET_MENU_ITEM,
       data:{
-        city_id: 10130,
-        abbreviation: 'ZZh',
-        version: '6.1.1',
-        referer: 2,
+        version: "6.1.1",
+        referer: 2
       },
       success:(data)=>{
-        console.log("data----",data.data.data.classify_list);
+        // console.log("data----",data.data.data);
+        let list = data.data.data;
+        
+        let itemList = [];
+        let arr = [];
+        for(let i=0;i<list.length;i++){
+          arr.push(list[i])
+          if(((i+1)%4)==0){
+            itemList.push(arr);
+            arr = [];
+            if((i+5)>list.length && list.length>(i+1)){
+              itemList.push(list.slice(i+1,list.length));
+            }
+          }
+        }
         this.setData({
-          classifyList:data.data.data.classify_list
+          itemList:itemList
+        })
+      },
+      fail:(err)=>{
+        console.log("err",err);
+      }
+    })
+  },
+
+  fetchUserInfo:function(){
+    httpsUtil({
+      url:API.GET_USERINFO,
+      data:{
+        version: "6.1.1",
+        referer: 2
+      },
+      success:(data)=>{
+        console.log("userinfo----",data.data.data);
+        let list = data.data.data;
+        
+        
+        this.setData({
+          userInfo:list
         })
       },
       fail:(err)=>{

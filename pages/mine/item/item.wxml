@@ -1,7 +1,12 @@
 
-<view class="item_wrapper">
-  <view class="label_wrap" wx:for="{{list}}" wx:key="*this">
-    <van-icon name="{{item.icon}}" size="25"/>
-    <view class="label">{{item.label}}</view>
-  </view>
+
+
+<view class="item_wrapper" wx:for="{{list}}" wx:key="*this">
+  <navigator url="{{itm.link}}" hover-class="none" class="label_wrap" wx:for="{{item}}" wx:for-item="itm" wx:key="*this">
+    <!-- <van-icon name="{{item.icon}}" size="25"/> -->
+    
+    <icon class="iconfont {{itm.icon}}"></icon>
+
+    <view class="label">{{itm.title}}</view>
+  </navigator>
 </view>

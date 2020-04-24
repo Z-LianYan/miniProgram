@@ -20,8 +20,11 @@
           height="130rpx"  
           src="https://image.juooo.com/group1/M00/03/6F/rAoKNV0XF2uABEtSAAANUrP00o0602.png" />
           <view class="name_id">
-            <text class="username">123</text>
-            <view class="user_id">ID：123</view>
+            <text class="username">{{userInfo.basic_info.nick_name?userInfo.basic_info.nick_name:"登录/注册"}}</text>
+            <view class="user_id">
+              {{userInfo.basic_info.nick_name?userInfo.basic_info.uid:"请点击登录"}}
+              <van-icon name="arrow" size="25rpx"/>
+            </view>
           </view>
 
         </view>
@@ -30,15 +33,42 @@
         </view>
 
         <view class="account_info">
-          <navigator url="/pages/detail/detail" class="info_item" wx:for="{{accountInfo}}" wx:key="*this">
+
+          <navigator url="/pages/detail/detail" class="info_item">
 
             <view class="num_title">
-              <view class="num_cou">{{item.total}}</view>
-              <view class="title">{{item.title}}</view>
+              <view class="num_cou">{{userInfo.basic_info.user_money}}</view>
+              <view class="title">账户余额</view>
             </view>
             
             <view class="separate"></view>
           </navigator>
+
+
+
+          <navigator url="/pages/detail/detail" class="info_item">
+
+            <view class="num_title">
+              <view class="num_cou">{{userInfo.basic_info.scores}}</view>
+              <view class="title">积分</view>
+            </view>
+            
+            <view class="separate"></view>
+          </navigator>
+
+
+
+          <navigator url="/pages/detail/detail" class="info_item">
+
+            <view class="num_title">
+              <view class="num_cou">{{userInfo.coupon_info.total}}</view>
+              <view class="title">优惠券</view>
+            </view>
+            
+            <view class="separate"></view>
+          </navigator>
+
+
         </view>
 
       </view>

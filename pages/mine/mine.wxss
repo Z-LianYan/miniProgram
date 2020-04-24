@@ -43,6 +43,8 @@
 .name_id .user_id{
   color: #999;
   font-size: 25rpx;
+  display: flex;
+  align-items: center;
 }
 .vip_tag_wrapper{
   text-align: right;
