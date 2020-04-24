@@ -3,56 +3,26 @@
 const app = getApp()
 
 const httpsUtil = require('../../utils/httpsUtil');
+const API = require('../../constant/api');
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-
-
-
-    classifyList:[]
-
-
-
-
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+    accountInfo:[{
+      title:"账户余额",
+      total:0
+    },{
+      title:"积分",
+      total:8
+    },{
+      title:"优惠券",
+      total:0
+    }],
+    userInfo:{},
+    itemList:[]
   },
   onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
-    this.fetchData()
+    this.fetchMenuItem(),
+    this.fetchUserInfo()
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -64,25 +34,53 @@ Page({
   },
 
 
-
-
-
-
-  
-  fetchData:function(){
-    console.log("111111")
+  fetchMenuItem:function(){
     httpsUtil({
-      url:'/home/index/getClassifyHome',
+      url:API.GET_MENU_ITEM,
       data:{
-        city_id: 10130,
-        abbreviation: 'ZZh',
-        version: '6.1.1',
-        referer: 2,
+        version: "6.1.1",
+        referer: 2
       },
       success:(data)=>{
-        console.log("data----",data.data.data.classify_list);
+        // console.log("data----",data.data.data);
+        let list = data.data.data;
+        
+        let itemList = [];
+        let arr = [];
+        for(let i=0;i<list.length;i++){
+          arr.push(list[i])
+          if(((i+1)%4)==0){
+            itemList.push(arr);
+            arr = [];
+            if((i+5)>list.length && list.length>(i+1)){
+              itemList.push(list.slice(i+1,list.length));
+            }
+          }
+        }
         this.setData({
-          classifyList:data.data.data.classify_list
+          itemList:itemList
+        })
+      },
+      fail:(err)=>{
+        console.log("err",err);
+      }
+    })
+  },
+
+  fetchUserInfo:function(){
+    httpsUtil({
+      url:API.GET_USERINFO,
+      data:{
+        version: "6.1.1",
+        referer: 2
+      },
+      success:(data)=>{
+        console.log("userinfo----",data.data.data);
+        let list = data.data.data;
+        
+        
+        this.setData({
+          userInfo:list
         })
       },
       fail:(err)=>{
@@ -99,12 +97,7 @@ Page({
     // wx.startPullDownRefresh()
 
     setTimeout(() => { wx.hideNavigationBarLoading()},2000)
-  }
-
-
-
-
-
+  },
 
 
 

@@ -25,6 +25,7 @@
 .padding_lr{
   padding: 0 20rpx;
 }
+
 .padding_tb{
   padding: 20rpx 0;
 }

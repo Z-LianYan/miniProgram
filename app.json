@@ -1,8 +1,11 @@
 {
   "pages": [
+    "pages/mine/mine",
     "pages/theater/index",
     "pages/index/index",
-    "pages/mine/mine"
+
+    "pages/detail/detail"
+    
     
   ],
   "window": {

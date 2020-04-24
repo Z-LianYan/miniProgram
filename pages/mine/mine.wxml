@@ -1,22 +1,82 @@
 <!--index.wxml-->
 <view class="container">
-	<view class="content_box">
-		<view class="classify_list_box clearfix">
-			<view wx:for="{{classifyList}}" wx:for-item="items" wx:for-index="idx" class="classify_item {{(idx+1)%5==0?'':'classify_item_margin_right'}}" wx:key="key">
-				<image class="classify_image" src="{{items.pic}}" mode="cover"></image>
-				<view>{{items.name}}</view>
-			</view>
-		</view>
 
-    <view style="height:900rpx;background:red;">12312312</view>
+  <image class="mine_bg" src="../../images/mine/mine_bg.png"></image>
+
+  <!-- <van-image fit="contain" width="100vw" height="100rpx" src="/images/mine/mine_bg.png" /> -->
+
+  <view class="padding_lr mine_header">
+  
+      <view class="mine_set_wrapper">
+        <van-icon size="30" name="setting-o" />
+      </view>
+
+      <view class="userinfo_box padding_trbl">
+        <view class="name_avatar_id">
+          <van-image 
+          class="avatar"
+          round
+          width="130rpx" 
+          height="130rpx"  
+          src="https://image.juooo.com/group1/M00/03/6F/rAoKNV0XF2uABEtSAAANUrP00o0602.png" />
+          <view class="name_id">
+            <text class="username">{{userInfo.basic_info.nick_name?userInfo.basic_info.nick_name:"登录/注册"}}</text>
+            <view class="user_id">
+              {{userInfo.basic_info.nick_name?userInfo.basic_info.uid:"请点击登录"}}
+              <van-icon name="arrow" size="25rpx"/>
+            </view>
+          </view>
+
+        </view>
+        <view class="vip_tag_wrapper">
+          <text class="vip_grade">普通会员</text>
+        </view>
+
+        <view class="account_info">
+
+          <navigator url="/pages/detail/detail" class="info_item">
+
+            <view class="num_title">
+              <view class="num_cou">{{userInfo.basic_info.user_money}}</view>
+              <view class="title">账户余额</view>
+            </view>
+            
+            <view class="separate"></view>
+          </navigator>
 
 
 
+          <navigator url="/pages/detail/detail" class="info_item">
+
+            <view class="num_title">
+              <view class="num_cou">{{userInfo.basic_info.scores}}</view>
+              <view class="title">积分</view>
+            </view>
+            
+            <view class="separate"></view>
+          </navigator>
 
 
 
-	</view>
+          <navigator url="/pages/detail/detail" class="info_item">
+
+            <view class="num_title">
+              <view class="num_cou">{{userInfo.coupon_info.total}}</view>
+              <view class="title">优惠券</view>
+            </view>
+            
+            <view class="separate"></view>
+          </navigator>
 
 
+        </view>
 
+      </view>
+
+
+      <my-mine-item list="{{itemList}}"/>
+    
+
+
+   </view>
 </view>
