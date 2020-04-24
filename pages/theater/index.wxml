@@ -4,7 +4,7 @@
   <view class="content_box padding_lr">
 
 
-    <view class="theater_item_box padding_trbl" wx:for="{{theater_list}}" wx:key="*this">
+    <view class="theater_item_box padding_trbl" wx:for="{{theater_list}}" wx:key="*this" wx:if="{{item.count}}">
       <view class="theater_info">
         <view class="info_wrapper">
           <van-image round style="margin-top:12rpx;" width="100rpx" height="100rpx" src="{{item.pic}}" />
@@ -21,7 +21,7 @@
 
       <scroll-view scroll-x="true" class="theater_scroll_view">
         <view class="steps_wrapper">
-         <my-steps steps="{{ theater_list[0].showList }}"/>
+         <my-steps steps="{{ item.showList }}"/>
         </view>
 
       </scroll-view>
