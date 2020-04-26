@@ -21,7 +21,7 @@
 
       <scroll-view scroll-x="true" class="theater_scroll_view">
         <view class="steps_wrapper">
-         <my-steps steps="{{ item.showList }}"/>
+         <my-steps steps="{{ item.showList }}" show_list_url="{{item.show_list_url}}" vid="{{item.vid}}"/>
         </view>
 
       </scroll-view>

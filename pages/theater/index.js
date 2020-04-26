@@ -86,9 +86,11 @@ Page({
       },
       success: (data) => {
         console.log("data----",data.data.data);
+        let list = data.data.data.theatre_list;
         this.setData({
-          theater_list: data.data.data.theatre_list
+          theater_list: list
         })
+        console.log("list",list)
       },
       fail: (err) => {
         console.log("err", err);

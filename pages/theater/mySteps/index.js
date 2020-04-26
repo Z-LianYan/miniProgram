@@ -7,7 +7,9 @@ Component({
     steps:{
       type:Array,
       value:[]
-    }
+    },
+    show_list_url:String,
+    vid:String
   },
 
   /**

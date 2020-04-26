@@ -3,7 +3,7 @@
   "usingComponents": {
     "van-image":"/components/dist/image/index",
     "van-icon": "/components/dist/icon/index",
-    "my-steps": "/components/mySteps/index"
+    "my-steps": "/pages/theater/mySteps/index"
     
   }
 }
