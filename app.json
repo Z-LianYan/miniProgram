@@ -8,6 +8,7 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
+    "backgroundColor": "#fff",
     "navigationBarBackgroundColor": "#e40077",
     "navigationBarTitleText": "票务网-演出音乐剧话剧儿童剧",
     "navigationBarTextStyle": "black"

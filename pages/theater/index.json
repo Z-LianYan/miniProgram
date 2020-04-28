@@ -1,5 +1,7 @@
 {
   "enablePullDownRefresh": true,
+  "backgroundTextStyle": "light",
+  "backgroundColor": "#fff",
   "usingComponents": {
     "van-image":"/components/dist/image/index",
     "van-icon": "/components/dist/icon/index",

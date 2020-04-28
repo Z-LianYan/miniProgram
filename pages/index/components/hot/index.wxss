@@ -1,5 +1,11 @@
 /* pages/index/components/hot/index.wxss */
 
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
 .hot_wrapper{
   /* padding:20rpx 0 20rpx 20rpx; */
 }
