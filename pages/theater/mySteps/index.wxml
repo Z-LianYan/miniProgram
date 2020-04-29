@@ -1,5 +1,4 @@
-<!--components/mySteps/index.wxml-->
-
+<!-- components/mySteps/index.wxml -->
 <view class="my_steps_wrapper">
   <view class="steps_item" wx:for="{{steps}}" wx:key="*this" wx:for-index="idx" wx:if="{{idx<=8}}">
     <view class="steps_text">{{idx<8?item.show_time:""}}</view>
@@ -8,20 +7,13 @@
       <view class="steps_point"></view>
       <view class="steps_line"></view>
     </view>
-
     <image class="steps_img" src="{{item.pic}}" wx:if="{{idx<8}}"></image>
-
-    <navigator 
-    url="/pages/search/index?venue_id={{vid}}"
-    wx:if="{{idx==8}}" 
-    class="steps_img navigator_box">
-    <view class="more_wrapper">
-      查看更多
-      <van-icon name="arrow" />
-      <van-icon name="arrow" />
-    </view>
-      
+    <navigator url="/pages/search/index?venue_id={{vid}}" wx:if="{{idx==8}}" class="steps_img navigator_box">
+      <view class="more_wrapper">
+        查看更多
+        <van-icon name="arrow" />
+        <van-icon name="arrow" />
+      </view>
     </navigator>
-
   </view>
 </view>

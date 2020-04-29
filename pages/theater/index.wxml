@@ -3,7 +3,6 @@
   <view class="theater_header">剧院</view>
   <view class="content_box padding_lr">
 
-
     <view class="theater_item_box padding_trbl" wx:for="{{theater_list}}" wx:key="*this" wx:if="{{item.count}}">
       <view class="theater_info">
         <view class="info_wrapper">
@@ -21,9 +20,8 @@
 
       <scroll-view scroll-x="true" class="theater_scroll_view">
         <view class="steps_wrapper">
-         <my-steps steps="{{ item.showList }}" show_list_url="{{item.show_list_url}}" vid="{{item.vid}}"/>
+          <my-steps steps="{{ theater_list }}" show_list_url="{{item.show_list_url}}" vid="{{item.vid}}"/>
         </view>
-
       </scroll-view>
 
 

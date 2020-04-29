@@ -85,7 +85,7 @@ Page({
         referer: 2
       },
       success: (data) => {
-        console.log("data----",data.data.data);
+        console.log("data----哈哈哈哈",data.data.data);
         let list = data.data.data.theatre_list;
         this.setData({
           theater_list: list
