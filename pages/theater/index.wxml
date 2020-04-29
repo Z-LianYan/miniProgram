@@ -1,32 +1,47 @@
 <!--pages/theater/index.wxml-->
 <view class="container">
+
   <view class="theater_header">剧院</view>
-  <view class="content_box padding_lr">
 
-    <view class="theater_item_box padding_trbl" wx:for="{{theater_list}}" wx:key="*this" wx:if="{{item.count}}">
-      <view class="theater_info">
-        <view class="info_wrapper">
-          <van-image round style="margin-top:12rpx;" width="100rpx" height="100rpx" src="{{item.pic}}" />
+  <scroll-view  
+  scroll-y="true" 
+  style="height:95vh;"
+  upper-threshold="0" 
+  lower-threshold="0"
+  scroll-with-animation="true"
+  bindscrolltoupper="bindscrolltoupper"
+  bindscrolltolower="bindscrolltolower">
+
+    <view class="padding_trbl">
+      <view class="theater_item_box padding_trbl" wx:for="{{theater_list}}" wx:key="*this" wx:if="{{item.count}}">
+        <view class="theater_info">
+          <view class="info_wrapper">
+            <van-image round style="margin-top:12rpx;" width="100rpx" height="100rpx" src="{{item.pic}}" />
 
 
-          <view class="info_box">
-            <view class="theater_name">{{item.name}}</view>
-            <view class="sale_count">{{item.count}} 场在售演出</view>
+            <view class="info_box">
+              <view class="theater_name">{{item.name}}</view>
+              <view class="sale_count">{{item.count}} 场在售演出</view>
+            </view>
+            
           </view>
-          
+          <van-icon name="ellipsis" size="35" />
         </view>
-        <van-icon name="ellipsis" size="35" />
+
+        <scroll-view scroll-x="true" class="theater_scroll_view">
+          <view class="steps_wrapper">
+            <my-steps steps="{{ item.showList }}" vid="{{item.vid}}"/>
+          </view>
+        </scroll-view>
       </view>
 
-      <scroll-view scroll-x="true" class="theater_scroll_view">
-        <view class="steps_wrapper">
-          <my-steps steps="{{ theater_list }}" show_list_url="{{item.show_list_url}}" vid="{{item.vid}}"/>
-        </view>
-      </scroll-view>
-
+      <view class="scroll_header">
+        <van-loading size="25rpx" wx:if="{{isLoading}}">加载中...</van-loading>
+        <van-divider contentPosition="center" wx:else class="bottom">我是有底线的</van-divider>
+      </view>
 
     </view>
-
-
-  </view>
+    
+  </scroll-view>
+  
 </view>

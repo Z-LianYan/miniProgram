@@ -10,6 +10,7 @@ Page({
     onLoad: function () {
     },
     scrollTouchstart:function(e){
+      console.log("手指触摸动作开始",e)
       let py = e.touches[0].pageY;
       this.setData({
         starty: py,
@@ -17,6 +18,7 @@ Page({
       })
     },
     scrollTouchmove:function(e){
+      console.log("手指触摸后移动",e)
       let py = e.touches[0].pageY;
       let d = this.data;
       this.setData({
@@ -29,6 +31,7 @@ Page({
       }
     },
     scrollTouchend:function(e){
+      console.log("手指触摸动作结束",e)
       let d = this.data;
       if(d.endy-d.starty >100 && d.scrollindex>0){
         this.setData({

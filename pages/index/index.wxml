@@ -32,7 +32,7 @@ bindscrolltolower="scrolltolower">
 
     <view style="text-align:center;height:50rpx;">
       <van-loading size="25rpx" wx:if="{{isLoading}}">加载中...</van-loading>
-      <text wx:else class="bottom">我是有底线的</text>
+      <van-divider contentPosition="center" wx:else class="bottom">我是有底线的</van-divider>
     </view>
 
   </view>

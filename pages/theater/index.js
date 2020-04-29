@@ -14,8 +14,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isLoading:true,
     theater_list:[]
-
   },
 
   /**
@@ -96,10 +96,14 @@ Page({
         console.log("err", err);
       }
     })
+  },
+
+  bindscrolltoupper:function(e){
+    console.log("滚动到顶部了")
+  },
+  bindscrolltolower:function(e){
+    console.log("滚动到底部了")
   }
-
-
-
 
 
 })

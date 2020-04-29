@@ -7,18 +7,15 @@
 }
 
 .theater_header{
-  height: 70rpx;
-  line-height: 70rpx;
+  height: 5vh;
+  line-height: 5vh;
   text-align: center;
   border-bottom: 1rpx solid #ccc;
-  position: fixed;
-  top: 0;
   width: 100vw;
   font-weight: bold;
-
 }
 .theater_item_box{
-  margin-top: 80rpx;
+  margin-bottom: 40rpx;
   border: 1rpx solid #ccc;
   box-shadow: 0.5rpx 1rpx 5rpx 0.5rpx #ccc;
   border-radius: 10rpx;
@@ -61,4 +58,10 @@
 .theater_scroll_view .steps_wrapper{
   width: 100%;
   display: inline-block;
+}
+
+
+.scroll_header{
+  text-align:center;
+  height:50rpx;
 }
