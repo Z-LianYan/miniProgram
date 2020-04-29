@@ -1,11 +1,15 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/cityList/index",
     "pages/theater/index",
     "pages/mine/mine",
-    "pages/index/index",
     "pages/detail/detail",
     "pages/search/index"
   ],
+  "usingComponents": {
+    "van-cell":"/components/dist/cell/index"
+  },
   "window": {
     "backgroundTextStyle": "light",
     "backgroundColor": "#fff",

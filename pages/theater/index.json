@@ -5,6 +5,7 @@
   "usingComponents": {
     "van-image":"/components/dist/image/index",
     "van-icon": "/components/dist/icon/index",
-    "my-steps": "/pages/theater/mySteps/index"
+    "my-steps": "/pages/theater/mySteps/index",
+    "van-loading":"/components/dist/loading/index"
   }
 }

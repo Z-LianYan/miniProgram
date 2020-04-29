@@ -1,0 +1,6 @@
+<van-index-bar>
+  <view wx:for="{{cityList}}" >
+    <van-index-anchor index="{{item.id}}" />
+    <van-cell wx:for="{{item.list}}" wx:for-item="it" wx:for-index="idx" title="{{it.name}}" />
+  </view>
+</van-index-bar>

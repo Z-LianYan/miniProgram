@@ -7,7 +7,7 @@
   scroll-y="true" 
   style="height:95vh;"
   upper-threshold="0" 
-  lower-threshold="0"
+  lower-threshold="50"
   scroll-with-animation="true"
   bindscrolltoupper="bindscrolltoupper"
   bindscrolltolower="bindscrolltolower">
