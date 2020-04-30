@@ -11,6 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    indexList:[],
     cityList:[]
   },
 
@@ -77,14 +78,29 @@ Page({
       data: this.data.fetchOptions,
       success: (data) => {
         console.log("data----哈哈哈哈",data.data);
+        let cityList = data.data.data;
         this.setData({
-          cityList:data.data.data
+          cityList:cityList,
+          indexList:Object.keys(cityList)
         })
+
       },
       fail: (err) => {
         console.log("err", err);
       }
     })
+  },
+
+  selectCity:function(id){
+    console.log("id----",id);
+    // wx.navigateTo({
+    //   url: 'pages/index/index?city_id='+id,
+    //   success: (result)=>{
+        
+    //   },
+    //   fail: ()=>{},
+    //   complete: ()=>{}
+    // });
   }
 
 

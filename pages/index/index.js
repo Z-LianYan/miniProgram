@@ -40,7 +40,8 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {// 生命周期函数--监听页面加载
+  onLoad: function (opitons) {// 生命周期函数--监听页面加载
+    console.log("首页opitons",opitons);
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
