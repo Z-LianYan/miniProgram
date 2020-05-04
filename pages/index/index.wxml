@@ -12,7 +12,7 @@ bindscrolltolower="scrolltolower">
       </block>
     </view>-->
 
-    <my-search/>
+    <my-search cityInfo="{{cityInfo}}"/>
 
     <view class="content_box index_content_box_box">
 

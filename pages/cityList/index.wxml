@@ -1,6 +1,16 @@
 <van-index-bar index-list="{{ indexList }}" sticky="{{false}}">
   <view wx:for="{{cityList}}" wx:key="*this">
     <van-index-anchor index="{{item.id}}" />
-    <van-cell bindtap="selectCity(it.id)" wx:for="{{item.list}}" wx:for-item="it" wx:for-index="idx" title="{{it.name}}" wx:key="*this"/>
+    <van-cell 
+    bindtap="selectCity" 
+    data-id="{{it.id}}" 
+    data-cityname="{{it.name}}" 
+    data-abbreviation="{{it.Abbreviation}}" 
+    id="{{it.id}}" 
+    wx:for="{{item.list}}" 
+    wx:for-item="it" 
+    wx:for-index="idx" 
+    title="{{it.name}}" 
+    wx:key="*this"/>
   </view>
 </van-index-bar>

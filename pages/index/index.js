@@ -13,25 +13,17 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
 
     recommendOptions:{
-      city_id: 3,
-      category: "",
-      keywords: "",
-      venue_id: "",
-      start_time: "",
-      page: 1,
-      referer_type: "index",
-      version: "6.1.1",
-      referer: 2,
+      page: 1
     },
-
-
 
     classifyList:[],
     slide_list:[],
     hot_list:[],
     recommend_list: [],
 
-    isLoading:true
+    isLoading:true,
+
+    cityInfo:wx.getStorageSync('cityInfo')||{}
 
   },
   //事件处理函数
@@ -41,7 +33,6 @@ Page({
     })
   },
   onLoad: function (opitons) {// 生命周期函数--监听页面加载
-    console.log("首页opitons",opitons);
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -69,12 +60,21 @@ Page({
       })
     }
 
-    this.fetchData();
+    
+  },
+
+  onShow:function(){
+    console.log("city",wx.getStorageSync('cityInfo'));
+    
+    this.getClassifyList();
 
     this.getRecommendList();
 
     this.fetchHotList();
   },
+
+
+
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -85,20 +85,20 @@ Page({
   },
 
 
-  fetchData:function(){
-    console.log("111111")
+  getClassifyList:function(){
+    // console.log("111111")
     httpsUtil({
       url: API.GET_CLASSIFY_LIST,
       data:{
-        city_id: 10130,
-        abbreviation: "GZ",
+        city_id: this.data.cityInfo.id,
+        abbreviation: this.data.cityInfo.abbreviation,
         version: '6.1.1',
         referer: 2,
       },
       success:(data)=>{
         // console.log("data----",data.data.data);
         this.setData({
-          classifyList:data.data.data.classify_list.splice(0,8),
+          classifyList:data.data.data.classify_list,
           slide_list: data.data.data.slide_list
         })
       },
@@ -112,9 +112,20 @@ Page({
   getRecommendList:function(){
     httpsUtil({
       url: API.GET_RECOMMEND_FOR_YOU,
-      data: this.data.recommendOptions,
+      data: {
+        city_id: this.data.cityInfo.id,
+        category: "",
+        keywords: "",
+        venue_id: "",
+        start_time: "",
+        referer_type: "index",
+        version: "6.1.1",
+        referer: 2,
+        ...this.data.recommendOptions
+      },
       success: (data) => {
         console.log("data----recommend", data.data);
+
         let list = data.data.data.list
         for (let i = 0; i < list.length;i++){
           list[i].date_scope = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D") + " - " + util.formatDate(list[i].end_show_timestamp * 1000, "M.D");
@@ -124,7 +135,7 @@ Page({
           recommend_list: this.data.recommend_list.concat(list)
         })
         
-        if (this.data.recommend_list.length == data.data.data.total){
+        if (this.data.recommend_list.length == data.data.data.total || data.data.data.total==0){
           console.log("------", this.data.recommend_list.length ,data.data.data.total)
           setTimeout(()=>{
             console.log("我是定时器", this.data.isLoading);
@@ -144,7 +155,7 @@ Page({
     httpsUtil({
       url: API.GET_HOT_LIST,
       data: {
-        city_id: 3,
+        city_id: this.data.cityInfo.id,
         version: '6.1.1',
         referer: 2
       },

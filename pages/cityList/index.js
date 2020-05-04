@@ -91,16 +91,12 @@ Page({
     })
   },
 
-  selectCity:function(id){
-    console.log("id----",id);
-    // wx.navigateTo({
-    //   url: 'pages/index/index?city_id='+id,
-    //   success: (result)=>{
-        
-    //   },
-    //   fail: ()=>{},
-    //   complete: ()=>{}
-    // });
+  selectCity:function(e){
+
+    wx.setStorageSync('cityInfo', e.currentTarget.dataset)
+
+
+    wx.switchTab({ url: '/pages/index/index' })
   }
 
 
