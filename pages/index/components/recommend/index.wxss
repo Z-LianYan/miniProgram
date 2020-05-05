@@ -4,14 +4,14 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .recommend_wrapper .recommend_item{
   width: 339rpx;
   display: flex;
   flex-flow: column;
   
-  margin-bottom: 32rpx;
+  margin-bottom: 20rpx;
 
   border-radius: 20rpx;
 

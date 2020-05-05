@@ -3,12 +3,14 @@
 .search_box{
   position: fixed;
   top: 0;
-  width: 714rpx;
+  width: 100vw;
   background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: 100;
+  box-sizing: border-box;
+  box-shadow: 1rpx 1rpx 5rpx 2.5rpx #ccc;
 }
 
 .search_box .location_box{
@@ -30,6 +32,7 @@
 
 .search_box .search_content{
   width: 500rpx;
+  height: 90rpx;
 }
 
 .search_box .calendar{

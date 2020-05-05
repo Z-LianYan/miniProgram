@@ -1,3 +1,31 @@
 page{
     background: #f5f5f5;
 }
+
+.hot_city_wrapper{
+    padding: 0 4.5vw;
+    box-shadow: border-box;
+}
+.hot_city_but{
+    display: inline-block;
+    float: left;
+    width: 28.33vw;
+    height: 70rpx;
+    line-height: 70rpx;
+    border: 1rpx solid #ebebeb;
+    border-radius: 10rpx;
+    text-align: center;
+    background: #fff;
+    margin:0 1vw 0 0;
+}
+
+.location{
+    display: inline-block;
+    border: 1rpx solid #ebebeb;
+    border-radius: 10rpx;
+    text-align: center;
+    width: 38vw;
+    height: 70rpx;
+    line-height: 70rpx;
+    background: #fff;
+}

@@ -11,4 +11,5 @@ export const GET_MENU_ITEM = "/user/account/getMenuItem";
 
 export const GET_USERINFO = "/user/account/basicInfo";
 
+export const GET_HOT_CITY_LIST = "/city/city/getHotCityList";//获取热门城市列表
 export const GET_CITY_LIST = "/city/city/getSortedCityList";//获取城市列表

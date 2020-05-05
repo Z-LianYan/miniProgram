@@ -12,13 +12,15 @@ Page({
    */
   data: {
     indexList:[],
-    cityList:[]
+    cityList:[],
+    hotCityList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.fetchHotCityList();
     this.fetchCityData()
   },
 
@@ -77,13 +79,42 @@ Page({
       url: API.GET_CITY_LIST,
       data: this.data.fetchOptions,
       success: (data) => {
-        console.log("data----哈哈哈哈",data.data);
+        
         let cityList = data.data.data;
+        let indexList = Object.keys(cityList);
+        indexList.unshift('热门');
+        indexList.unshift('定位');
         this.setData({
           cityList:cityList,
-          indexList:Object.keys(cityList)
+          indexList:indexList
         })
 
+      },
+      fail: (err) => {
+        console.log("err", err);
+      }
+    })
+  },
+
+  fetchHotCityList:function(){
+    httpsUtil({
+      url:API.GET_HOT_CITY_LIST,
+      data: {
+        version: '6.1.1',
+        referer: 2
+      },
+      success: (data) => {
+        console.log("热门城市---------",data.data.data.hot_city_List);
+        let hotCityList = data.data.data.hot_city_List;
+        // {"id":0,"cityname":"全国","abbreviation":""}
+        hotCityList.unshift({
+          name: "全国",
+          is_city: 0,
+          Abbreviation: ""
+        })
+        this.setData({
+          hotCityList:hotCityList
+        })
       },
       fail: (err) => {
         console.log("err", err);

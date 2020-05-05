@@ -1,4 +1,21 @@
 <van-index-bar index-list="{{ indexList }}" sticky="{{false}}">
+  <van-index-anchor index="定位" />
+  <view style="padding: 0 4.5vw;">
+    <view class="location">
+      定位中...
+    </view>
+  </view>
+  <van-index-anchor index="热门" />
+
+  <view class="hot_city_wrapper clearfix">
+    <view 
+    class="hot_city_but" 
+    wx:for="{{hotCityList}}"
+    bindtap="selectCity" 
+    data-id="{{item.id}}" 
+    data-cityname="{{item.name}}" 
+    data-abbreviation="{{item.Abbreviation}}">{{item.name}}</view>
+  </view>
   <view wx:for="{{cityList}}" wx:key="*this">
     <van-index-anchor index="{{item.id}}" />
     <van-cell 
@@ -6,7 +23,6 @@
     data-id="{{it.id}}" 
     data-cityname="{{it.name}}" 
     data-abbreviation="{{it.Abbreviation}}" 
-    id="{{it.id}}" 
     wx:for="{{item.list}}" 
     wx:for-item="it" 
     wx:for-index="idx" 

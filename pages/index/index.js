@@ -23,7 +23,7 @@ Page({
 
     isLoading:true,
 
-    cityInfo:wx.getStorageSync('cityInfo')||{}
+    cityInfo:wx.getStorageSync('cityInfo')||{"id":0,"cityname":"全国","abbreviation":""}
 
   },
   //事件处理函数
@@ -60,11 +60,26 @@ Page({
       })
     }
 
+
     
   },
 
   onShow:function(){
     console.log("city",wx.getStorageSync('cityInfo'));
+
+    this.setData({
+      'recommendOptions.page':1,
+      classifyList:[],
+      slide_list:[],
+      hot_list:[],
+      recommend_list: [],
+      isLoading:true,
+      cityInfo:wx.getStorageSync('cityInfo')||{"id":0,"cityname":"全国","abbreviation":""}
+    })
+
+
+    
+
     
     this.getClassifyList();
 

@@ -4,32 +4,32 @@
   <view class="padding_trbl recommend_wrapper">
 
     <view>
-        <view class="recommend_item" wx:for="{{recommend_list}}" wx:for-item="items" wx:if="{{index%2 == 0}}" wx:key="*this">
-          <image class="recommend_image" src="{{items.pic}}" mode="cover"></image>
-          <view class="content">
-            <view class="recom_title">
-              <!-- <text class="sponsor" wx:if="{{items.method==1}}">主办</text> -->
-              <van-tag class="sponsor" round type="warning" wx:if="{{items.method==1}}">主办</van-tag>
-              <text>{{items.name}}</text>
-            </view>
-            <text class="date_txt">{{items.date_scope}}</text>
-            <view>
-              <text class="min_price">¥ {{items.min_price}}</text>
-              <text class="price_txt">起</text>
-              <view wx:if="{{items.support_desc.length}}" class="support_desc">
-                <van-tag 
-                custom-class="van_tag" 
-                round 
-                color="#ffe1e1" 
-                text-color="#ad0000"
-                type="warning" 
-                wx:for="{{items.support_desc}}" 
-                wx:for-item="itm" 
-                wx:key="*this">{{itm}}</van-tag>
-              </view>
+      <view class="recommend_item" wx:for="{{recommend_list}}" wx:for-item="items" wx:if="{{index%2 == 0}}" wx:key="*this">
+        <image class="recommend_image" src="{{items.pic}}" mode="cover"></image>
+        <view class="content">
+          <view class="recom_title">
+            <!-- <text class="sponsor" wx:if="{{items.method==1}}">主办</text> -->
+            <van-tag class="sponsor" round type="warning" wx:if="{{items.method==1}}">主办</van-tag>
+            <text>{{items.name}}</text>
+          </view>
+          <text class="date_txt">{{items.date_scope}}</text>
+          <view>
+            <text class="min_price">¥ {{items.min_price}}</text>
+            <text class="price_txt">起</text>
+            <view wx:if="{{items.support_desc.length}}" class="support_desc">
+              <van-tag 
+              custom-class="van_tag" 
+              round 
+              color="#ffe1e1" 
+              text-color="#ad0000"
+              type="warning" 
+              wx:for="{{items.support_desc}}" 
+              wx:for-item="itm" 
+              wx:key="*this">{{itm}}</van-tag>
             </view>
           </view>
         </view>
+      </view>
     </view>
 
     <view>

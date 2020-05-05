@@ -2,6 +2,7 @@
   "navigationBarTitleText": "城市选择",
   "usingComponents": {
     "van-index-bar": "/components/dist/index-bar/index",
-    "van-index-anchor": "/components/dist/index-anchor/index"
+    "van-index-anchor": "/components/dist/index-anchor/index",
+    "van-button": "/components/dist/button/index"
   }
 }
