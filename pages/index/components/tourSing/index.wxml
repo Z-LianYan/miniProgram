@@ -1,0 +1,41 @@
+
+<view class="tour_sing_wrapper" wx:if="{{tourSingList.length}}">
+    <my-cell 
+    leftTitle="巡回演唱" 
+    rightTitle="全部" 
+    isLeftArrow="true" 
+    bindonRightEvent="onRightEvent"/>
+    <scroll-view scroll-x="true" class="scroll_box padding_lr">
+        <view class="scroll_item" wx:for="{{tourSingList}}" wx:for-index="idx" wx:for-item="it" wx:key="*this">
+            <image class="tour_sing_image" src="{{it.mobile_col_img}}" mode="cover"></image>
+            <view class="tour_sing_content">
+                <view class="date_scope">
+                    {{it.date_scope}}
+                </view>
+                <text class="tour_sing_title">{{it.name}}</text>
+                <view class="mini_price">
+                    <text class="price">￥{{it.min_price}}</text>
+                    <text class="font">起</text>
+                </view>
+
+                <view class="tour_sing_city_wrapper">
+                    <text class="tour_sing_city_num">{{it.citys.length}}</text>
+                    <text class="tour_sing_city_font">城巡演</text>
+                    <view class="tour_sing_city" wx:for="{{it.citys}}" wx:key="*this">
+                        
+                        <text class="citys">{{item.name}}</text>
+                        <text class="separator">|</text>
+
+                    </view>
+                </view>
+                
+                
+
+            </view>
+
+        </view>
+    </scroll-view>
+
+
+    
+</view>

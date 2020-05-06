@@ -7,7 +7,8 @@
     "my-hot-list": "/pages/index/components/hot/index",
     "my-recommend": "/pages/index/components/recommend/index",
     "van-loading": "/components/dist/loading/index",
-    "van-divider": "/components/dist/divider/index"
+    "van-divider": "/components/dist/divider/index",
+    "my-tour-sing": "/pages/index/components/tourSing/index"
   }
   
 }

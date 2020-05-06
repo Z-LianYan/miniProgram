@@ -5,10 +5,11 @@
     "pages/theater/index",
     "pages/mine/mine",
     "pages/detail/detail",
-    "pages/search/index"
+    "pages/search/index",
+    "pages/index/components/tourSing/index"
   ],
   "usingComponents": {
-    "van-cell":"/components/dist/cell/index"
+    "van-cell": "/components/dist/cell/index"
   },
   "window": {
     "backgroundTextStyle": "light",

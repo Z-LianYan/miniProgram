@@ -20,6 +20,7 @@ Page({
     slide_list:[],
     hot_list:[],
     recommend_list: [],
+    tourSingList:[],
 
     isLoading:true,
 
@@ -73,6 +74,7 @@ Page({
       slide_list:[],
       hot_list:[],
       recommend_list: [],
+      tourSingList: [],
       isLoading:true,
       cityInfo:wx.getStorageSync('cityInfo')||{"id":0,"cityname":"全国","abbreviation":""}
     })
@@ -86,6 +88,10 @@ Page({
     this.getRecommendList();
 
     this.fetchHotList();
+
+    if(this.data.cityInfo.id==0){
+      this.fetchTourSingList();
+    }
   },
 
 
@@ -186,6 +192,29 @@ Page({
     })
   },
 
+  fetchTourSingList:function(){
+    httpsUtil({
+      url: API.GET_TOUR_SING_LIST,
+      data: {
+        version: '6.1.1',
+        referer: 2
+      },
+      success: (data) => {
+        console.log("巡回演唱", data.data.data);
+        let list = data.data.data.list;
+        for(var i=0;i<list.length;i++){
+          list[i].date_scope = util.formatDate(list[i].start_time * 1000, "Y.M.D") + " - " + util.formatDate(list[i].end_time * 1000, "M.D");
+        }
+        this.setData({
+          tourSingList: list,
+        })
+      },
+      fail: (err) => {
+        console.log("err", err);
+      }
+    })
+  },
+
 
   scrolltolower:function(){
 
@@ -201,6 +230,10 @@ Page({
   onHotAllCheck:function(){
     console.log("热门全部")
   },
+
+  onTourSingAllCheck:function(){
+    console.log("巡回演唱全部")
+  }
 
 
 })

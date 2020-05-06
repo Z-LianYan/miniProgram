@@ -23,6 +23,10 @@ bindscrolltolower="scrolltolower">
         <my-classify-list classifyList="{{classifyList}}" />
 
         <my-hot-list hot_list="{{hot_list}}" bindonAllCheck="onHotAllCheck"/>
+        
+        <my-tour-sing tourSingList="{{tourSingList}}" bindonAllCheck="onTourSingAllCheck"/>
+
+        
 
         <my-recommend recommend_list="{{recommend_list}}" cityInfo="{{cityInfo}}"/>
       

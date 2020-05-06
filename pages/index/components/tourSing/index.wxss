@@ -1,0 +1,81 @@
+.tour_sing_wrapper .scroll_box{
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+.tour_sing_wrapper .scroll_box .scroll_item{
+    width: 100%;
+    display: inline-block;
+    padding: 33.512rpx 28.732rpx;
+    background: #F5F5F5;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10rpx;
+    box-sizing: border-box;
+}
+
+.scroll_item .tour_sing_image{
+    height: 272.12rpx;
+    width: 200.1rpx;
+    border-radius: 10rpx;
+}
+.scroll_item .tour_sing_content{
+    width: 408.3rpx;
+    margin-left: 30.016rpx;
+    /* overflow: hidden; */
+}
+.scroll_item .date_scope{
+    color: #999;
+    font-size: 24rpx;
+    display: inline-block;
+}
+.scroll_item .tour_sing_title{
+    white-space:pre-line;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 55rpx;
+}
+.scroll_item .mini_price{
+    border-bottom: 1rpx solid #e7e7e7;
+    line-height: 58rpx;
+}
+.scroll_item .mini_price .price{
+    color: #ff6743;
+    font-weight: bolder;
+
+}
+.scroll_item .mini_price .font{
+    color: #999;
+    font-size: 24rpx;
+    margin-left: 10rpx;
+}
+.tour_sing_city_wrapper{
+    margin-top: 10rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+.scroll_item .tour_sing_city_num{
+    color: #ff6743;
+    font-size: 27rpx;
+}
+.scroll_item .tour_sing_city_font{
+    color:#999;
+    font-size: 27rpx;
+    margin-left: 10rpx;
+}
+.tour_sing_city{
+    display: inline-block;
+    color: #666;
+}
+.tour_sing_city .citys{
+    padding: 0 20rpx;
+    font-size: 27rpx;
+    /* border-right: 1rpx solid #666; */
+}
+
+.tour_sing_city .separator{
+    font-size: 20rpx;
+}
