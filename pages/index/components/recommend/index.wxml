@@ -6,6 +6,7 @@
     <view>
       <view class="recommend_item" wx:for="{{recommend_list}}" wx:for-item="items" wx:if="{{index%2 == 0}}" wx:key="*this">
         <image class="recommend_image" src="{{items.pic}}" mode="cover"></image>
+        <van-tag wx:if="{{cityInfo.id===0}}" round custom-class="ticket_city" color="#000">{{items.city_name}}</van-tag>
         <view class="content">
           <view class="recom_title">
             <!-- <text class="sponsor" wx:if="{{items.method==1}}">主办</text> -->
@@ -35,6 +36,7 @@
     <view>
       <view class="recommend_item" wx:for="{{recommend_list}}" wx:for-item="items" wx:if="{{index%2 != 0}}" wx:key="*this">
         <image class="recommend_image" src="{{items.pic}}" mode="cover"></image>
+        <van-tag wx:if="{{cityInfo.id===0}}" round custom-class="ticket_city" color="#000">{{items.city_name}}</van-tag>
         <view class="content">
           <view class="recom_title">
             <!-- <text class="sponsor" wx:if="{{items.method==1}}">主办</text> -->

@@ -11,6 +11,10 @@ Component({
     recommend_list: {
       type:Array,
       value:[]
+    },
+    cityInfo:{
+      type:Object,
+      value:{}
     }
   },
 

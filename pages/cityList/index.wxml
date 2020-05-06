@@ -9,7 +9,7 @@
 
   <view class="hot_city_wrapper clearfix">
     <view 
-    class="hot_city_but" 
+    class="hot_city_but {{cityInfo.id==item.id?'hot_city_but_active':''}}" 
     wx:for="{{hotCityList}}"
     bindtap="selectCity" 
     data-id="{{item.id}}" 

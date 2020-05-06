@@ -24,7 +24,7 @@ bindscrolltolower="scrolltolower">
 
         <my-hot-list hot_list="{{hot_list}}" bindonAllCheck="onHotAllCheck"/>
 
-        <my-recommend recommend_list="{{recommend_list}}"/>
+        <my-recommend recommend_list="{{recommend_list}}" cityInfo="{{cityInfo}}"/>
       
       
 

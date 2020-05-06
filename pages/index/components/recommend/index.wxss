@@ -19,7 +19,18 @@
 
   background-color: #fff;
 
+  position: relative;
+
 }
+
+.recommend_wrapper .ticket_city{
+  position: absolute;
+  top:20rpx;
+  right: 20rpx;
+}
+
+
+
 .recommend_wrapper .recommend_item .recommend_image{
   width: 100%;
   height: 462.96rpx;

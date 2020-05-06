@@ -18,6 +18,10 @@ page{
     background: #fff;
     margin:0 1vw 0 0;
 }
+.hot_city_but_active{
+    color: #e40077;
+    border: 1rpx solid #e40077;
+}
 
 .location{
     display: inline-block;

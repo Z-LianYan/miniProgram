@@ -13,7 +13,8 @@ Page({
   data: {
     indexList:[],
     cityList:[],
-    hotCityList:[]
+    hotCityList:[],
+    cityInfo:wx.getStorageSync('cityInfo')||{"id":0,"cityname":"全国","abbreviation":""}
   },
 
   /**
@@ -35,7 +36,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      cityInfo:wx.getStorageSync('cityInfo')||{"id":0,"cityname":"全国","abbreviation":""}
+    })
   },
 
   /**
@@ -109,7 +112,7 @@ Page({
         // {"id":0,"cityname":"全国","abbreviation":""}
         hotCityList.unshift({
           name: "全国",
-          is_city: 0,
+          id: 0,
           Abbreviation: ""
         })
         this.setData({
@@ -123,10 +126,7 @@ Page({
   },
 
   selectCity:function(e){
-
     wx.setStorageSync('cityInfo', e.currentTarget.dataset)
-
-
     wx.switchTab({ url: '/pages/index/index' })
   }
 
