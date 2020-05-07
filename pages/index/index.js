@@ -112,9 +112,7 @@ Page({
       url: API.GET_CLASSIFY_LIST,
       data:{
         city_id: this.data.cityInfo.id,
-        abbreviation: this.data.cityInfo.abbreviation,
-        version: '6.1.1',
-        referer: 2,
+        abbreviation: this.data.cityInfo.abbreviation
       },
       success:(data)=>{
         // console.log("data----",data.data.data);
@@ -140,8 +138,6 @@ Page({
         venue_id: "",
         start_time: "",
         referer_type: "index",
-        version: "6.1.1",
-        referer: 2,
         ...this.data.recommendOptions
       },
       success: (data) => {
@@ -176,9 +172,7 @@ Page({
     httpsUtil({
       url: API.GET_HOT_LIST,
       data: {
-        city_id: this.data.cityInfo.id,
-        version: '6.1.1',
-        referer: 2
+        city_id: this.data.cityInfo.id
       },
       success: (data) => {
         // console.log("data----", data.data.data);
@@ -195,10 +189,7 @@ Page({
   fetchTourSingList:function(){
     httpsUtil({
       url: API.GET_TOUR_SING_LIST,
-      data: {
-        version: '6.1.1',
-        referer: 2
-      },
+      data: {},
       success: (data) => {
         console.log("巡回演唱", data.data.data);
         let list = data.data.data.list;

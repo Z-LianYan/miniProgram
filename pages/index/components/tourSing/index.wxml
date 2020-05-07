@@ -1,7 +1,7 @@
 
 <view class="tour_sing_wrapper" wx:if="{{tourSingList.length}}">
     <my-cell 
-    leftTitle="巡回演唱" 
+    leftTitle="巡回演出" 
     rightTitle="全部" 
     isLeftArrow="true" 
     bindonRightEvent="onRightEvent"/>
@@ -21,12 +21,10 @@
                 <view class="tour_sing_city_wrapper">
                     <text class="tour_sing_city_num">{{it.citys.length}}</text>
                     <text class="tour_sing_city_font">城巡演</text>
-                    <view class="tour_sing_city" wx:for="{{it.citys}}" wx:key="*this">
-                        
+                    <text class="tour_sing_city" wx:for="{{it.citys}}" wx:key="*this">
                         <text class="citys">{{item.name}}</text>
                         <text class="separator">|</text>
-
-                    </view>
+                    </text>
                 </view>
                 
                 

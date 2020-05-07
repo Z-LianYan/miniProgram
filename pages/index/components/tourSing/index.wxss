@@ -54,8 +54,8 @@
 .tour_sing_city_wrapper{
     margin-top: 10rpx;
     overflow: hidden;
+    white-space: nowrap;
     text-overflow: ellipsis;
-    width: 100%;
 }
 .scroll_item .tour_sing_city_num{
     color: #ff6743;
@@ -67,13 +67,11 @@
     margin-left: 10rpx;
 }
 .tour_sing_city{
-    display: inline-block;
     color: #666;
 }
 .tour_sing_city .citys{
     padding: 0 20rpx;
     font-size: 27rpx;
-    /* border-right: 1rpx solid #666; */
 }
 
 .tour_sing_city .separator{
