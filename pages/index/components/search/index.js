@@ -24,6 +24,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    toSearch:function(){
+      wx.navigateTo({url: "/pages/search/index"})
+    }
   }
 })

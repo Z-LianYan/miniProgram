@@ -21,6 +21,7 @@ Page({
     hot_list:[],
     recommend_list: [],
     tourSingList:[],
+    total:'-',
 
     isLoading:true,
 
@@ -141,25 +142,25 @@ Page({
         ...this.data.recommendOptions
       },
       success: (data) => {
-        console.log("data----recommend", data.data);
 
         let list = data.data.data.list
+
         for (let i = 0; i < list.length;i++){
           list[i].date_scope = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D") + " - " + util.formatDate(list[i].end_show_timestamp * 1000, "M.D");
         }
-        
+
         this.setData({
+          total:data.data.data.total,
           recommend_list: this.data.recommend_list.concat(list)
         })
         
         if (this.data.recommend_list.length == data.data.data.total || data.data.data.total==0){
-          console.log("------", this.data.recommend_list.length ,data.data.data.total)
-          setTimeout(()=>{
-            console.log("我是定时器", this.data.isLoading);
-            this.setData({isLoading: false})
-          },1000)
+          this.setData({isLoading: false})
+        }else{
+          this.setData({
+            isLoading:true
+          })
         }
-        
         
       },
       fail: (err) => {
@@ -175,7 +176,6 @@ Page({
         city_id: this.data.cityInfo.id
       },
       success: (data) => {
-        // console.log("data----", data.data.data);
         this.setData({
           hot_list: data.data.data.hots_show_list,
         })
@@ -211,7 +211,8 @@ Page({
 
     if (this.data.isLoading) {
       this.setData({
-        'recommendOptions.page':this.data.recommendOptions.page+1
+        'recommendOptions.page':this.data.recommendOptions.page+1,
+        isLoading:false
       })
       this.getRecommendList();
     };

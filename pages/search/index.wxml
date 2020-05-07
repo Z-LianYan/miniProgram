@@ -1,12 +1,67 @@
-<view class="content"> 
-  <view class="title">scroll-view <view>取消ios橡皮筋效果-页面有滚动</view></view>
+<view class="search_container">
+  <van-search
+    value="{{ fetchOptoins.keywords }}"
+    placeholder="搜索热门演出"
+    show-action
+    bind:change="onChange"
+    bind:search="onSearch"
+    bind:cancel="onCancel"
+  />
+  <scroll-view 
+  scroll-y="{{true}}" 
+  class="list" 
+  upper-threshold="50" 
+  lower-threshold="50" 
+  bindscrolltoupper="bindscrolltoupper" 
+  bindscrolltolower="bindscrolltolower">
+    <view wx:if="{{search_list.length}}">
+      <view class="no_content" wx:if="{{result_type==2}}">
+        <icon class="iconfont icon-nosearch"></icon>
+        <text class="relative_content">
+          未找到相关内容
+        </text>
+      </view>
 
-  <scroll-view scroll-y="{{scrollY}}" class="list" upper-threshold="5" lower-threshold="5"
-   bindscrolltoupper="bindscrolltoupper" 
-   bindscrolltolower="bindscrolltolower" 
-   bindtouchstart="touchstart"
-   bindtouchmove="touchmove">
-    <view class="list-item" wx:for="{{list}}" wx:key="{{index}}">{{item}}</view>
-  </scroll-view>  
-  
+      <my-cell leftTitle="为你推荐" wx:if="{{result_type==2}}"/>
+
+      <my-search-list recommend_list="{{search_list}}"/>
+
+      <view style="text-align:center;height:50rpx;" wx:if="{{search_list.length}}">
+        <van-loading size="25rpx" wx:if="{{isLoading}}">加载中...</van-loading>
+        <van-divider contentPosition="center" wx:if="{{search_list.length==total || total==0}}" class="bottom">我是有底线的</van-divider>
+      </view>
+    </view>
+
+    <view class="hot_history_search padding_lr" wx:else>
+      <block wx:if="{{searchHistory.length}}">
+        <view class="history_wrapper">
+          <view class="label">
+            历史搜索
+          </view>
+          <van-icon bindtap="delSearchHistory" name="delete" size="22" />
+        </view>
+        <view class="history_content">
+          <view 
+          wx:for="{{searchHistory}}"
+          wx:key="*this" 
+          class="history_item">{{item}}</view>
+        </view>
+      </block>
+      
+
+      <view class="history_wrapper">
+        <view class="label">
+          热门搜索
+        </view>
+      </view>
+      <view class="history_content">
+        <view bindtap="onHotSearch" data-keywords="{{item.word}}" class="history_item" wx:for="{{hotList}}" wx:key="*this">{{item.word}}</view>
+      </view>
+
+
+    </view>
+    
+
+  </scroll-view>
+
 </view>

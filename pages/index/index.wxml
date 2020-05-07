@@ -1,8 +1,9 @@
 <!--index.wxml-->
 <scroll-view 
-scroll-y="true" 
-lower-threshold="{{300}}"
-bindscrolltolower="scrolltolower">
+  scroll-y="true"
+  upper-threshold="50" 
+  lower-threshold="50"
+  bindscrolltolower="scrolltolower">
   <view class="container">
     <!-- <view class="userinfo">
       <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
@@ -27,7 +28,8 @@ bindscrolltolower="scrolltolower">
         <my-tour-sing tourSingList="{{tourSingList}}" bindonAllCheck="onTourSingAllCheck"/>
 
         
-
+        <my-cell leftTitle="为你推荐"/>
+        
         <my-recommend recommend_list="{{recommend_list}}" cityInfo="{{cityInfo}}"/>
       
       
@@ -36,7 +38,7 @@ bindscrolltolower="scrolltolower">
 
     <view style="text-align:center;height:50rpx;">
       <van-loading size="25rpx" wx:if="{{isLoading}}">加载中...</van-loading>
-      <van-divider contentPosition="center" wx:else class="bottom">我是有底线的</van-divider>
+      <van-divider contentPosition="center" wx:if="{{recommend_list.length==total || total==0}}" class="bottom">我是有底线的</van-divider>
     </view>
 
   </view>

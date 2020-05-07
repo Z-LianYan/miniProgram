@@ -15,3 +15,5 @@ export const GET_HOT_CITY_LIST = "/city/city/getHotCityList";//获取热门城�
 export const GET_CITY_LIST = "/city/city/getSortedCityList";//获取城市列表
 
 export const GET_TOUR_SING_LIST = "/show/tour/getList";//获取巡回演唱列表
+
+export const GET_HOT_SEARCH_LIST = "/Show/Search/getNewHotWord";//获取热搜索列表

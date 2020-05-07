@@ -5,7 +5,7 @@
       <text class="city">{{cityInfo.cityname}}</text>
     </navigator>
 
-    <van-search custom-class="search_content" disabled placeholder="搜索热门演出"></van-search>
+    <van-search bindtap="toSearch" custom-class="search_content" disabled placeholder="搜索热门演出"></van-search>
 
     <view class="calendar">
       <van-icon  name="calender-o" color="#ff833b" size="30" />
