@@ -1,0 +1,22 @@
+
+<view class="my_tab_wrapper">
+    <van-tabs 
+    custom-class="custom_class"
+    tab-class="tab_class"
+    nav-class="nav_class"
+    tab-active-class="tab_active_class"
+    active="{{ 1 }}"
+    nav-left="123"
+    color="#e40077">
+        <van-tab 
+        title="{{item.name}}" 
+        wx:for="{{classifyList}}" 
+        wx:key="*this">{{item.name}}</van-tab>
+    </van-tabs>
+    <view class="right_fixed_tab" bindtap="selectLocation">
+        <view class="fixed_tab_content">
+            全国  <van-icon name="location-o" size="15" class="fixed_tab_icon"/>  
+        </view>
+    </view>
+</view>
+

@@ -1,0 +1,16 @@
+<view class="container">
+
+    <view class="calendar_header padding_lr">
+        <text></text>
+        演出日历
+        <van-icon name="ellipsis" size="25"/>
+    </view>
+
+    <my-tab bindonSelectLocation="onSelectLocation"/>
+
+    
+
+
+
+
+</view>

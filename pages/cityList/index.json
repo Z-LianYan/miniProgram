@@ -3,6 +3,7 @@
   "usingComponents": {
     "van-index-bar": "/components/dist/index-bar/index",
     "van-index-anchor": "/components/dist/index-anchor/index",
-    "van-button": "/components/dist/button/index"
+    "van-button": "/components/dist/button/index",
+    "van-loading": "/components/dist/loading/index"
   }
 }

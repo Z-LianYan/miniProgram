@@ -43,6 +43,8 @@
           </view>
           <view class="history_content">
             <view 
+            bindtap="onSearchHistory"
+            data-keywords="{{item}}"
             wx:for="{{searchHistory}}"
             wx:key="*this" 
             class="history_item">{{item}}</view>

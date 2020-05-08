@@ -1,5 +1,7 @@
 
-export const GET_CLASSIFY_LIST = "/home/index/getClassifyHome";
+export const GET_CLASSIFY_LIST = "/home/index/getClassifyHome";//获取首页分类
+
+export const GET_CATEGORY_LIST = "/Show/Index/getShowCategoryList";//获取分类
 
 export const GET_HOT_LIST = "/home/index/getHotsRecommendList";
 

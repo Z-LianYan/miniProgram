@@ -1,17 +1,19 @@
 {
   "pages": [
-    "pages/search/index",
+    "pages/calendar/index",
     "pages/index/index",
     "pages/cityList/index",
     "pages/theater/index",
     "pages/mine/mine",
     "pages/detail/detail",
-    
+    "pages/search/index",
     "pages/index/components/tourSing/index"
+    
   ],
   "usingComponents": {
     "van-cell": "/components/dist/cell/index",
-    "van-icon": "/components/dist/icon/index"
+    "van-icon": "/components/dist/icon/index",
+    "van-overlay": "/components/dist/overlay/index"
   },
   "window": {
     "backgroundTextStyle": "light",

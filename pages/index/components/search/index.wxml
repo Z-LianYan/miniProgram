@@ -7,8 +7,8 @@
 
     <van-search bindtap="toSearch" custom-class="search_content" disabled placeholder="搜索热门演出"></van-search>
 
-    <view class="calendar">
+    <navigator url="/pages/calendar/index" class="calendar" hover-class="none">
       <van-icon  name="calender-o" color="#ff833b" size="30" />
-    </view>
+    </navigator>
 
 </view>

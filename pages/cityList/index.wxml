@@ -30,3 +30,5 @@
     wx:key="*this"/>
   </view>
 </van-index-bar>
+
+

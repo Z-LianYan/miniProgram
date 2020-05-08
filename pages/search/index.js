@@ -24,7 +24,7 @@ Page({
     let searchHistory = wx.getStorageSync('searchHistory')?JSON.parse(wx.getStorageSync('searchHistory')):[];
     if(searchHistory.length){
       this.setData({
-        searchHistory:searchHistory.reverse()
+        searchHistory:searchHistory
       })
     }
   },
@@ -109,23 +109,49 @@ Page({
   onHotSearch(e){
     console.log("e",e.currentTarget.dataset.keywords);
     let keywords = e.currentTarget.dataset.keywords;
+    this.handleKeywordsSearch(keywords)
+  },
+
+
+  handleKeywordsSearch(keywords){
+    
     let searchHistory = wx.getStorageSync('searchHistory')?JSON.parse(wx.getStorageSync('searchHistory')):[];
-    console.log("哟吗",searchHistory);
-    for(let i=0;i<searchHistory.length;i++){
-      if(searchHistory[i]==keywords){
-        searchHistory.splice(i,1);
-      }
+    if(searchHistory.indexOf(keywords)!=-1){
+      searchHistory.splice(searchHistory.indexOf(keywords),1)
     }
     if(searchHistory.length>=5){
-      searchHistory.splice(0,4);
+      searchHistory.splice(4)
     }
-    searchHistory.push(keywords)
+    searchHistory.unshift(keywords)
+    wx.setStorageSync('searchHistory', JSON.stringify(searchHistory));
+    
+    this.setData({
+      search_list:[],
+      "fetchOptoins.keywords":keywords,
+      searchHistory:searchHistory
+    })
+
+    this.getSearchList();
+
+  },
+
+
+
+
+  onSearchHistory(e){
+    let searchHistory = JSON.parse(wx.getStorageSync('searchHistory'));
+    let keywords = e.currentTarget.dataset.keywords;
+    
+    searchHistory.splice(searchHistory.indexOf(keywords),1);
+    searchHistory.unshift(keywords);
     wx.setStorageSync('searchHistory', JSON.stringify(searchHistory));
 
     this.setData({
-      'fetchOptoins.keywords':keywords
+      "fetchOptoins.keywords":keywords,
+      searchHistory:searchHistory
     })
-    this.getSearchList()
+    this.getSearchList();
+
   },
 
   delSearchHistory:function(){
@@ -137,7 +163,7 @@ Page({
   },
 
   onChange:function(e){
-    console.log("e",e.detail);
+    // console.log("e",e.detail);
     if(!e.detail) {
       return this.setData({
         search_list:[]
@@ -151,13 +177,21 @@ Page({
   },
 
   onSearch:function(e){
-    console.log("搜索",e.detail);
-    if(!e.detail) return
-    this.setData({
-      search_list:[]
-    })
-    this.getSearchList();
+    console.log("搜索----",e.detail);
+    if(!e.detail) return;
+
+
+    
+    let keywords = e.detail;
+    
+    this.handleKeywordsSearch(keywords);
+
+    
   },
+
+
+
+
 
   onCancel:function(){
     wx.switchTab({

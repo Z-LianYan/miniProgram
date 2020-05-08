@@ -78,11 +78,15 @@ Page({
 
 
   fetchCityData:function(){
+    wx.showLoading({
+      title: '加载中',
+      mask:true
+    })
     httpsUtil({
       url: API.GET_CITY_LIST,
       data: this.data.fetchOptions,
       success: (data) => {
-        
+        wx.hideLoading()
         let cityList = data.data.data;
         let indexList = Object.keys(cityList);
         indexList.unshift('热门');
