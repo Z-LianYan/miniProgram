@@ -28,7 +28,7 @@
         <my-tour-sing tourSingList="{{tourSingList}}" bindonAllCheck="onTourSingAllCheck"/>
 
         
-        <my-cell leftTitle="为你推荐"/>
+        <my-cell leftTitle="为你推荐" wx:if="{{recommend_list.length}}"/>
         
         <my-recommend recommend_list="{{recommend_list}}" cityInfo="{{cityInfo}}"/>
       

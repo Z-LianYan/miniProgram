@@ -33,6 +33,11 @@
 }
 
 
+.scroll_wrapper{
+  height: 90vh;
+}
+
+
 .hot_history_search .history_wrapper{
   display: flex;
   align-items: center;

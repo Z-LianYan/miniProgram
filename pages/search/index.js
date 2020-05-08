@@ -150,8 +150,9 @@ Page({
     this.getSearchList();
   },
 
-  onSearch:function(){
-    console.log("搜索");
+  onSearch:function(e){
+    console.log("搜索",e.detail);
+    if(!e.detail) return
     this.setData({
       search_list:[]
     })
