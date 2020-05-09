@@ -14,7 +14,7 @@ Page({
     indexList:[],
     cityList:[],
     hotCityList:[],
-    cityInfo:wx.getStorageSync('cityInfo')||{"id":0,"cityname":"全国","abbreviation":""}
+    cityInfo:""
   },
 
   /**
@@ -37,7 +37,7 @@ Page({
    */
   onShow: function () {
     this.setData({
-      cityInfo:wx.getStorageSync('cityInfo')||{"id":0,"cityname":"全国","abbreviation":""}
+      cityInfo:wx.getStorageSync('cityInfo')
     })
   },
 

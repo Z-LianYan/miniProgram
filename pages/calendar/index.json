@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "my-tab":"/components/myTab/index",
-    "van-calendar": "/components/dist/calendar/index"
+    "van-calendar": "/components/dist/calendar/index",
+    "my-calendar": "/components/calendar/index"
   }
 }

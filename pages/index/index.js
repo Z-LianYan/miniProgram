@@ -25,7 +25,7 @@ Page({
 
     isLoading:true,
 
-    cityInfo:wx.getStorageSync('cityInfo')||{"id":0,"cityname":"全国","abbreviation":""}
+    cityInfo:""
 
   },
   //事件处理函数
@@ -67,8 +67,6 @@ Page({
   },
 
   onShow:function(){
-    
-    console.log("city",wx.getStorageSync('cityInfo'));
 
     this.setData({
       'recommendOptions.page':1,
@@ -78,7 +76,7 @@ Page({
       recommend_list: [],
       tourSingList: [],
       isLoading:true,
-      cityInfo:wx.getStorageSync('cityInfo')||{"id":0,"cityname":"全国","abbreviation":""}
+      cityInfo:wx.getStorageSync('cityInfo')
     })
 
 

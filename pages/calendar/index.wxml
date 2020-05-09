@@ -15,6 +15,21 @@
     lower-threshold="50" 
     bindscrolltoupper="bindscrolltoupper" 
     bindscrolltolower="bindscrolltolower">
+        <view class="calendar_wrapper">
+            <my-calendar
+            bind:afterTapDay="afterTapDay"
+            calendarConfig="{{calendarConfig}}">
+            
+            </my-calendar>
+        </view>
+
+        <view class="content_list padding_lr">
+            <view class="list_item">
+                
+            </view>
+        </view>
+
+        
 
     
 
