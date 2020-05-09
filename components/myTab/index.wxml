@@ -1,17 +1,15 @@
 
 <view class="my_tab_wrapper">
-    <van-tabs 
-    custom-class="custom_class"
-    tab-class="tab_class"
-    nav-class="nav_class"
+    <van-tabs
     tab-active-class="tab_active_class"
-    active="{{ 1 }}"
-    nav-left="123"
+    active="{{ 0 }}"
+    bind:change="onChange"
     color="#e40077">
         <van-tab 
         title="{{item.name}}" 
         wx:for="{{classifyList}}" 
-        wx:key="*this">{{item.name}}</van-tab>
+        name="{{item.id}}" 
+        wx:key="*this"></van-tab>
     </van-tabs>
     <view class="right_fixed_tab" bindtap="selectLocation">
         <view class="fixed_tab_content">

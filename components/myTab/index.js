@@ -48,6 +48,10 @@ Component({
     selectLocation:function(){
       this.triggerEvent("onSelectLocation",{})
     },
+    onChange(e){
+      console.log(e);
+      this.triggerEvent("getCategoryId",{categoryId: e.detail.name})
+    },
     getClassifyList:function(){
       // console.log("111111")
       httpsUtil({
@@ -55,6 +59,10 @@ Component({
         data:{},
         success:(data)=>{
           console.log("data----分类",data.data.data);
+          data.data.data.unshift({
+            id: 0,
+            name: "全部"
+          })
           this.setData({
             classifyList:data.data.data
           })

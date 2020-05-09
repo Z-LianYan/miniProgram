@@ -6,7 +6,7 @@
         <van-icon name="ellipsis" size="25"/>
     </view>
 
-    <my-tab bindonSelectLocation="onSelectLocation"/>
+    <my-tab bindonSelectLocation="onSelectLocation" bindgetCategoryId="getCategoryId"/>
 
     
 

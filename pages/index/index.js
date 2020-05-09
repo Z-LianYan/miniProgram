@@ -67,6 +67,7 @@ Page({
   },
 
   onShow:function(){
+    
     console.log("city",wx.getStorageSync('cityInfo'));
 
     this.setData({

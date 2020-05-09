@@ -12,12 +12,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log("----页面加载")
   },
-  onSelectLocation:function(){
-    console.log("切换城市")
+  onSelectLocation:function(v){
+    console.log("切换城市",v)
   },
-
+  getCategoryId:function(e){
+    console.log("分类",e.detail.categoryId)
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -28,9 +30,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏
