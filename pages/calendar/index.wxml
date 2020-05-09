@@ -8,7 +8,18 @@
 
     <my-tab bindonSelectLocation="onSelectLocation" bindgetCategoryId="getCategoryId"/>
 
+    <scroll-view 
+    scroll-y="{{true}}" 
+    class="scroll_wrapper" 
+    upper-threshold="50" 
+    lower-threshold="50" 
+    bindscrolltoupper="bindscrolltoupper" 
+    bindscrolltolower="bindscrolltolower">
+
     
+
+    </scroll-view>
+
 
 
 

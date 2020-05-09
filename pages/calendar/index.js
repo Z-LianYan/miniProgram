@@ -27,6 +27,16 @@ Page({
 
   },
 
+  bindscrolltoupper:function(){
+    console.log("下啦到顶部")
+  },
+  bindscrolltolower:function(){
+    console.log("上啦到底部")
+  },
+
+
+
+
   /**
    * 生命周期函数--监听页面显示
    */

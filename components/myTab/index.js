@@ -16,7 +16,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    classifyList:[]
+    classifyList:[],
+    show:false
   },
 
   lifetimes: {

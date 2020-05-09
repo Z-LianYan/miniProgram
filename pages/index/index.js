@@ -109,7 +109,6 @@ Page({
 
 
   getClassifyList:function(){
-    // console.log("111111")
     httpsUtil({
       url: API.GET_CLASSIFY_LIST,
       data:{
@@ -117,7 +116,6 @@ Page({
         abbreviation: this.data.cityInfo.abbreviation
       },
       success:(data)=>{
-        // console.log("data----",data.data.data);
         this.setData({
           classifyList:data.data.data.classify_list,
           slide_list: data.data.data.slide_list
