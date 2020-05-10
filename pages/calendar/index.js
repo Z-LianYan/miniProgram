@@ -18,7 +18,8 @@ Page({
       city_id: wx.getStorageSync('cityInfo').id,
       start_time: "",
       page: 1
-    }
+    },
+    listData:[]
   },
 
   /**
@@ -32,13 +33,21 @@ Page({
   },
   getCategoryId:function(e){
     console.log("分类",e.detail.categoryId)
-    this.setData({'fetchOption.category':e.detail.categoryId})
+    this.setData({
+      total:0,
+      listData: [],
+      'fetchOption.category':e.detail.categoryId
+    })
     this.getRecommendList()
   },
 
   afterTapDay(e){
     console.log("onTapDay",e);
-    this.setData({"fetchOption.start_time":e.detail.year+'/'+e.detail.month+"/"+e.detail.day})
+    this.setData({
+      total:0,
+      listData: [],
+      "fetchOption.start_time":e.detail.year+'/'+e.detail.month+"/"+e.detail.day
+    })
     this.getRecommendList()
   },
 
@@ -63,8 +72,15 @@ Page({
       url: API.GET_RECOMMEND_FOR_YOU,
       data: this.data.fetchOption,
       success: (data) => {
-
-        let list = data.data.data.list
+        console.log("0",data.data.data);
+        let res = data.data.data
+        let list = data.data.data.list;
+        if(res.result_type==2){
+          return this.setData({
+            total:0,
+            listData: []
+          })
+        }
 
         for (let i = 0; i < list.length;i++){
           list[i].date_scope = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D") + " - " + util.formatDate(list[i].end_show_timestamp * 1000, "M.D");
@@ -72,10 +88,10 @@ Page({
 
         this.setData({
           total:data.data.data.total,
-          recommend_list: this.data.recommend_list.concat(list)
+          listData: this.data.listData.concat(list)
         })
         
-        if (this.data.recommend_list.length == data.data.data.total || data.data.data.total==0){
+        if (this.data.listData.length == data.data.data.total || data.data.data.total==0){
           this.setData({isLoading: false})
         }else{
           this.setData({

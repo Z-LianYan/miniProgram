@@ -1,0 +1,17 @@
+<view class="content_list padding_lr">
+    <view class="list_item" wx:for="{{listData}}" wx:key="*this">
+        <image 
+        class="list_img" 
+        src="{{item.pic}}" 
+        lazy-load="false" 
+        binderror="" 
+        bindload=""></image>
+        <view class="list_content">
+            <text class="date">{{item.date_scope}}</text>
+            <view class="title">{{item.name}}</view>
+            <view class="location">
+                {{item.city_name}}|{{item.venue_name}}
+            </view>
+        </view>
+    </view>
+</view>

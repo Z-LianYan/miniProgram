@@ -23,13 +23,9 @@
             </my-calendar>
         </view>
 
-        <view class="content_list padding_lr">
-            <view class="list_item">
-                
-            </view>
-        </view>
-
         
+
+        <my-list listData="{{listData}}"/>
 
     
 
