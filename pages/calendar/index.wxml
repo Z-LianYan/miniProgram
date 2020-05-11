@@ -27,7 +27,15 @@
 
         <my-list listData="{{listData}}"/>
 
-    
+
+
+        <view style="text-align:center;height:50rpx;margin-top:100rpx;color:#666">
+            
+            <text wx:if="{{listData.length==total || total==0}}" class="bottom">没有更多了</text>
+            <van-loading size="50rpx" color="#ff8b72" wx:else/>
+        </view>
+
+
 
     </scroll-view>
 

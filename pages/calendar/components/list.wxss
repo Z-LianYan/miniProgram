@@ -12,9 +12,18 @@
     width: 509.74rpx;
     padding-left: 30.16rpx;
 }
-.list_item .list_content .date{
+.list_item .list_content .date_wrapper{
     font-weight: bolder;
 }
+
+.list_item .list_content .date_wrapper .week{
+    color:#666;
+    margin: 0 15rpx;
+}
+.list_item .list_content .date_wrapper .time{
+    color:#666;
+}
+
 .list_item .list_content .title{
     font-weight: bolder;
     white-space:pre-line;
@@ -26,5 +35,30 @@
     margin-top: 5rpx;
 }
 .list_item .list_content .location{
-    color:#ccc;
+    color:#666;
+    line-height: 50rpx;
+    font-size: 25rpx;
+}
+.list_item .list_content .location .separator{
+ margin: 0 10rpx;
+}
+
+.list_item .list_content .support_desc .desc{
+    margin-right: 10rpx;
+}
+
+.price_wrapper{
+    color:#666;
+    font-weight: bolder;
+    line-height: 80rpx;
+}
+.price_wrapper .price{
+    color:#ff6743;
+}
+.price_wrapper .price{
+    color:#ff6743;
+    margin-right: 10rpx;
+}
+.price_wrapper .font{
+    color:#bdbebd;
 }

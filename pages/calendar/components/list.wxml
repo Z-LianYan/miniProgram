@@ -7,10 +7,33 @@
         binderror="" 
         bindload=""></image>
         <view class="list_content">
-            <text class="date">{{item.date_scope}}</text>
+            <!-- <text class="date">{{item.start_show_timestamp==item.end_show_timestamp?(item.equality_start_end_date+' '+item.show_time_bottom+' '+item.equality_start_end_time):item.date_scope}}</text> -->
+            
+            <!-- <text class="date" wx:else>{{item.date_scope}}</text> -->
+            <view class="date_wrapper">
+                <text class="date" wx:if="{{item.start_show_timestamp!=item.end_show_timestamp}}">{{item.date_scope}}</text>
+                <text class="date" wx:if="{{item.start_show_timestamp==item.end_show_timestamp}}">{{item.equality_start_end_date}}</text>
+                <text class="week" wx:if="{{item.start_show_timestamp==item.end_show_timestamp}}">{{item.show_time_bottom}}</text>
+                <text class="time" wx:if="{{item.start_show_timestamp==item.end_show_timestamp}}">{{item.equality_start_end_time}}</text>
+
+            </view>
             <view class="title">{{item.name}}</view>
             <view class="location">
-                {{item.city_name}}|{{item.venue_name}}
+                {{item.city_name}}<text class="separator">|</text>{{item.venue_name}}
+            </view>
+            <view class="support_desc">
+                <van-tag 
+                class="desc"
+                round 
+                color="#ffe1e1" 
+                text-color="#ff6743"
+                wx:for="{{item.support_desc}}" 
+                wx:for-index="idx" 
+                wx:for-item="it">{{it}}</van-tag>
+            </view>
+            <view class="price_wrapper">
+                <text class="price">¥ {{item.min_price}}</text>
+                <text class="font">起</text>
             </view>
         </view>
     </view>

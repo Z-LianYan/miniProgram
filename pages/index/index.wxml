@@ -37,8 +37,9 @@
     </view>
 
     <view style="text-align:center;height:50rpx;">
-      <van-loading size="25rpx" wx:if="{{isLoading}}">加载中...</van-loading>
+      
       <van-divider contentPosition="center" wx:if="{{recommend_list.length==total || total==0}}" class="bottom">我是有底线的</van-divider>
+      <van-loading size="25rpx" wx:else>加载中...</van-loading>
     </view>
 
   </view>

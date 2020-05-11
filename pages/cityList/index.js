@@ -112,8 +112,8 @@ Page({
       },
       success: (data) => {
         console.log("热门城市---------",data.data.data.hot_city_List);
+
         let hotCityList = data.data.data.hot_city_List;
-        // {"id":0,"cityname":"全国","abbreviation":""}
         hotCityList.unshift({
           name: "全国",
           id: 0,

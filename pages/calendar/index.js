@@ -16,17 +16,20 @@ Page({
     fetchOption:{
       category: "",
       city_id: wx.getStorageSync('cityInfo').id,
-      start_time: "",
+      start_time: Date(),
       page: 1
     },
-    listData:[]
+    listData:[],
+    isLoading:true,
+    total:'-',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("----页面加载")
+    console.log("----页面加载"),
+    this.getListData();
   },
   onSelectLocation:function(v){
     console.log("切换城市",v)
@@ -34,21 +37,21 @@ Page({
   getCategoryId:function(e){
     console.log("分类",e.detail.categoryId)
     this.setData({
-      total:0,
+      total:"-",
       listData: [],
       'fetchOption.category':e.detail.categoryId
     })
-    this.getRecommendList()
+    this.getListData()
   },
 
   afterTapDay(e){
     console.log("onTapDay",e);
     this.setData({
-      total:0,
+      total:"-",
       listData: [],
       "fetchOption.start_time":e.detail.year+'/'+e.detail.month+"/"+e.detail.day
     })
-    this.getRecommendList()
+    this.getListData()
   },
 
 
@@ -67,7 +70,7 @@ Page({
     console.log("上啦到底部")
   },
 
-  getRecommendList:function(){
+  getListData:function(){
     httpsUtil({
       url: API.GET_RECOMMEND_FOR_YOU,
       data: this.data.fetchOption,
@@ -83,21 +86,19 @@ Page({
         }
 
         for (let i = 0; i < list.length;i++){
+          list[i].equality_start_end_date = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D");
+          list[i].equality_start_end_time = util.formatDate(list[i].start_show_timestamp * 1000, "h.m");
           list[i].date_scope = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D") + " - " + util.formatDate(list[i].end_show_timestamp * 1000, "M.D");
         }
 
-        this.setData({
-          total:data.data.data.total,
-          listData: this.data.listData.concat(list)
-        })
-        
-        if (this.data.listData.length == data.data.data.total || data.data.data.total==0){
-          this.setData({isLoading: false})
-        }else{
+        setTimeout(() => {
           this.setData({
-            isLoading:true
+            total:data.data.data.total,
+            listData: this.data.listData.concat(list)
           })
-        }
+        }, 1000);
+
+        
         
       },
       fail: (err) => {
