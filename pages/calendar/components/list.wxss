@@ -1,3 +1,6 @@
+.content_list{
+    padding-top: 20rpx;
+}
 .list_item{
     display: flex;
     padding: 30rpx 0;
@@ -5,8 +8,7 @@
 .list_item .list_img{
     width: 210.1rpx;
     height: 286.14rpx;
-    border-top-left-radius: 10rpx;
-    border-bottom-left-radius: 10rpx;
+    border-radius: 7rpx;
 }
 .list_item .list_content{
     width: 509.74rpx;
@@ -61,4 +63,5 @@
 }
 .price_wrapper .font{
     color:#bdbebd;
+    font-size: 20rpx;
 }

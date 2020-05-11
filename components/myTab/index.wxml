@@ -13,7 +13,7 @@
     </van-tabs>
     <view class="right_fixed_tab" bindtap="selectLocation">
         <view class="fixed_tab_content">
-            全国  <van-icon name="location-o" size="15" class="fixed_tab_icon"/>  
+            {{cityInfo.cityname}}  <van-icon name="location-o" size="15" class="fixed_tab_icon"/>  
         </view>
     </view>
 </view>

@@ -12,7 +12,7 @@
 }
 
 .calendar_wrapper{
-    box-shadow: 1rpx 10rpx 100rpx 0.1rpx #ccc;
+    box-shadow: 1rpx 10rpx 50rpx 0.1rpx #ebebee;
 }
 
 .content_list{

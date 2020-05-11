@@ -9,7 +9,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    cityInfo:{
+      type:Object,
+      value:{}
+    }
   },
 
   /**
@@ -17,7 +20,15 @@ Component({
    */
   data: {
     classifyList:[],
-    show:false
+    show:false,
+
+
+
+
+    animation_box:false,
+    animationData:{}
+
+
   },
 
   lifetimes: {

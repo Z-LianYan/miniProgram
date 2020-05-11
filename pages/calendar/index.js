@@ -7,21 +7,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-    calendarConfig:{
+    calendarConfig: {
       theme: 'elegant',
       // defaultDay: true,
       highlightToday: true,
       markToday: '今日',
     },
-    fetchOption:{
-      category: "",
-      city_id: wx.getStorageSync('cityInfo').id,
-      start_time: Date(),
+    fetchOption: {
+      category: 0,
+      city_id: "",
+      start_time: util.formatDate(Date.parse(new Date()), "Y/M/D"),
+      // start_time: Date(),
       page: 1
     },
-    listData:[],
-    isLoading:true,
-    total:'-',
+    listData: [],
+    isLoading: true,
+    total: '-',
+
+    cityInfo: wx.getStorageSync('cityInfo') ? wx.getStorageSync('cityInfo') : ""
+
+
   },
 
   /**
@@ -29,27 +34,27 @@ Page({
    */
   onLoad: function (options) {
     console.log("----页面加载"),
-    this.getListData();
+      this.getListData();
   },
-  onSelectLocation:function(v){
-    console.log("切换城市",v)
+  onSelectLocation: function (v) {
+    console.log("切换城市", v)
   },
-  getCategoryId:function(e){
-    console.log("分类",e.detail.categoryId)
+  getCategoryId: function (e) {
+    console.log("分类", e.detail.categoryId)
     this.setData({
-      total:"-",
+      total: "-",
       listData: [],
-      'fetchOption.category':e.detail.categoryId
+      'fetchOption.category': e.detail.categoryId
     })
     this.getListData()
   },
 
-  afterTapDay(e){
-    console.log("onTapDay",e);
+  afterTapDay(e) {
+    console.log("onTapDay", e);
     this.setData({
-      total:"-",
+      total: "-",
       listData: [],
-      "fetchOption.start_time":e.detail.year+'/'+e.detail.month+"/"+e.detail.day
+      "fetchOption.start_time": e.detail.year + '/' + e.detail.month + "/" + e.detail.day
     })
     this.getListData()
   },
@@ -63,43 +68,64 @@ Page({
 
   },
 
-  bindscrolltoupper:function(){
+  bindscrolltoupper: function () {
+    // this.setData({
+    //   listData:[],
+    //   'fetchOption.page':1
+    // })
+    // if(this.data.isLoading){
+    //   this.setData({isLoading:false});
+    //   this.getListData();
+    // }
     console.log("下啦到顶部")
   },
-  bindscrolltolower:function(){
-    console.log("上啦到底部")
+  bindscrolltolower: function () {
+    console.log("上啦到底部", this.data.listData.length, this.data.total)
+
+    if (this.data.listData.length == this.data.total || this.data.total == 0) return;
+
+    if (this.data.isLoading) {
+      this.setData({
+        isLoading: false,
+        'fetchOption.page': this.data.fetchOption.page + 1
+      });
+      this.getListData();
+    }
+
+
+
   },
 
-  getListData:function(){
+  getListData: function () {
     httpsUtil({
       url: API.GET_RECOMMEND_FOR_YOU,
-      data: this.data.fetchOption,
+      data: {
+        ...this.data.fetchOption,
+        city_id: this.data.cityInfo.id
+      },
       success: (data) => {
-        console.log("0",data.data.data);
+        console.log("0", data.data.data);
         let res = data.data.data
         let list = data.data.data.list;
-        if(res.result_type==2){
+        if (res.result_type == 2) {
           return this.setData({
-            total:0,
+            total: 0,
             listData: []
           })
         }
 
-        for (let i = 0; i < list.length;i++){
+        for (let i = 0; i < list.length; i++) {
           list[i].equality_start_end_date = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D");
           list[i].equality_start_end_time = util.formatDate(list[i].start_show_timestamp * 1000, "h.m");
           list[i].date_scope = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D") + " - " + util.formatDate(list[i].end_show_timestamp * 1000, "M.D");
         }
 
-        setTimeout(() => {
-          this.setData({
-            total:data.data.data.total,
-            listData: this.data.listData.concat(list)
-          })
-        }, 1000);
+        this.setData({
+          isLoading: true,
+          total: data.data.data.total,
+          listData: this.data.listData.concat(list)
+        })
 
-        
-        
       },
       fail: (err) => {
         console.log("err", err);
@@ -113,7 +139,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {},
+  onShow: function () { },
 
   /**
    * 生命周期函数--监听页面隐藏

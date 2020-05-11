@@ -6,7 +6,7 @@
         <van-icon name="ellipsis" size="25"/>
     </view>
 
-    <my-tab bindonSelectLocation="onSelectLocation" bindgetCategoryId="getCategoryId"/>
+    <my-tab bindonSelectLocation="onSelectLocation" cityInfo="{{cityInfo}}" bindgetCategoryId="getCategoryId"/>
 
     <scroll-view 
     scroll-y="{{true}}" 
@@ -36,11 +36,6 @@
         </view>
 
 
-
     </scroll-view>
-
-
-
-
 
 </view>
