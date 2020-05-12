@@ -1,15 +1,20 @@
 <view class="content_list padding_lr">
-    <view class="list_item" wx:for="{{listData}}" wx:key="*this">
-        <image 
-        class="list_img" 
-        src="{{item.pic}}" 
-        lazy-load="false" 
-        binderror="" 
-        bindload=""></image>
+    <view class="list_item" wx:for="{{listData}}" wx:key="index">
+        <view class="img_box">
+            <image 
+            class="list_img" 
+            src="{{item.pic}}" 
+            lazy-load="true" 
+            binderror="" 
+            bindload=""></image>
+
+            <image wx:if="{{item.method}}" 
+            class="sponsor" src="/images/sponsor.png" 
+            lazy-load="true"></image>
+        </view>
+        
         <view class="list_content">
-            <!-- <text class="date">{{item.start_show_timestamp==item.end_show_timestamp?(item.equality_start_end_date+' '+item.show_time_bottom+' '+item.equality_start_end_time):item.date_scope}}</text> -->
             
-            <!-- <text class="date" wx:else>{{item.date_scope}}</text> -->
             <view class="date_wrapper">
                 <text class="date" wx:if="{{item.start_show_timestamp!=item.end_show_timestamp}}">{{item.date_scope}}</text>
                 <text class="date" wx:if="{{item.start_show_timestamp==item.end_show_timestamp}}">{{item.equality_start_end_date}}</text>
@@ -28,6 +33,7 @@
                 color="#ffe1e1" 
                 text-color="#ff6743"
                 wx:for="{{item.support_desc}}" 
+                wx:key="*this"
                 wx:for-index="idx" 
                 wx:for-item="it">{{it}}</van-tag>
             </view>

@@ -1,0 +1,18 @@
+.navbar_wrapper{
+    position: relative;
+}
+.navbar_wrapper .navbar_header{
+    height: 88.02rpx;
+    border-bottom: 1px solid #ebebeb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bolder;
+}
+
+.navbar_wrapper .wrapper{
+    position: absolute;
+    top: 75rpx;
+    right: 10rpx;
+    background: #fff;
+}

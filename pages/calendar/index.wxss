@@ -1,14 +1,5 @@
-.calendar_header{
-    height: 88.02rpx;
-    border-bottom: 1px solid #ebebeb;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: bolder;
-}
-
 .scroll_wrapper{
-    height: calc(100vh - 140rpx);
+    height: calc(100vh - 178rpx);
 }
 
 .calendar_wrapper{

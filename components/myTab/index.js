@@ -9,10 +9,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    cityInfo:{
-      type:Object,
-      value:{}
-    }
+    
   },
 
   /**
@@ -20,12 +17,23 @@ Component({
    */
   data: {
     classifyList:[],
-    show:false,
+
+    cityList:[],
+
+    selectedCityInfo:{
+      id:0,
+      name:"全国"
+    },
 
 
 
 
-    animation_box:false,
+    animationOptions:{
+      duration:700,//动画持续时间，单位 ms
+      timingFunction: "linear", //动画的效果 linear 为线性
+      delay: 0 //0则不延迟
+    },
+    isShowAnimation:false,
     animationData:{}
 
 
@@ -35,6 +43,7 @@ Component({
     created:function(){//在组件实例刚刚被创建时执行
       console.log("123")
       this.getClassifyList();
+      this.getCityList();
     },
     attached:function(){//在组件实例进入页面节点树时执行
       console.log("456")
@@ -57,9 +66,26 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    selectLocation:function(){
-      this.triggerEvent("onSelectLocation",{})
+    onOpenDrawer:function(){
+      var animation=wx.createAnimation(this.data.animationOptions)
+
+      animation.translateX('-100vw').step();
+
+      this.setData({
+        animationData: animation.export()
+      })
     },
+    onCloseDrawer:function(){
+      var animation=wx.createAnimation(this.data.animationOptions)
+
+      animation.translateX('100vw').step();
+
+      this.setData({
+        animationData: animation.export()
+      })
+    },
+
+    
     onChange(e){
       console.log(e);
       this.triggerEvent("getCategoryId",{categoryId: e.detail.name})
@@ -70,7 +96,6 @@ Component({
         url: API.GET_CATEGORY_LIST,
         data:{},
         success:(data)=>{
-          console.log("data----分类",data.data.data);
           data.data.data.unshift({
             id: 0,
             name: "全部"
@@ -84,6 +109,55 @@ Component({
         }
       })
     },
+
+    getCityList:function(){
+      // console.log("111111")
+      httpsUtil({
+        url: API.GET_CITY_LIST_TABS,
+        data:{},
+        success:(data)=>{
+          console.log("data----城市",data.data.data);
+          data.data.data.city_list.unshift({
+            Abbreviation: "",
+            enname: "",
+            is_city: 0,
+            id: 0,
+            name: "全部"
+          })
+          this.setData({
+            cityList:data.data.data.city_list
+          })
+        },
+        fail:(err)=>{
+          console.log("err",err);
+        }
+      })
+    },
+
+    onConfirm:function(){
+      this.onSwitchCity(this.data.selectedCityInfo);
+      this.onCloseDrawer();
+    },
+
+    onReSet:function(){
+      this.setData({
+        selectedCityInfo:{id:0,name:"全国"}
+      })
+    },
+    onSelectedCity(e){
+      console.log("e",e,e.target.dataset.cityInfo);
+      this.setData({
+        selectedCityInfo:e.target.dataset.cityInfo
+      })
+    },
+
+    onSwitchCity:function(data){
+      console.log("data---==",data);
+      this.triggerEvent("onSwitchCity",data)
+    },
+
+
+
 
   }
 })

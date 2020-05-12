@@ -1,0 +1,16 @@
+<view class="navbar_wrapper">
+    <view class="navbar_header padding_lr">
+        <text></text>
+        {{title}}
+        <van-icon name="ellipsis" size="25" bindtap="onShowMenu"/>
+    </view>
+
+    <van-overlay show="{{ isShowOverlay }}" z-index="12" bind:click="onClickHide">
+        <view class="wrapper">
+            123
+        </view>
+    </van-overlay>
+
+
+</view>
+

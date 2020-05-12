@@ -6,17 +6,17 @@
     opacity: 0.5;
     z-index: 100;
   }
-  .Drawer{
-    position:fixed;
-    background:#091e3e;
-    width:220px;
-    height:100%;
-    left:-220px;
-    z-index: 200;
-    color: #ffffff;
-  }
-  .top_img{
-    width:60px;
-    height:60px;
-    background:#000000;
-  }
+.Drawer{
+  position:fixed;
+  background:#091e3e;
+  width:220px;
+  height:100%;
+  left:-220px;
+  z-index: 200;
+  color: #ffffff;
+}
+.top_img{
+  width:60px;
+  height:60px;
+  background:#000000;
+}

@@ -1,12 +1,8 @@
 <view class="container">
+    
+    <my-nav-bar title="演出日历"/>
 
-    <view class="calendar_header padding_lr">
-        <text></text>
-        演出日历
-        <van-icon name="ellipsis" size="25"/>
-    </view>
-
-    <my-tab bindonSelectLocation="onSelectLocation" cityInfo="{{cityInfo}}" bindgetCategoryId="getCategoryId"/>
+    <my-tab bindonSwitchCity="onSwitchCity" bindgetCategoryId="getCategoryId"/>
 
     <scroll-view 
     scroll-y="{{true}}" 
@@ -29,12 +25,10 @@
 
 
 
-        <view style="text-align:center;height:50rpx;margin-top:100rpx;color:#666">
-            
+        <view style="text-align:center;height:50rpx;margin-top:50rpx;color:#666">
             <text wx:if="{{listData.length==total || total==0}}" class="bottom">没有更多了</text>
             <van-loading size="50rpx" color="#ff8b72" wx:else/>
         </view>
-
 
     </scroll-view>
 

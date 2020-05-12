@@ -15,18 +15,15 @@ Page({
     },
     fetchOption: {
       category: 0,
-      city_id: "",
+      city_id: 0,
       start_time: util.formatDate(Date.parse(new Date()), "Y/M/D"),
       // start_time: Date(),
       page: 1
     },
+    
     listData: [],
     isLoading: true,
     total: '-',
-
-    cityInfo: wx.getStorageSync('cityInfo') ? wx.getStorageSync('cityInfo') : ""
-
-
   },
 
   /**
@@ -36,8 +33,14 @@ Page({
     console.log("----页面加载"),
       this.getListData();
   },
-  onSelectLocation: function (v) {
+  onSwitchCity: function (v) {
     console.log("切换城市", v)
+    this.setData({
+      'fetchOption.city_id':v.detail.id
+    })
+
+    this.getListData();
+
   },
   getCategoryId: function (e) {
     console.log("分类", e.detail.categoryId)
@@ -99,12 +102,8 @@ Page({
   getListData: function () {
     httpsUtil({
       url: API.GET_RECOMMEND_FOR_YOU,
-      data: {
-        ...this.data.fetchOption,
-        city_id: this.data.cityInfo.id
-      },
+      data: this.data.fetchOption,
       success: (data) => {
-        console.log("0", data.data.data);
         let res = data.data.data
         let list = data.data.data.list;
         if (res.result_type == 2) {

@@ -30,3 +30,91 @@
 .my_tab_wrapper .van-tabs__wrap{
     padding-right: 152.8rpx;
 }
+
+
+.my_tab_wrapper .city_list_box{
+    position: absolute;
+    top: 0;
+    right: -100vw;
+    z-index: 11;
+    width: 100vw;
+    box-sizing: border-box;
+    /* background: #000; */
+    /* opacity: 0.5; */
+    
+}
+.my_tab_wrapper .city_list_box .content{
+    display: flex;
+    height: calc(100vh - 89rpx);
+}
+.my_tab_wrapper .city_list_box .mask{
+    width: calc(100vw - 558rpx);
+    height: 100%;
+    background: #000;
+    opacity: 0.5;
+}
+.my_tab_wrapper .city_list_box .citys{
+    background: #fff;
+    width: 588rpx;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+.my_tab_wrapper .city_list_box .citys .city_wrapper{
+    height: calc(100% - 131rpx);
+    padding: 20rpx 20rpx;
+}
+
+.my_tab_wrapper .city_list_box .citys .city_wrapper .title{
+    font-weight: bolder;
+    height: 65rpx;
+}
+
+.my_tab_wrapper .city_list_box .citys .city_wrapper .city_scroll_view{
+    height: calc(100% - 65rpx);
+}
+
+
+.my_tab_wrapper .city_list_box .citys .city_wrapper .city_scroll_view .city_content{
+   display: flex;
+   flex-flow: row wrap;
+}
+.my_tab_wrapper .city_list_box .citys .city_wrapper .city_scroll_view .city_content .city_item{
+   width: 32%;
+   height: 63.968rpx;
+   line-height: 63.968rpx;
+   text-align: center;
+   border-radius: 5rpx;
+   margin-bottom: 2%;
+   color: #232323;
+   background-color: #f5f5f5;
+}
+.my_tab_wrapper .city_list_box .citys .city_wrapper .city_scroll_view .city_content .margin_right{
+    margin-right: 2%;
+}
+
+.my_tab_wrapper .city_list_box .citys .btn_wrapper{
+    height: 131rpx;
+    width: 588rpx;
+    display: flex;
+    box-sizing: border-box;
+}
+.my_tab_wrapper .city_list_box .citys .btn_wrapper .btn_item{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1rpx solid #ebebeb;
+}
+.my_tab_wrapper .city_list_box .citys .btn_wrapper .btn_item:nth-child(2){
+    border-left: 1rpx solid #ebebeb;
+    background: #ff6743;
+    color: #fff;
+}
+
+.my_tab_wrapper .city_list_box .citys .city_wrapper .city_scroll_view .city_content .active_city{
+    background-color: #fff1e9;
+    color: #ff6743;
+}
