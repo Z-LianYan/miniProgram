@@ -1,13 +1,22 @@
 <view class="navbar_wrapper">
     <view class="navbar_header padding_lr">
-        <text></text>
+        <van-icon name="{{arrowLeft?'arrowLeft':''}}" size="25"/>
         {{title}}
         <van-icon name="ellipsis" size="25" bindtap="onShowMenu"/>
     </view>
 
     <van-overlay show="{{ isShowOverlay }}" z-index="12" bind:click="onClickHide">
         <view class="wrapper">
-            123
+            <view class="top_arrow"></view>
+            <navigator
+            url="{{item.url}}"
+            open-type="{{item.openType}}"
+            class="menu_item" 
+            wx:for="{{menuList}}" 
+            wx:key="*this">
+                <van-icon class="icons" name="{{item.icons}}" size="18" />
+                {{item.title}}
+            </navigator> 
         </view>
     </van-overlay>
 

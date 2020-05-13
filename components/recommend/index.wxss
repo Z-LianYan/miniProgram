@@ -6,6 +6,11 @@
   align-items: flex-start;
   justify-content: space-around;
 }
+.recommend_wrapper_one{
+  justify-content: space-between;
+}
+
+
 .recommend_wrapper .recommend_item{
   width: 339rpx;
   display: flex;

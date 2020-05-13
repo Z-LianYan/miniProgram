@@ -12,7 +12,33 @@
 
 .navbar_wrapper .wrapper{
     position: absolute;
-    top: 75rpx;
+    top: 90rpx;
     right: 10rpx;
     background: #fff;
+    min-width: 250rpx;
+    border-radius: 10rpx;
+}
+
+.navbar_wrapper .wrapper .top_arrow{
+    width: 0; 
+    height: 0;
+    border-width: 25rpx;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+    position: absolute;
+    top: -48rpx;
+    right: 15rpx;
+}
+.navbar_wrapper .wrapper .menu_item{
+    padding: 20rpx;
+    display: flex;
+    align-items: center;
+    border-bottom: 1rpx solid #f2f2f2;
+}
+.navbar_wrapper .wrapper .menu_item:last-child{
+    border-bottom: 1rpx solid transparent;
+}
+
+.navbar_wrapper .wrapper .menu_item .icons{
+    margin-right: 20rpx;
 }

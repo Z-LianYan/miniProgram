@@ -27,7 +27,10 @@ Component({
   methods: {
 
     onRightEvent:function(){
-      this.triggerEvent('onAllCheck', {})
+      wx.navigateTo({
+        url: '/pages/showLibrary/index'
+      })
+      // this.triggerEvent('onAllCheck', {})
     }
 
   },

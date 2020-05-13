@@ -45,7 +45,7 @@ App({
 
   setCityInfo:function(){
     console.log("哈佛理发店哈是的")
-    wx.getStorageSync("cityInfo")?"":wx.setStorageSync('cityInfo', {"id":0,"cityname":"全国","abbreviation":""})
+    wx.getStorageSync("cityInfo")?"":wx.setStorageSync('cityInfo', {"id":0,"name":"全国","abbreviation":""})
   },
 
   onShow: function () {//小程序初始化完成后，触发onShow方法 ，从后台进入前台显示，触发onShow方法

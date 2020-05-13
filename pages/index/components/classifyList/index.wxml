@@ -1,6 +1,6 @@
-<!--pages/index/components/classifyList/index.wxml-->
 <view class="classify_list_box padding_trbl clearfix" wx:if="{{classifyList.length}}">
-  <view 
+  <navigator
+  url="/pages/showLibrary/index?category={{items.category_id}}"
   wx:for="{{classifyList}}" 
   wx:for-item="items" 
   wx:for-index="idx" 
@@ -8,6 +8,6 @@
   wx:key="*this">
     <image class="classify_image" src="{{items.pic}}" mode="cover"></image>
     <view>{{items.name}}</view>
-  </view>
+  </navigator>
 
 </view>

@@ -1,14 +1,15 @@
 {
-  "pages": ["pages/calendar/index",
+  "pages": ["pages/ticketDetail/index",
     "pages/index/index",
-    
+    "pages/calendar/index",
     "pages/cityList/index",
     "pages/theater/index",
     "pages/mine/mine",
     "pages/detail/detail",
     "pages/search/index",
     "pages/index/components/tourSing/index",
-    "pages/ticketDetail/index"
+    
+    "pages/showLibrary/index"
   ],
   "usingComponents": {
     "van-cell": "/components/dist/cell/index",

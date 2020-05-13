@@ -1,5 +1,7 @@
+<view class="container">
 
-<view class='mask' bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
-<view class='Drawer' animation="{{animationData}}" wx:if="{{showModalStatus}}">  </view>
-
-<view class='top_img'  bindtap="powerDrawer" data-statu="open"></view>
+    <van-nav-bar title="标题" left-text="返回" left-arrow>
+        <van-icon name="search" slot="right" />
+    </van-nav-bar>
+    
+</view>

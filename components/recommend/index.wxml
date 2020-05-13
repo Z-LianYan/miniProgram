@@ -1,6 +1,6 @@
 <view wx:if="{{recommend_list.length}}">
   
-  <view class="padding_trbl recommend_wrapper">
+  <view class="padding_trbl recommend_wrapper {{recommend_list.length==1?'recommend_wrapper_one':''}}">
 
     <view>
       <view class="recommend_item" wx:for="{{recommend_list}}" wx:for-item="items" wx:if="{{index%2 == 0}}" wx:key="*this">
@@ -42,8 +42,13 @@
           </view>
           <text class="date_txt">{{items.date_scope}}</text>
           <view>
-            <text class="min_price">¥ {{items.min_price}}</text>
-            <text class="price_txt">起</text>
+            <text class="min_price" wx:if="{{items.min_price==0}}">待定</text>
+            <block wx:else>
+              <text class="min_price">¥ {{items.min_price}}</text>
+              <text class="price_txt">起</text>
+            </block>
+            
+            
             <view wx:if="{{items.support_desc.length}}" class="support_desc">
               <van-tag 
               custom-class="van_tag" 

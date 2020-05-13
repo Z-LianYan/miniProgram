@@ -1,0 +1,19 @@
+<view class="container">
+    <my-tab cityInfo="{{cityInfo}}" activeTabs="{{activeTabs}}" navbarTitle="演出" bindonSwitchCity="onSwitchCity" bindgetCategoryId="onGetCategoryId"/>
+    <scroll-view 
+    class="scroll_view_wrapper"
+    scroll-y="true"
+    upper-threshold="50" 
+    lower-threshold="50"
+    bindscrolltolower="scrolltolower">
+
+        <my-show-list recommend_list="{{show_list}}" cityInfo="{{cityInfo}}"/>
+
+        <view style="text-align:center;height:50rpx;color:#dded;">
+            <van-divider contentPosition="center" wx:if="{{show_list.length==total || total==0 }}" class="bottom">我是有底线的</van-divider>
+            <!-- <van-loading size="25rpx" wx:else>加载中...</van-loading> -->
+            <van-loading size="30rpx" color="#ff8b72" wx:if="{{isLoading}}"/>
+        </view>
+    </scroll-view>
+
+</view>

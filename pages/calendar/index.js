@@ -12,6 +12,10 @@ Page({
       // defaultDay: true,
       highlightToday: true,
       markToday: '今日',
+      disableMode: {  // 禁用某一天之前/之后的所有日期
+        type: 'before',  // [‘before’, 'after']
+        date: '', // 无该属性或该属性值为假，则默认为当天
+      },
     },
     fetchOption: {
       category: 0,
@@ -24,6 +28,12 @@ Page({
     listData: [],
     isLoading: true,
     total: '-',
+
+
+    cityInfo:{}
+
+
+
   },
 
   /**
@@ -31,12 +41,23 @@ Page({
    */
   onLoad: function (options) {
     console.log("----页面加载"),
-      this.getListData();
+    this.setData({
+      cityInfo:wx.getStorageSync("cityInfo"),
+      "fetchOption.city_id":wx.getStorageSync("cityInfo").id
+    })
+    this.getListData();
   },
   onSwitchCity: function (v) {
     console.log("切换城市", v)
     this.setData({
-      'fetchOption.city_id':v.detail.id
+      cityInfo:{
+        id:v.detail.id,
+        name:v.detail.name,
+        Abbreviation:v.detail.Abbreviation,
+      },
+      'fetchOption.city_id':v.detail.id,
+      total: "-",
+      listData:[]
     })
 
     this.getListData();
@@ -112,12 +133,14 @@ Page({
             listData: []
           })
         }
-
-        for (let i = 0; i < list.length; i++) {
-          list[i].equality_start_end_date = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D");
-          list[i].equality_start_end_time = util.formatDate(list[i].start_show_timestamp * 1000, "h.m");
-          list[i].date_scope = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D") + " - " + util.formatDate(list[i].end_show_timestamp * 1000, "M.D");
+        if(list.length){
+          for (let i = 0; i < list.length; i++) {
+            list[i].equality_start_end_date = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D");
+            list[i].equality_start_end_time = util.formatDate(list[i].start_show_timestamp * 1000, "h.m");
+            list[i].date_scope = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D") + " - " + util.formatDate(list[i].end_show_timestamp * 1000, "M.D");
+          }
         }
+        
 
         this.setData({
           isLoading: true,
@@ -138,7 +161,9 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () { },
+  onShow: function () { 
+    
+  },
 
   /**
    * 生命周期函数--监听页面隐藏

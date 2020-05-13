@@ -9,7 +9,15 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    
+    navbarTitle:String,
+    cityInfo:{
+      type:Object,
+      value:{}
+    },
+    activeTabs:{
+      type:Number,
+      value:0
+    }
   },
 
   /**
@@ -20,10 +28,7 @@ Component({
 
     cityList:[],
 
-    selectedCityInfo:{
-      id:0,
-      name:"全国"
-    },
+    cityInfo:wx.getStorageSync("cityInfo"),
 
 
 
@@ -42,6 +47,9 @@ Component({
   lifetimes: {
     created:function(){//在组件实例刚刚被创建时执行
       console.log("123")
+      this.setData({
+        selectedCityInfo:wx.getStorageSync("cityInfo")
+      })
       this.getClassifyList();
       this.getCityList();
     },
@@ -141,18 +149,23 @@ Component({
 
     onReSet:function(){
       this.setData({
-        selectedCityInfo:{id:0,name:"全国"}
+        selectedCityInfo:wx.getStorageSync("cityInfo")
       })
     },
     onSelectedCity(e){
       console.log("e",e,e.target.dataset.cityInfo);
       this.setData({
+        cityInfo:{
+          id:e.target.dataset.cityInfo.id,
+          name:e.target.dataset.cityInfo.name,
+          Abbreviation:e.target.dataset.cityInfo.Abbreviation,
+        },
         selectedCityInfo:e.target.dataset.cityInfo
       })
     },
 
     onSwitchCity:function(data){
-      console.log("data---==",data);
+      // console.log("data---==",data);
       this.triggerEvent("onSwitchCity",data)
     },
 

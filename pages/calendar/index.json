@@ -4,7 +4,6 @@
     "van-calendar": "/components/dist/calendar/index",
     "my-calendar": "/components/calendar/index",
     "my-list": "/pages/calendar/components/list",
-    "van-loading": "/components/dist/loading/index",
-    "my-nav-bar": "/components/myNavBar/index"
+    "van-loading": "/components/dist/loading/index"
   }
 }

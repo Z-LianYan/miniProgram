@@ -2,7 +2,7 @@
 <view class="search_box padding_lr">
     <navigator url="/pages/cityList/index" hover-class="none" class="location_box">
       <van-icon name="location" color="#ff833b" size="20" />
-      <text class="city">{{cityInfo.cityname}}</text>
+      <text class="city">{{cityInfo.name}}</text>
     </navigator>
 
     <van-search bindtap="toSearch" custom-class="search_content" disabled placeholder="搜索热门演出"></van-search>

@@ -25,7 +25,7 @@ Page({
 
     isLoading:true,
 
-    cityInfo:""
+    cityInfo:{}
 
   },
   //事件处理函数
@@ -114,8 +114,15 @@ Page({
         abbreviation: this.data.cityInfo.abbreviation
       },
       success:(data)=>{
+        let classiyfList = data.data.data.classify_list;
+        let list = [];
+        classiyfList.map(item=>{
+          if(item.category_id!=0){
+            list.push(item);
+          }
+        })
         this.setData({
-          classifyList:data.data.data.classify_list,
+          classifyList:list,
           slide_list: data.data.data.slide_list
         })
       },

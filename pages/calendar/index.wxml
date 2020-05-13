@@ -1,8 +1,8 @@
 <view class="container">
     
-    <my-nav-bar title="演出日历"/>
+    <!-- <my-nav-bar title="演出日历"/> -->
 
-    <my-tab bindonSwitchCity="onSwitchCity" bindgetCategoryId="getCategoryId"/>
+    <my-tab cityInfo="{{cityInfo}}" bindonSwitchCity="onSwitchCity" bindgetCategoryId="getCategoryId" navbarTitle="演出日历"/>
 
     <scroll-view 
     scroll-y="{{true}}" 
