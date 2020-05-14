@@ -20,3 +20,10 @@ export const GET_CITY_LIST_TABS = "/city/city/getCityList";//获取城市列表(
 export const GET_TOUR_SING_LIST = "/show/tour/getList";//获取巡回演唱列表
 
 export const GET_HOT_SEARCH_LIST = "/Show/Search/getNewHotWord";//获取热搜索列表
+
+export const GET_TICKET_DETAIL = "/Schedule/Schedule/getScheduleInfo";//获取演出详情
+export const GET_TICKET_DISCOUNTS = "/Schedule/Schedule/getTicketPackageList";//获取优惠套票详情
+
+
+
+

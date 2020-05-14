@@ -1,7 +1,100 @@
-<view class="container">
+<view class="container ticketDetail">
+    <view class="header_wrapper">
+        <image
+        src="https://image.juooo.com/group1/M00/03/61/rAoKmV3xqgWAYdYAAANMMbTrrHg841.jpg"
+        class="img_filter_blur"/>
+        <view class="header_content" hover-class="none" hover-stop-propagation="false">
+            <view class="header padding_lr">
+                <text class="left"></text>
+                <text class="title">演出详情</text>
+                <view class="header_right_icon">
+                    <icon class="iconfont icon-fenxiang margin_right" bindtap="onShare"></icon>
+                    <van-icon name="wap-home-o" size="20" bindtap="onGoHome"/>
+                </view>
+            </view>
+            <view class="header_detail padding_lr">
+                <view class="img_box">
+                    <image src="{{detailDate.static_data.pic}}" class="img"/>
+                </view>
+                <view class="header_detail_right">
+                    <view class="title">
+                        {{detailDate.static_data.show_name}}
+                    </view>
+                    
+                    <view class="price_scope">
+                        ¥ {{detailDate.static_data.low_price}} - {{detailDate.static_data.high_price}}
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
 
-    <van-nav-bar title="标题" left-text="返回" left-arrow>
-        <van-icon name="search" slot="right" />
-    </van-nav-bar>
     
+    <view class="content_wrapper">
+        <van-cell>
+            <view slot="title" class="support">
+                <view 
+                class="support_item" 
+                wx:for="{{detailDate.static_data.support.list}}" 
+                wx:key="*this" 
+                data-item="{{item}}" 
+                data-show-id="{{detailDate.static_data.show_id}}"
+                data-city-id="{{detailDate.static_data.city.city_id}}"
+                data-venue-id="{{detailDate.static_data.venue.venue_id}}" 
+                bindtap="onDiscounts">
+                    <block>
+                        <icon class="iconfont icon-gou gou"></icon>
+                        {{item}}
+                        <icon class="iconfont icon-wenti wenti" wx:if="{{item=='套票优惠'}}"/>
+                    </block>
+                </view>
+            </view>
+        </van-cell>
+        <view class="detail_content padding_lr">
+            <view class="performance_time_site">
+                <view class="performance_date_scope">
+                    {{detailDate.static_data.show_time_scope}}
+                    <van-icon name="arrow" class="icon_rightArrow"/>
+                </view>
+                <view class="performance_site">
+                    {{detailDate.static_data.venue.venue_name}}
+                    <view class="detail_addr">{{detailDate.static_data.venue.venue_address}}</view>
+                </view>
+            </view>
+            <view class="to_navigator_icon">
+                <van-icon name="location-o" />
+            </view>
+        </view>
+
+    </view>
+
+    
+    <van-dialog id="van-dialog" />
+
+    <van-action-sheet 
+    show="{{ isShowActionSheet }}" 
+    bind:close="onCloseActionSheet"
+    title="套票信息">
+        <view class="discounts_detail">
+            <view class="header">
+                场次不同套票可能存在价格浮动，请以下单时的价格为准
+            </view>
+            <view class="content">
+                <van-tag color="#f2826a" round plain size="large">套票</van-tag>
+                <view class="info">
+                    <block wx:for="{{discountsDetial}}" wx:key="*this">
+                        <view class="{{index!=0?'time':''}}">{{item.display_show_time}}</view>
+                        <view 
+                        class="price"
+                        wx:for="{{item.package_list}}"
+                        wx:for-index="idx"
+                        wx:key="*this"
+                        wx:for-item="it">{{it.package_price}} 元({{it.ticket_name}})</view>
+                    </block>
+                </view>
+            </view>
+            
+        </view>
+    </van-action-sheet>
+
 </view>

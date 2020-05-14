@@ -1,22 +1,169 @@
-.mask{
-    position:fixed;
-    width:100%;
-    height:100%;
-    background: #000000;
-    opacity: 0.5;
-    z-index: 100;
-  }
-.Drawer{
-  position:fixed;
-  background:#091e3e;
-  width:220px;
-  height:100%;
-  left:-220px;
-  z-index: 200;
-  color: #ffffff;
+.ticketDetail .header_wrapper{
+  position: relative;
+  height: 435rpx;
+  color: #fff;
 }
-.top_img{
-  width:60px;
-  height:60px;
-  background:#000000;
+
+.ticketDetail .header_wrapper .header_content{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+.ticketDetail .header_wrapper .header_content .header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  width: 100vw;
+  height: 89rpx;
+  box-sizing: border-box;
+  
+}
+
+.ticketDetail .header_wrapper .header_content .header .left{
+  width: 30vw;
+}
+.ticketDetail .header_wrapper .header_content .header .title{
+  width: 40vw;
+  text-align: center;
+}
+
+.ticketDetail .header_wrapper .header_content .header .header_right_icon{
+  width: 30vw;
+  text-align: right;
+}
+
+
+
+.ticketDetail .header_wrapper .header_content .header .header_right_icon .margin_right{
+  margin-right: 20rpx;
+}
+.ticketDetail .header_wrapper .img_filter_blur{
+  width: 100%;
+  height: 100%;
+  background-color: #b8abab;
+  filter: blur(30rpx);
+}
+
+.ticketDetail .header_wrapper .header_content .header_detail{
+  display: flex;
+  /* box-sizing: border-box; */
+  margin-top: 20rpx;
+  /* align-items: center; */
+}
+.ticketDetail .header_wrapper .header_content .header_detail .header_detail_right{
+  margin-left: 29rpx;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  /* width: calc(100vw - 210rpx); */
+  height: 285.96rpx;
+  
+}
+.ticketDetail .header_wrapper .header_content .header_detail .header_detail_right .title{
+  width: 100%;
+  font-size: 35rpx;
+}
+.ticketDetail .header_wrapper .header_content .header_detail .header_detail_right .price_scope{
+  font-weight: bolder;
+  font-size: 38rpx;
+}
+.ticketDetail .header_wrapper .header_content .header_detail .img{
+  width: 210rpx;
+  height: 285.96rpx;
+}
+
+.ticketDetail .content_wrapper{
+  background: #fff;
+  z-index: 10;
+}
+.ticketDetail .content_wrapper .support{
+  display: flex;
+
+}
+.ticketDetail .content_wrapper .support .support_item{
+  margin-right: 25rpx;
+}
+
+.ticketDetail .content_wrapper .support .gou{
+  font-size: 25rpx;
+  color: #ff3e10;
+}
+
+.ticketDetail .content_wrapper .support .wenti{
+  font-size: 25rpx;
+}
+
+
+.ticketDetail .detail_content{
+  display: flex;
+  align-items: flex-end;
+}
+.ticketDetail .detail_content .performance_time_site{
+  width: 606.04rpx;
+}
+
+.ticketDetail .detail_content .performance_time_site .performance_site{
+  margin-top: 30rpx;
+}
+
+.ticketDetail .detail_content .performance_time_site .performance_site .detail_addr{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #666;
+  margin-top: 9rpx;
+}
+
+.ticketDetail .detail_content .performance_date_scope{
+ display: flex;
+ align-items: center;
+ font-size: 32rpx;
+ margin-top: 36rpx;
+}
+
+.ticketDetail .detail_content .performance_date_scope .icon_rightArrow{
+  margin-left: 15rpx;
+  color: #ccc;
+}
+.ticketDetail .detail_content .to_navigator_icon{
+  background: #ededed;
+  width: 57.96rpx;
+  height: 57.96rpx;
+  border-radius: 28.98rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ff8539;
+}
+
+
+.ticketDetail .van-hairline--bottom{
+  padding-left: 50rpx;
+  text-align: left;
+}
+.ticketDetail .discounts_detail{
+  padding: 50rpx 50rpx;
+}
+.ticketDetail .discounts_detail .header{
+  text-align: center;
+}
+.ticketDetail .discounts_detail .content{
+  display: flex;
+  margin-top: 100rpx;
+}
+.ticketDetail .discounts_detail .content .info{
+  margin-left: 20rpx;
+}
+.ticketDetail .discounts_detail .content .time{
+  margin-top: 20rpx;
+}
+
+
+
+.ticketDetail button{
+  width: 100% !important;
+}
+.ticketDetail .van-button__text{
+  color: #ff3e10;
 }
