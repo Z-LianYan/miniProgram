@@ -52,7 +52,9 @@
         </van-cell>
         <view class="detail_content padding_lr">
             <view class="performance_time_site">
-                <view class="performance_date_scope">
+                <view 
+                class="performance_date_scope" 
+                bindtap="onGetPrice">
                     {{detailDate.static_data.show_time_scope}}
                     <van-icon name="arrow" class="icon_rightArrow"/>
                 </view>
@@ -96,5 +98,79 @@
             
         </view>
     </van-action-sheet>
+
+
+
+
+    <van-action-sheet 
+    show="{{ isShowSchedular }}" 
+    bind:close="onCloseSchedular"
+    title="请选择">
+        <scroll-view scroll-y="{{true}}" class="schedular_detail">
+            <view class="detail_item">
+                <view class="title">
+                    选择日期
+                </view>
+                <view class="date_scope">
+                    <view 
+                    class="date_item {{activateIndex==index?'date_item_activate':''}}" 
+                    wx:for="{{reSchedular}}" 
+                    data-item="{{item}}"
+                    data-project-idx="{{index}}"
+                    bindtap="selectSchedular"
+                    wx:key="*this">
+                        {{item.project_time}}
+                    </view>
+                </view>
+            </view>
+            <view class="detail_item">
+                <view class="title">
+                    选择场次
+                </view>
+                <view class="date_scope">
+                    <view 
+                    bindtap="selectSession"
+                    class="date_item {{activateSessionIdx == index? 'date_item_activate':''}}" 
+                    data-item="{{item}}"
+                    data-session-idx="{{index}}"
+                    wx:for="{{sessionTime}}" 
+                    wx:key="*this">
+                        {{item.session_time}}
+                    </view>
+                </view>
+            </view>
+
+            <view class="detail_item">
+                <view class="title">
+                    选择价格
+                </view>
+                <view class="date_scope">
+                    <view 
+                    class="date_item {{priceIdx == index? 'date_item_activate':''}}" 
+                    bindtap="selectPrice"
+                    data-item="{{item}}"
+                    data-price-idx="{{index}}"
+                    wx:for="{{prices}}" 
+                    wx:key="*this">
+                        <van-tag 
+                        class="date_tag"
+                        wx:if="{{item.ispackage==1}}"
+                        color="#f2826a"
+                        type="warning"
+                        size="medium">套票</van-tag>{{item.price+"元"}}{{item.ticekt_name?('（'+item.ticekt_name+"）"):''}}
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+        <view class="btn_wrapper">
+            <van-button color="#ff4d4a" round type="info">选座购买</van-button>
+        </view>
+    </van-action-sheet>
+
+
+
+<view class="btn_wrapper bottom_btn_wrapper">
+    <van-button color="#ff4d4a" round type="info">选座购买</van-button>
+</view>
 
 </view>

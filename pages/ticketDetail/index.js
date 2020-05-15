@@ -13,15 +13,33 @@ Page({
     detailDate:{},
     isShowDialog:false,
     isShowActionSheet:false,
+    isShowSchedular:false,
     buttons: [{text: '取消'}, {text: '确定'}],
-    discountsDetial:[]
+    discountsDetial:[],
+
+    schedular:[],
+
+    reSchedular:[],
+
+    sessionTime:[],
+
+    prices:[],
+
+    activateIndex:0,
+
+    activateSessionIdx:0,
+    priceIdx:"-"
+
+
+
   },
 
   fetchDetailData:function(){
     httpsUtil({
       url: API.GET_TICKET_DETAIL,
       data: {
-        schedular_id: 109302
+        schedular_id: 111971
+        // schedular_id: 110775
       },
       success: (data) => {
         console.log("演出详情",data.data);
@@ -32,8 +50,22 @@ Page({
         detail.static_data.show_time_scope = util.formatDate(detail.static_data.show_time_data.show_time_start * 1000, "Y.M.D")+' - '+util.formatDate(detail.static_data.show_time_data.show_time_end * 1000, "M.D");
         
 
+        let schedular = data.data.data.item_list;
+        let reSchedular = [];
+        let uniqueObj={};
+        for(let i=0;i<schedular.length;i++){
+          if(!uniqueObj[schedular[i].project_time]){
+            uniqueObj[schedular[i].project_time] = true;
+            reSchedular.push(schedular[i])
+          }
+        }
+
+        console.log("6666",schedular,reSchedular,reSchedular[0]);
         this.setData({
-          detailDate:detail
+          detailDate:detail,
+          schedular:schedular,
+          reSchedular:reSchedular,
+          sessionTime:[reSchedular[0]]
         })
       },
       fail: (err) => {
@@ -47,9 +79,7 @@ Page({
     Dialog.alert({
       message: '使用浏览器的分享功能把演出分享出去',
       confirmButtonText:"知道了"
-    }).then(() => {
-
-    });
+    }).then(() => {});
   },
   onGoHome:function(){
     wx.switchTab({url: "/pages/index/index"})
@@ -70,8 +100,11 @@ Page({
     })
   },
 
-
   fetchDiscountsDetail:function(options){
+    wx.showLoading({
+      title: '加载中',
+      mask:true
+    })
     httpsUtil({
       url: API.GET_TICKET_DISCOUNTS,
       data: {
@@ -81,6 +114,8 @@ Page({
       },
       success: (data) => {
         console.log("套票优惠",data.data);
+
+        wx.hideLoading()
 
         this.setData({
           isShowActionSheet:true
@@ -95,8 +130,86 @@ Page({
       }
     })
 
-    
   },
+
+
+  onGetPrice:function(schedular_id){
+    this.setData({isShowSchedular:true})
+    console.log("--",typeof(schedular_id))
+    wx.showLoading({
+      title: '加载中',
+      mask:true
+    })
+    httpsUtil({
+      url: API.GET_SCHEDULE_TICKET,
+      data: {
+        schedular_id: typeof(schedular_id)=="number"?schedular_id:this.data.reSchedular[0].id
+      },
+      success: (data) => {
+        console.log("时间表",data.data);
+        wx.hideLoading();
+        this.setData({prices:data.data.data.list})
+      },
+      fail: (err) => {
+        console.log("err", err);
+      }
+    })
+  },
+
+  onCloseSchedular:function(){
+    this.setData({
+      isShowSchedular:false
+    })
+  },
+
+
+  selectSchedular:function(e){
+    console.log("选择时间",e.currentTarget.dataset)
+    let dataset = e.currentTarget.dataset;
+    // let item = dataset.item;
+    let sessionTime = [];
+    this.data.schedular.map(item=>{
+      if(dataset.item.project_time==item.project_time){
+        sessionTime.push(item);
+      }
+    })
+
+    this.setData({
+      activateIndex:dataset.projectIdx,
+      sessionTime:sessionTime,
+      activateSessionIdx:0,
+      priceIdx:"-"
+    })
+    this.onGetPrice(dataset.item.id)
+  },
+
+  selectSession:function(e){
+    console.log("session时间",e.currentTarget.dataset)
+    let dataset = e.currentTarget.dataset;
+
+    this.setData({
+      activateSessionIdx:dataset.sessionIdx,
+      priceIdx:"-"
+    })
+
+    this.onGetPrice(dataset.item.id)
+
+  },
+
+  selectPrice:function(e){
+    console.log("选择价格",e.currentTarget.dataset)
+    const dataset = e.currentTarget.dataset;
+    this.setData({
+      priceIdx:dataset.priceIdx
+    })
+  },
+
+
+
+
+
+
+
 
   /**
    * 生命周期函数--监听页面加载

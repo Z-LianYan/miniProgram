@@ -120,11 +120,12 @@
  align-items: center;
  font-size: 32rpx;
  margin-top: 36rpx;
+ width: 353.26rpx;
 }
 
 .ticketDetail .detail_content .performance_date_scope .icon_rightArrow{
   margin-left: 15rpx;
-  color: #ccc;
+  /* color: #ccc; */
 }
 .ticketDetail .detail_content .to_navigator_icon{
   background: #ededed;
@@ -165,5 +166,53 @@
   width: 100% !important;
 }
 .ticketDetail .van-button__text{
-  color: #ff3e10;
+  /* color: #ff3e10; */
+}
+
+
+.ticketDetail .schedular_detail{
+  padding: 30rpx 30rpx;
+  height: 668rpx;
+  box-sizing: border-box;
+}
+.ticketDetail .schedular_detail .detail_item{
+
+}
+.ticketDetail .schedular_detail .detail_item .title{
+  font-weight: bolder;
+  /* height: 50rpx; */
+  line-height: 100rpx;
+}
+
+.ticketDetail .schedular_detail .date_scope{
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.ticketDetail .schedular_detail .date_scope .date_item{
+  padding: 0 36rpx;
+  height: 80rpx;
+  background-color: #f5f5f5;
+  margin: 0 24rpx 24rpx 0;
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 10rpx;
+}
+.ticketDetail .schedular_detail .date_scope .date_item .date_tag{
+  margin-right: 20rpx;
+}
+.btn_wrapper{
+  padding: 20rpx 20rpx;
+  border-top: 1rpx solid #ebebeb;
+}
+.bottom_btn_wrapper{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.date_item_activate{
+  background-color:#fef2f0;
+  color: #ff6743
 }
