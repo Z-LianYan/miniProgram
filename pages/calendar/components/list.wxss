@@ -28,6 +28,7 @@
 .list_item .list_content{
     width: 509.74rpx;
     padding-left: 30.16rpx;
+    overflow: hidden;
 }
 
 .list_item .list_content .date_wrapper{
@@ -57,6 +58,9 @@
     color:#666;
     line-height: 50rpx;
     font-size: 25rpx;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow:hidden;
 }
 
 .list_item .list_content .location .separator{

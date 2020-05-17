@@ -45,7 +45,7 @@
 }
 .my_tab_wrapper .city_list_box .content{
     display: flex;
-    height: calc(100vh - 90rpx);
+    height: calc(100vh - 91rpx);
 }
 .my_tab_wrapper .city_list_box .mask{
     width: calc(100vw - 558rpx);
@@ -62,7 +62,7 @@
     flex-direction: column;
 }
 .my_tab_wrapper .city_list_box .citys .city_wrapper{
-    height: calc(100% - 131rpx);
+    height: 100%;
     padding: 20rpx 20rpx;
 }
 
@@ -72,7 +72,7 @@
 }
 
 .my_tab_wrapper .city_list_box .citys .city_wrapper .city_scroll_view{
-    height: calc(100% - 65rpx);
+    height: 66vh;
 }
 
 
