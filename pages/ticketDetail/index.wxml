@@ -63,10 +63,6 @@
                     <view class="detail_addr">{{detailDate.static_data.venue.venue_address}}</view>
                 </view>
             </view>
-            <!-- <navigator 
-            url="/pages/map/index?log={{detailDate.static_data.venue.venueArr[0]}}&&lat={{detailDate.static_data.venue.venueArr[1]}}&venueName={{detailDate.static_data.venue.venue_name}}&venueAddress={{detailDate.static_data.venue.venue_address}}" class="to_navigator_icon">
-                <van-icon name="location-o" />
-            </navigator> -->
             <view bindtap="onNavigator" data-venue="{{detailDate.static_data.venue}}" class="to_navigator_icon">
                 <van-icon name="location-o" />
             </view>
@@ -109,7 +105,7 @@
     <van-action-sheet 
     show="{{ isShowSchedular }}" 
     bind:close="onCloseSchedular"
-    title="请选择">
+    title="请选择购买">
         <scroll-view scroll-y="{{true}}" class="schedular_detail">
             <view class="detail_item">
                 <view class="title">
@@ -156,18 +152,42 @@
                     data-price-idx="{{index}}"
                     wx:for="{{prices}}" 
                     wx:key="*this">
+                        <text wx:if="{{!item.limit_num}}" class="stockout_register {{priceIdx == index? 'stockout_register_activate':''}}">缺货登记</text>
                         <van-tag 
                         class="date_tag"
                         wx:if="{{item.ispackage==1}}"
                         color="#f2826a"
                         type="warning"
                         size="medium">套票</van-tag>{{item.price+"元"}}{{item.ticekt_name?('（'+item.ticekt_name+"）"):''}}
+                    
+                       
+                    
                     </view>
+                </view>
+                <view class="stockout_register_form" wx:if="{{isStockoutStatus}}">
+                    <text class="stockout_register_form_title">缺货登记</text>
+                    <van-field
+                        value="{{ submitData.name }}"
+                        placeholder="请输入姓名"
+                        border="{{ false }}"
+                        bind:change="onChange"
+                    />
+                    <van-field
+                        value="{{ submitData.phone }}"
+                        placeholder="请输入手机号"
+                        border="{{ false }}"
+                        bind:change="onChange"
+                    />
+
+                    <text class="warm_prompt">
+                        温馨提示：留下联系方式，如有票源，将依据登记顺序进行部分客户短信通知。如一直缺货，将不再另行通知。
+                    </text>
+                    
                 </view>
             </view>
         </scroll-view>
         <view class="btn_wrapper">
-            <van-button color="#ff4d4a" round type="info">选座购买</van-button>
+            <van-button color="#ff4d4a" round type="info">{{isStockoutStatus?"提交":"选座购买"}}</van-button>
         </view>
     </van-action-sheet>
 

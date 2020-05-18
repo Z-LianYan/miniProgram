@@ -4,6 +4,7 @@
     "van-dialog": "/components/dist/dialog/index",
     "van-button": "/components/dist/button/index",
     "van-action-sheet": "/components/dist/action-sheet/index",
-    "van-tag": "/components/dist/tag/index"
+    "van-tag": "/components/dist/tag/index",
+    "van-field": "/components/dist/field/index"
   }
 }

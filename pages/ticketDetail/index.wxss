@@ -190,17 +190,65 @@
 }
 
 .ticketDetail .schedular_detail .date_scope .date_item{
-  padding: 0 36rpx;
-  height: 80rpx;
+  padding: 0 50rpx;
+  height: 100rpx;
   background-color: #f5f5f5;
   margin: 0 24rpx 24rpx 0;
   text-align: center;
-  line-height: 80rpx;
+  line-height: 100rpx;
   border-radius: 10rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
 }
 .ticketDetail .schedular_detail .date_scope .date_item .date_tag{
   margin-right: 20rpx;
 }
+
+.ticketDetail .schedular_detail .date_scope .date_item .stockout_register{
+  position: absolute;
+  top: 3rpx;
+  left: 0;
+  height: 28rpx;
+  width: 100rpx;
+  font-size: 20rpx;
+  line-height: 28rpx;
+  color: #fefefe;
+  background: #ccc;
+  border-top-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+  font-weight: bolder;
+  text-align: center;
+}
+.stockout_register_activate{
+  background: #ff3e10 !important;
+}
+.stockout_register_form{
+  padding: 35.018rpx 38.02rpx;
+  border: 1rpx solid #ebebeb;
+  border-radius: 10rpx;
+}
+.stockout_register_form_title{
+  font-weight: bolder;
+}
+
+.stockout_register_form .warm_prompt{
+  font-size: 20rpx;
+  color: #666;
+}
+
+.stockout_register_form .field-index--van-field{
+  background: #f5f5f5;
+  margin-top: 35.018rpx;
+}
+
+
+
+
+
+
+
+
 .btn_wrapper{
   padding: 20rpx 20rpx;
   border-top: 1rpx solid #ebebeb;
@@ -214,5 +262,5 @@
 
 .date_item_activate{
   background-color:#fef2f0;
-  color: #ff6743
+  color: #ff6743;
 }
