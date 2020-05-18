@@ -45,7 +45,7 @@
 }
 .my_tab_wrapper .city_list_box .content{
     display: flex;
-    height: calc(100vh - 91rpx);
+    height: calc(100vh - 92rpx);
 }
 .my_tab_wrapper .city_list_box .mask{
     width: calc(100vw - 558rpx);
@@ -56,13 +56,14 @@
 .my_tab_wrapper .city_list_box .citys{
     background: #fff;
     width: 588rpx;
-    height: 100%;
+    /* height: 100%; */
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+    /* display: flex;  */
+    /* flex-direction: column; */
+    position: relative;
 }
 .my_tab_wrapper .city_list_box .citys .city_wrapper{
-    height: 100%;
+    /* height: 100%; */
     padding: 20rpx 20rpx;
 }
 
@@ -72,7 +73,7 @@
 }
 
 .my_tab_wrapper .city_list_box .citys .city_wrapper .city_scroll_view{
-    height: 66vh;
+    height: 70vh;
 }
 
 
@@ -95,10 +96,12 @@
 }
 
 .my_tab_wrapper .city_list_box .citys .btn_wrapper{
-    height: 131rpx;
+    height: 100rpx;
     width: 588rpx;
     display: flex;
     box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
 }
 .my_tab_wrapper .city_list_box .citys .btn_wrapper .btn_item{
     width: 50%;

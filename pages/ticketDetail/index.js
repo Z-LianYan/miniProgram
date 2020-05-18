@@ -46,6 +46,8 @@ Page({
         const detail = data.data.data;
         detail.static_data.low_price = Number(detail.static_data.low_price).toFixed(0);
         detail.static_data.high_price = Number(detail.static_data.high_price).toFixed(0);
+        
+        detail.static_data.venue.venueArr = detail.static_data.venue.venue_coordinate.split(',')
 
         detail.static_data.show_time_scope = util.formatDate(detail.static_data.show_time_data.show_time_start * 1000, "Y.M.D")+' - '+util.formatDate(detail.static_data.show_time_data.show_time_end * 1000, "M.D");
         
@@ -60,7 +62,7 @@ Page({
           }
         }
 
-        console.log("6666",schedular,reSchedular,reSchedular[0]);
+        console.log("6666",detail.static_data.venue);
         this.setData({
           detailDate:detail,
           schedular:schedular,
@@ -201,6 +203,18 @@ Page({
     const dataset = e.currentTarget.dataset;
     this.setData({
       priceIdx:dataset.priceIdx
+    })
+  },
+
+
+  onNavigator:function(e){
+    let venue = e.currentTarget.dataset.venue;
+    wx.openLocation({
+      latitude:Number(venue.venueArr[1]),
+      longitude:Number(venue.venueArr[0]),
+      name:venue.venue_name,
+      address:venue.venue_address,
+      scale: 18
     })
   },
 

@@ -1,5 +1,6 @@
 {
-  "pages": ["pages/ticketDetail/index",
+  "pages": [
+    "pages/ticketDetail/index",
     "pages/index/index",
     "pages/calendar/index",
     "pages/cityList/index",
@@ -8,7 +9,6 @@
     "pages/detail/detail",
     "pages/search/index",
     "pages/index/components/tourSing/index",
-    
     "pages/showLibrary/index"
   ],
   "usingComponents": {
@@ -51,5 +51,10 @@
     "position": "bottom"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
 }

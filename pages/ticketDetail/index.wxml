@@ -1,7 +1,7 @@
 <view class="container ticketDetail">
     <view class="header_wrapper">
         <image
-        src="https://image.juooo.com/group1/M00/03/61/rAoKmV3xqgWAYdYAAANMMbTrrHg841.jpg"
+        src="{{detailDate.static_data.pic}}"
         class="img_filter_blur"/>
         <view class="header_content" hover-class="none" hover-stop-propagation="false">
             <view class="header padding_lr">
@@ -63,7 +63,11 @@
                     <view class="detail_addr">{{detailDate.static_data.venue.venue_address}}</view>
                 </view>
             </view>
-            <view class="to_navigator_icon">
+            <!-- <navigator 
+            url="/pages/map/index?log={{detailDate.static_data.venue.venueArr[0]}}&&lat={{detailDate.static_data.venue.venueArr[1]}}&venueName={{detailDate.static_data.venue.venue_name}}&venueAddress={{detailDate.static_data.venue.venue_address}}" class="to_navigator_icon">
+                <van-icon name="location-o" />
+            </navigator> -->
+            <view bindtap="onNavigator" data-venue="{{detailDate.static_data.venue}}" class="to_navigator_icon">
                 <van-icon name="location-o" />
             </view>
         </view>
