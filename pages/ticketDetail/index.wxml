@@ -170,13 +170,13 @@
                         value="{{ submitData.name }}"
                         placeholder="请输入姓名"
                         border="{{ false }}"
-                        bind:change="onChange"
+                        bind:change="onNameChange"
                     />
                     <van-field
                         value="{{ submitData.phone }}"
                         placeholder="请输入手机号"
                         border="{{ false }}"
-                        bind:change="onChange"
+                        bind:change="onPhoneChange"
                     />
 
                     <text class="warm_prompt">
@@ -187,7 +187,7 @@
             </view>
         </scroll-view>
         <view class="btn_wrapper">
-            <van-button color="#ff4d4a" round type="info">{{isStockoutStatus?"提交":"选座购买"}}</van-button>
+            <van-button color="#ff4d4a" round type="info" bindtap="stockoutRegister">{{isStockoutStatus?"提交":"选座购买"}}</van-button>
         </view>
     </van-action-sheet>
 

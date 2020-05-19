@@ -33,8 +33,11 @@ Page({
     isStockoutStatus:false,
 
     submitData:{
-      phone:"",
-      name:""
+      name: "",
+      phone: "",
+      ticket_id: "",
+      schedular_id: "",
+      type: 0,
     }
 
 
@@ -65,7 +68,7 @@ Page({
         for(let i=0;i<schedular.length;i++){
           if(!uniqueObj[schedular[i].project_time]){
             uniqueObj[schedular[i].project_time] = true;
-            reSchedular.push(schedular[i])
+            reSchedular.push(schedular[i]);
           }
         }
 
@@ -247,6 +250,36 @@ Page({
       name:venue.venue_name,
       address:venue.venue_address,
       scale: 18
+    })
+  },
+
+  onNameChange:function(val){
+    this.setData({
+      'submitData.name':val.detail
+    })
+  },
+  onPhoneChange:function(val){
+    this.setData({
+      'submitData.phone':val.detail
+    })
+  },
+
+  stockoutRegister:function(){
+    wx.showLoading({
+      title: '加载中',
+      mask:true
+    })
+    httpsUtil({
+      url: API.STOCKOUT_REGISTER,
+      data: this.data.submitData,
+      success: (data) => {
+        console.log("缺货登记",data.data);
+        wx.hideLoading();
+        // this.setData({prices:data.data.data.list})
+      },
+      fail: (err) => {
+        console.log("err", err);
+      }
     })
   },
 

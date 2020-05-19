@@ -26,5 +26,11 @@ export const GET_TICKET_DISCOUNTS = "/Schedule/Schedule/getTicketPackageList";//
 export const GET_SCHEDULE_TICKET = "/Schedule/Schedule/getScheduleTicket";//获取优惠套票详情
 
 
+export const STOCKOUT_REGISTER = "/Schedule/Schedule/addUserBook";//缺货登记
+
+
+
+
+
 
 
