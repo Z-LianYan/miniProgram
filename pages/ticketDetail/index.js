@@ -32,58 +32,130 @@ Page({
 
     isStockoutStatus:false,
 
+    isShowNoticeInfo:false,
+
     submitData:{
       name: "",
       phone: "",
       ticket_id: "",
       schedular_id: "",
-      type: 0,
-    }
+      type: 0
+    },
 
-
+    // selectedTime:{}
 
   },
 
   fetchDetailData:function(){
-    httpsUtil({
-      url: API.GET_TICKET_DETAIL,
-      data: {
-        schedular_id: 111971
-        // schedular_id: 110775
-      },
-      success: (data) => {
-        console.log("演出详情",data.data);
-        const detail = data.data.data;
-        detail.static_data.low_price = Number(detail.static_data.low_price).toFixed(0);
-        detail.static_data.high_price = Number(detail.static_data.high_price).toFixed(0);
-        
-        detail.static_data.venue.venueArr = detail.static_data.venue.venue_coordinate.split(',')
+    httpsUtil.get(API.GET_TICKET_DETAIL,{
+      schedular_id: 111971
+      // schedular_id: 110775
+    },{isLoading:true}).then(data=>{
+      console.log("演出详情",data.data);
+      const detail = data.data;
+      detail.static_data.low_price = Number(detail.static_data.low_price).toFixed(0);
+      detail.static_data.high_price = Number(detail.static_data.high_price).toFixed(0);
+      
+      detail.static_data.venue.venueArr = detail.static_data.venue.venue_coordinate.split(',')
 
-        detail.static_data.show_time_scope = util.formatDate(detail.static_data.show_time_data.show_time_start * 1000, "Y.M.D")+' - '+util.formatDate(detail.static_data.show_time_data.show_time_end * 1000, "M.D");
-        
+      detail.static_data.show_time_scope = util.formatDate(detail.static_data.show_time_data.show_time_start * 1000, "Y.M.D")+' - '+util.formatDate(detail.static_data.show_time_data.show_time_end * 1000, "M.D");
+      
 
-        let schedular = data.data.data.item_list;
-        let reSchedular = [];
-        let uniqueObj={};
-        for(let i=0;i<schedular.length;i++){
-          if(!uniqueObj[schedular[i].project_time]){
-            uniqueObj[schedular[i].project_time] = true;
-            reSchedular.push(schedular[i]);
-          }
+      let schedular = detail.item_list;
+      let reSchedular = [];
+      let uniqueObj={};
+      for(let i=0;i<schedular.length;i++){
+        if(!uniqueObj[schedular[i].project_time]){
+          uniqueObj[schedular[i].project_time] = true;
+          reSchedular.push(schedular[i]);
         }
-
-        console.log("6666",detail.static_data.venue);
-        this.setData({
-          detailDate:detail,
-          schedular:schedular,
-          reSchedular:reSchedular,
-          sessionTime:[reSchedular[0]]
-        })
-      },
-      fail: (err) => {
-        console.log("err", err);
       }
+
+      console.log("6666",detail.static_data.venue);
+
+      let selectedTime = [];
+      schedular.map(item=>{
+        if(reSchedular[0].project_time==item.project_time){
+          selectedTime.push(item);
+        }
+      })
+
+
+
+
+      this.setData({
+        detailDate:detail,
+        schedular:schedular,
+        reSchedular:reSchedular,
+        sessionTime:selectedTime,
+        'submitData.schedular_id':selectedTime[0].id,
+        // selectedTime:selectedTime[0]//选中项
+      })
     })
+
+
+
+
+
+
+
+
+
+
+
+
+    // httpsUtil.get({
+    //   url: API.GET_TICKET_DETAIL,
+    //   data: {
+    //     schedular_id: 111971
+    //     // schedular_id: 110775
+    //   },
+    //   success: (data) => {
+    //     console.log("演出详情",data.data);
+    //     const detail = data.data.data;
+    //     detail.static_data.low_price = Number(detail.static_data.low_price).toFixed(0);
+    //     detail.static_data.high_price = Number(detail.static_data.high_price).toFixed(0);
+        
+    //     detail.static_data.venue.venueArr = detail.static_data.venue.venue_coordinate.split(',')
+
+    //     detail.static_data.show_time_scope = util.formatDate(detail.static_data.show_time_data.show_time_start * 1000, "Y.M.D")+' - '+util.formatDate(detail.static_data.show_time_data.show_time_end * 1000, "M.D");
+        
+
+    //     let schedular = data.data.data.item_list;
+    //     let reSchedular = [];
+    //     let uniqueObj={};
+    //     for(let i=0;i<schedular.length;i++){
+    //       if(!uniqueObj[schedular[i].project_time]){
+    //         uniqueObj[schedular[i].project_time] = true;
+    //         reSchedular.push(schedular[i]);
+    //       }
+    //     }
+
+    //     console.log("6666",detail.static_data.venue);
+
+    //     let selectedTime = [];
+    //     schedular.map(item=>{
+    //       if(reSchedular[0].project_time==item.project_time){
+    //         selectedTime.push(item);
+    //       }
+    //     })
+
+
+
+
+    //     this.setData({
+    //       detailDate:detail,
+    //       schedular:schedular,
+    //       reSchedular:reSchedular,
+    //       sessionTime:selectedTime,
+    //       'submitData.schedular_id':selectedTime[0].id,
+    //       // selectedTime:selectedTime[0]//选中项
+    //     })
+    //   },
+    //   fail: (err) => {
+    //     console.log("err", err);
+    //   }
+    // })
   },
 
 
@@ -113,34 +185,60 @@ Page({
   },
 
   fetchDiscountsDetail:function(options){
-    wx.showLoading({
-      title: '加载中',
-      mask:true
-    })
-    httpsUtil({
-      url: API.GET_TICKET_DISCOUNTS,
-      data: {
-        show_id: options.showId,
-        city_id: options.cityId,
-        venue_id: options.venueId
-      },
-      success: (data) => {
-        console.log("套票优惠",data.data);
+    httpsUtil.get(API.GET_TICKET_DISCOUNTS,{
+      show_id: options.showId,
+      city_id: options.cityId,
+      venue_id: options.venueId
+    },{isLoading:true}).then(data=>{
+      console.log("套票优惠",data.data);
+      wx.hideLoading()
 
-        wx.hideLoading()
-
-        this.setData({
-          isShowActionSheet:true
-        })
-        const detail = data.data.data.list;
-        this.setData({
-          discountsDetial:detail
-        })
-      },
-      fail: (err) => {
-        console.log("err", err);
-      }
+      this.setData({
+        isShowActionSheet:true
+      })
+      const detail = data.data.list;
+      this.setData({
+        discountsDetial:detail
+      })
     })
+
+
+
+
+
+
+
+
+
+
+    // wx.showLoading({
+    //   title: '加载中',
+    //   mask:true
+    // })
+    // httpsUtil.get({
+    //   url: API.GET_TICKET_DISCOUNTS,
+    //   data: {
+    //     show_id: options.showId,
+    //     city_id: options.cityId,
+    //     venue_id: options.venueId
+    //   },
+    //   success: (data) => {
+    //     console.log("套票优惠",data.data);
+
+    //     wx.hideLoading()
+
+    //     this.setData({
+    //       isShowActionSheet:true
+    //     })
+    //     const detail = data.data.data.list;
+    //     this.setData({
+    //       discountsDetial:detail
+    //     })
+    //   },
+    //   fail: (err) => {
+    //     console.log("err", err);
+    //   }
+    // })
 
   },
 
@@ -152,20 +250,38 @@ Page({
       title: '加载中',
       mask:true
     })
-    httpsUtil({
-      url: API.GET_SCHEDULE_TICKET,
-      data: {
-        schedular_id: typeof(schedular_id)=="number"?schedular_id:this.data.reSchedular[0].id
-      },
-      success: (data) => {
-        console.log("时间表",data.data);
-        wx.hideLoading();
-        this.setData({prices:data.data.data.list})
-      },
-      fail: (err) => {
-        console.log("err", err);
-      }
+
+    httpsUtil.get(API.GET_SCHEDULE_TICKET,{
+      schedular_id: typeof(schedular_id)=="number"?schedular_id:this.data.reSchedular[0].id
+    },{
+        isLoading:true
+    }).then(data=>{
+      console.log("时间表",data);
+      this.setData({prices:data.data.list})
     })
+
+
+
+
+
+    // httpsUtil.get({
+    //   url: API.GET_SCHEDULE_TICKET,
+    //   data: {
+    //     schedular_id: typeof(schedular_id)=="number"?schedular_id:this.data.reSchedular[0].id
+    //   },
+    //   success: (data) => {
+    //     console.log("时间表",data.data);
+    //     wx.hideLoading();
+    //     this.setData({prices:data.data.data.list})
+    //   },
+    //   fail: (err) => {
+    //     console.log("err", err);
+    //   }
+    // })
+
+
+
+
   },
 
   onCloseSchedular:function(){
@@ -189,22 +305,26 @@ Page({
     this.setData({
       activateIndex:dataset.projectIdx,
       sessionTime:sessionTime,
+      'submitData.schedular_id':sessionTime[0].id,
+      'submitData.ticket_id':"",
+      // selectedTime:sessionTime[0],//选中的项
       activateSessionIdx:0,
       // priceIdx:"-"
     })
     this.reSet();
-    this.onGetPrice(dataset.item.id)
+    this.onGetPrice(dataset.item.id);
   },
 
   selectSession:function(e){
     console.log("session时间",e.currentTarget.dataset)
 
-
-
     let dataset = e.currentTarget.dataset;
 
     this.setData({
       activateSessionIdx:dataset.sessionIdx,
+      // selectedTime:e.currentTarget.dataset.item
+      'submitData.schedular_id':dataset.item.id,
+      'submitData.ticket_id':""
       // priceIdx:"-"
     })
     this.reSet();
@@ -226,6 +346,7 @@ Page({
     // console.log("选择价格",dataset.limit_num)
     if(!dataset.item.limit_num){
       this.setData({
+        'submitData.ticket_id':dataset.item.ticket_id,
         isStockoutStatus:true
       })
     }else{
@@ -265,28 +386,19 @@ Page({
   },
 
   stockoutRegister:function(){
-    wx.showLoading({
-      title: '加载中',
-      mask:true
-    })
-    httpsUtil({
-      url: API.STOCKOUT_REGISTER,
-      data: this.data.submitData,
-      success: (data) => {
-        console.log("缺货登记",data.data);
-        wx.hideLoading();
-        // this.setData({prices:data.data.data.list})
-      },
-      fail: (err) => {
-        console.log("err", err);
-      }
+    console.log("缺",this.data.submitData);
+    httpsUtil.post(API.STOCKOUT_REGISTER,this.data.submitData,{isLoading:true}).then((data)=>{
+      console.log("缺货登记",data);
     })
   },
 
 
-
-
-
+  onCheckNotice:function(){
+    this.setData({isShowNoticeInfo:true});
+  },
+  onCloseNoticeInfo:function(){
+    this.setData({isShowNoticeInfo:false});
+  },
 
 
 

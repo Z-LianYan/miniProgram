@@ -1,3 +1,8 @@
+
+.ticketDetail{
+  background-color: #f5f5f5;
+}
+
 .ticketDetail .header_wrapper{
   position: relative;
   height: 435rpx;
@@ -242,6 +247,70 @@
   margin-top: 35.018rpx;
 }
 
+.enter_desc_box{
+  margin-top: 20rpx;
+}
+.enter_desc_box .enter_desc .enter{
+  color: #999;
+}
+.enter_desc_box .enter_desc .desc{
+
+}
+
+.sweet_remind_wrapper{
+  background-color: #fff;
+  margin: 20rpx 0;
+}
+.sweet_remind_wrapper .sweet_remind{
+  height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sweet_remind_wrapper .sweet_remind .sweet{
+  font-weight: bolder;
+}
+
+.sweet_remind_wrapper .desc_box{
+  display: flex;
+  justify-content:space-between;
+}
+.sweet_remind_wrapper .desc_box .desc_item{
+  display: flex;
+  align-items: center;
+  color: #999;
+  padding: 0 10rpx;
+}
+
+.point{
+  width: 10rpx;
+  height: 10rpx;
+  background-color: #666;
+  border-radius: 5rpx;
+  margin-right: 10rpx;
+}
+
+.notice_info_box{
+  margin: 30rpx 0 ;
+}
+
+.notice_info_box .notice_info_item .point_title{
+  display: flex;
+  align-items: center;
+}
+
+.notice_info_box .notice_info_item .desc{
+  padding: 20rpx 0 40rpx 18rpx;
+  color: #666;
+}
+
+
+
+
+
+
+
 
 
 
@@ -258,6 +327,7 @@
   bottom: 0;
   left: 0;
   right: 0;
+  background-color: #fff;
 }
 
 .date_item_activate{

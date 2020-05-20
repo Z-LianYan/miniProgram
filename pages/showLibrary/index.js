@@ -72,41 +72,33 @@ Page({
   },
 
   getShowList:function(){
-    httpsUtil({
-      url: API.GET_RECOMMEND_FOR_YOU,
-      data: {
-        city_id: this.data.cityInfo.id,
-        category: this.data.paramsOptions.category,
-        keywords: "",
-        venue_id: "",
-        start_time: "",
-        referer_type: "",
-        page:this.data.paramsOptions.page
-      },
-      success: (data) => {
 
-        let list = data.data.data.list
+    httpsUtil.get(API.GET_RECOMMEND_FOR_YOU,{
+      city_id: this.data.cityInfo.id,
+      category: this.data.paramsOptions.category,
+      keywords: "",
+      venue_id: "",
+      start_time: "",
+      referer_type: "",
+      page:this.data.paramsOptions.page
+    },{isLoading:false}).then(data=>{
+      let list = data.data.list
 
-        for (let i = 0; i < list.length;i++){
-          list[i].date_scope = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D") + " - " + util.formatDate(list[i].end_show_timestamp * 1000, "M.D");
-        }
+      for (let i = 0; i < list.length;i++){
+        list[i].date_scope = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D") + " - " + util.formatDate(list[i].end_show_timestamp * 1000, "M.D");
+      }
 
+      this.setData({
+        total:data.data.total,
+        show_list: this.data.show_list.concat(list)
+      })
+      
+      if (this.data.show_list.length == data.data.total || data.data.total==0){
+        this.setData({isLoading: false})
+      }else{
         this.setData({
-          total:data.data.data.total,
-          show_list: this.data.show_list.concat(list)
+          isLoading:true
         })
-        
-        if (this.data.show_list.length == data.data.data.total || data.data.data.total==0){
-          this.setData({isLoading: false})
-        }else{
-          this.setData({
-            isLoading:true
-          })
-        }
-        
-      },
-      fail: (err) => {
-        console.log("err", err);
       }
     })
   },

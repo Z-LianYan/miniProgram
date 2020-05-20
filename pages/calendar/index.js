@@ -121,38 +121,66 @@ Page({
   },
 
   getListData: function () {
-    httpsUtil({
-      url: API.GET_RECOMMEND_FOR_YOU,
-      data: this.data.fetchOption,
-      success: (data) => {
-        let res = data.data.data
-        let list = data.data.data.list;
-        if (res.result_type == 2) {
-          return this.setData({
-            total: 0,
-            listData: []
-          })
+
+    httpsUtil.get(API.GET_RECOMMEND_FOR_YOU,this.data.fetchOption,{isLoading:false}).then(data=>{
+      let res = data.data
+      let list = data.data.list;
+      if (res.result_type == 2) {
+        return this.setData({
+          total: 0,
+          listData: []
+        })
+      }
+      if(list.length){
+        for (let i = 0; i < list.length; i++) {
+          list[i].equality_start_end_date = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D");
+          list[i].equality_start_end_time = util.formatDate(list[i].start_show_timestamp * 1000, "h.m");
+          list[i].date_scope = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D") + " - " + util.formatDate(list[i].end_show_timestamp * 1000, "M.D");
         }
-        if(list.length){
-          for (let i = 0; i < list.length; i++) {
-            list[i].equality_start_end_date = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D");
-            list[i].equality_start_end_time = util.formatDate(list[i].start_show_timestamp * 1000, "h.m");
-            list[i].date_scope = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D") + " - " + util.formatDate(list[i].end_show_timestamp * 1000, "M.D");
-          }
-        }
+      }
+      
+
+      this.setData({
+        isLoading: true,
+        total: data.data.total,
+        listData: this.data.listData.concat(list)
+      })
+    })
+
+
+
+    // httpsUtil({
+    //   url: API.GET_RECOMMEND_FOR_YOU,
+    //   data: this.data.fetchOption,
+    //   success: (data) => {
+    //     let res = data.data.data
+    //     let list = data.data.data.list;
+    //     if (res.result_type == 2) {
+    //       return this.setData({
+    //         total: 0,
+    //         listData: []
+    //       })
+    //     }
+    //     if(list.length){
+    //       for (let i = 0; i < list.length; i++) {
+    //         list[i].equality_start_end_date = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D");
+    //         list[i].equality_start_end_time = util.formatDate(list[i].start_show_timestamp * 1000, "h.m");
+    //         list[i].date_scope = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D") + " - " + util.formatDate(list[i].end_show_timestamp * 1000, "M.D");
+    //       }
+    //     }
         
 
-        this.setData({
-          isLoading: true,
-          total: data.data.data.total,
-          listData: this.data.listData.concat(list)
-        })
+    //     this.setData({
+    //       isLoading: true,
+    //       total: data.data.data.total,
+    //       listData: this.data.listData.concat(list)
+    //     })
 
-      },
-      fail: (err) => {
-        console.log("err", err);
-      }
-    })
+    //   },
+    //   fail: (err) => {
+    //     console.log("err", err);
+    //   }
+    // })
   },
 
 

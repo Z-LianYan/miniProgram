@@ -30,7 +30,7 @@
     </view>
 
     
-    <view class="content_wrapper">
+    <view class="content_wrapper padding_tb">
         <van-cell>
             <view slot="title" class="support">
                 <view 
@@ -68,6 +68,25 @@
             </view>
         </view>
 
+    </view>
+
+    <van-cell class="enter_desc_box">
+        <view slot="title" class="enter_desc">
+            <text class="enter">入 场 : </text>
+            <text class="desc"> {{detailDate.static_data.tips.desc}}</text>
+        </view>
+    </van-cell>
+
+    <view class="sweet_remind_wrapper padding_trbl" bindtap="onCheckNotice">
+        <view class="sweet_remind">
+            <text class="sweet">温馨提醒</text>
+            <van-icon name="arrow" />
+        </view>
+        <view class="desc_box">
+            <view class="desc_item" wx:for="{{detailDate.static_data.show_notice.list}}" wx:key="*this">
+                <view class="point"></view>{{item.title}}
+            </view>
+        </view>
     </view>
 
     
@@ -188,6 +207,24 @@
         </scroll-view>
         <view class="btn_wrapper">
             <van-button color="#ff4d4a" round type="info" bindtap="stockoutRegister">{{isStockoutStatus?"提交":"选座购买"}}</van-button>
+        </view>
+    </van-action-sheet>
+
+
+    <van-action-sheet 
+    show="{{ isShowNoticeInfo }}" 
+    bind:close="onCloseNoticeInfo"
+    title="温馨提示">
+        <view class="notice_info_box padding_lr">
+            <view class="notice_info_item" wx:for="{{detailDate.static_data.show_notice.list}}" wx:key="*this">
+                <view class="point_title">
+                    <view class="point"></view>
+                    <view class="title"></view>{{item.title}}
+                </view>
+                <view class="desc">
+                    {{item.desc}}
+                </view>
+            </view>
         </view>
     </van-action-sheet>
 

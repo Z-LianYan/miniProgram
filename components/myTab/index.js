@@ -99,46 +99,31 @@ Component({
       this.triggerEvent("getCategoryId",{categoryId: e.detail.name})
     },
     getClassifyList:function(){
-      // console.log("111111")
-      httpsUtil({
-        url: API.GET_CATEGORY_LIST,
-        data:{},
-        success:(data)=>{
-          data.data.data.unshift({
-            id: 0,
-            name: "全部"
-          })
-          this.setData({
-            classifyList:data.data.data
-          })
-        },
-        fail:(err)=>{
-          console.log("err",err);
-        }
+
+      httpsUtil.get(API.GET_CATEGORY_LIST,{},{isLoading:false}).then(data=>{
+        data.data.unshift({
+          id: 0,
+          name: "全部"
+        })
+        this.setData({
+          classifyList:data.data
+        })
       })
     },
 
     getCityList:function(){
-      // console.log("111111")
-      httpsUtil({
-        url: API.GET_CITY_LIST_TABS,
-        data:{},
-        success:(data)=>{
-          console.log("data----城市",data.data.data);
-          data.data.data.city_list.unshift({
-            Abbreviation: "",
-            enname: "",
-            is_city: 0,
-            id: 0,
-            name: "全部"
-          })
-          this.setData({
-            cityList:data.data.data.city_list
-          })
-        },
-        fail:(err)=>{
-          console.log("err",err);
-        }
+
+      httpsUtil.get(API.GET_CITY_LIST_TABS,{},{isLoading:false}).then(data=>{
+        data.data.city_list.unshift({
+          Abbreviation: "",
+          enname: "",
+          is_city: 0,
+          id: 0,
+          name: "全部"
+        })
+        this.setData({
+          cityList:data.data.city_list
+        })
       })
     },
 

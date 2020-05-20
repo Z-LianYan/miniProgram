@@ -81,27 +81,17 @@ Page({
 
 
   fetchData:function(){
-    httpsUtil({
-      url: API.GET_THEATER_LIST,
-      data: this.data.fetchOptions,
-      success: (data) => {
-        console.log("data----哈哈哈哈",data.data);
-        let list = data.data.data.theatre_list;
-        if(list.length){
-          this.setData({
-            theater_list: this.data.theater_list.concat(list)
-          })
-        }else{
-          this.setData({
-            isLoading: false
-          })
-        }
-      },
-      fail: (err) => {
+    httpsUtil.get(API.GET_THEATER_LIST,this.data.fetchOptions,{isLoading:false}).then(data=>{
+      console.log("data----哈哈哈哈",data.data);
+      let list = data.data.theatre_list;
+      if(list.length){
         this.setData({
-          isLoading:true
+          theater_list: this.data.theater_list.concat(list)
         })
-        console.log("err", err);
+      }else{
+        this.setData({
+          isLoading: false
+        })
       }
     })
   },

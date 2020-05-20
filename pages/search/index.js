@@ -33,58 +33,40 @@ Page({
   },
 
   getSearchList:function(){
-    httpsUtil({
-      url: API.GET_RECOMMEND_FOR_YOU,
-      data: this.data.fetchOptoins,
-      success: (data) => {
-        console.log("搜索", data.data.data.result_type);
+    httpsUtil.get(API.GET_RECOMMEND_FOR_YOU,this.data.fetchOptoins,{isLoading:false}).then(data=>{
+      console.log("搜索", data.data.result_type);
 
-
-
-        let list = data.data.data.list
-        for (let i = 0; i < list.length;i++){
-          list[i].date_scope = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D") + " - " + util.formatDate(list[i].end_show_timestamp * 1000, "M.D");
-        }
-        
-        this.setData({
-          result_type: data.data.data.result_type,
-          search_list: this.data.search_list.concat(list),
-          total:data.data.data.total
-        })
-
-        
-        
-        if (this.data.search_list.length == data.data.data.total || data.data.data.total==0){
-          this.setData({isLoading: false})
-        }else{
-          this.setData({
-            isLoading:true
-          })
-        }
-        
-        
-      },
-      fail: (err) => {
-        console.log("err", err);
+      let list = data.data.list
+      for (let i = 0; i < list.length;i++){
+        list[i].date_scope = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D") + " - " + util.formatDate(list[i].end_show_timestamp * 1000, "M.D");
       }
+      
+      this.setData({
+        result_type: data.data.result_type,
+        search_list: this.data.search_list.concat(list),
+        total:data.data.total
+      })
+
+      
+      
+      if (this.data.search_list.length == data.data.total || data.data.total==0){
+        this.setData({isLoading: false})
+      }else{
+        this.setData({
+          isLoading:true
+        })
+      }
+
     })
+
   },
 
   fetchHotSearch(){
-    httpsUtil({
-      url: API.GET_HOT_SEARCH_LIST,
-      data: {},
-      success: (data) => {
-        console.log("热搜索列表", data.data);
-        
-        this.setData({
-          hotList:data.data.data
-        })
-        
-      },
-      fail: (err) => {
-        console.log("err", err);
-      }
+    httpsUtil.get(API.GET_HOT_SEARCH_LIST,{},{isLoading:false}).then(data=>{
+      console.log("热搜索列表", data.data);
+      this.setData({
+        hotList:data.data
+      })
     })
   },
 

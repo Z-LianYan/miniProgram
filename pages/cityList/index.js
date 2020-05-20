@@ -78,42 +78,27 @@ Page({
 
 
   fetchCityData:function(){
-    wx.showLoading({
-      title: '加载中',
-      mask:true
-    })
-    httpsUtil({
-      url: API.GET_CITY_LIST,
-      data: this.data.fetchOptions,
-      success: (data) => {
-        wx.hideLoading()
-        let cityList = data.data.data;
-        let indexList = Object.keys(cityList);
-        indexList.unshift('热门');
-        indexList.unshift('定位');
-        this.setData({
-          cityList:cityList,
-          indexList:indexList
-        })
 
-      },
-      fail: (err) => {
-        console.log("err", err);
-      }
+    httpsUtil.get(API.GET_CITY_LIST,this.data.fetchOptions,{isLoading:true}).then(data=>{
+      let cityList = data.data;
+      let indexList = Object.keys(cityList);
+      indexList.unshift('热门');
+      indexList.unshift('定位');
+      this.setData({
+        cityList:cityList,
+        indexList:indexList
+      })
     })
   },
 
   fetchHotCityList:function(){
-    httpsUtil({
-      url:API.GET_HOT_CITY_LIST,
-      data: {
+    httpsUtil.get(API.GET_HOT_CITY_LIST,{
         version: '6.1.1',
         referer: 2
-      },
-      success: (data) => {
-        console.log("热门城市---------",data.data.data.hot_city_List);
+      },{isLoading:false}).then(data=>{
+        console.log("热门城市---------",data.data.hot_city_List);
 
-        let hotCityList = data.data.data.hot_city_List;
+        let hotCityList = data.data.hot_city_List;
         hotCityList.unshift({
           name: "全国",
           id: 0,
@@ -122,18 +107,12 @@ Page({
         this.setData({
           hotCityList:hotCityList
         })
-      },
-      fail: (err) => {
-        console.log("err", err);
-      }
-    })
+      })
   },
 
   selectCity:function(e){
     wx.setStorageSync('cityInfo', e.currentTarget.dataset)
     wx.switchTab({ url: '/pages/index/index' })
   }
-
-
 
 })
