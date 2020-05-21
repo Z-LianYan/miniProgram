@@ -162,7 +162,7 @@
                     选择日期
                 </view>
                 <view class="date_scope">
-                    <view 
+                    <view
                     class="date_item {{activateIndex==index?'date_item_activate':''}}" 
                     wx:for="{{reSchedular}}" 
                     data-item="{{item}}"
@@ -173,7 +173,7 @@
                     </view>
                 </view>
             </view>
-            <view class="detail_item">
+            <view class="detail_item" wx:if="{{sessionTime.length}}">
                 <view class="title">
                     选择场次
                 </view>

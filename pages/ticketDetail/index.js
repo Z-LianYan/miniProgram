@@ -81,7 +81,7 @@ Page({
 
       let selectedTime = [];
       schedular.map(item=>{
-        if(reSchedular[0].project_time==item.project_time){
+        if(reSchedular[0].project_time==item.project_time && item.session_time){
           selectedTime.push(item);
         }
       })
@@ -94,7 +94,7 @@ Page({
         schedular:schedular,
         reSchedular:reSchedular,
         sessionTime:selectedTime,
-        'submitData.schedular_id':selectedTime[0].id,
+        'submitData.schedular_id':selectedTime.length?selectedTime[0].id:reSchedular[0].id,
         // selectedTime:selectedTime[0]//选中项
       })
     })
@@ -171,7 +171,7 @@ Page({
     // let item = dataset.item;
     let sessionTime = [];
     this.data.schedular.map(item=>{
-      if(dataset.item.project_time==item.project_time){
+      if(dataset.item.project_time==item.project_time && item.session_time){
         sessionTime.push(item);
       }
     })
@@ -179,7 +179,7 @@ Page({
     this.setData({
       activateIndex:dataset.projectIdx,
       sessionTime:sessionTime,
-      'submitData.schedular_id':sessionTime[0].id,
+      'submitData.schedular_id':sessionTime.length?sessionTime[0].id:dataset.item.id,
       'submitData.ticket_id':"",
       // selectedTime:sessionTime[0],//选中的项
       activateSessionIdx:0,

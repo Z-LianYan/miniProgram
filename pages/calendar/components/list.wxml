@@ -1,5 +1,9 @@
 <view class="content_list padding_lr">
-    <view class="list_item" wx:for="{{listData}}" wx:key="index">
+    <navigator 
+    url="/pages/ticketDetail/index?schedular_url={{item.url}}"
+    class="list_item" 
+    wx:for="{{listData}}" 
+    wx:key="index">
         <view class="img_box">
             <image 
             class="list_img" 
@@ -42,5 +46,5 @@
                 <text class="font">起</text>
             </view>
         </view>
-    </view>
+    </navigator>
 </view>

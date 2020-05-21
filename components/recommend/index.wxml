@@ -3,7 +3,13 @@
   <view class="padding_trbl recommend_wrapper {{recommend_list.length==1?'recommend_wrapper_one':''}}">
 
     <view>
-      <view class="recommend_item" wx:for="{{recommend_list}}" wx:for-item="items" wx:if="{{index%2 == 0}}" wx:key="*this">
+      <navigator 
+      url="/pages/ticketDetail/index?schedular_url={{items.url}}"
+      class="recommend_item" 
+      wx:for="{{recommend_list}}" 
+      wx:for-item="items" 
+      wx:if="{{index%2 == 0}}"
+      wx:key="*this">
         <image class="recommend_image" src="{{items.pic}}" mode="cover"></image>
         <van-tag wx:if="{{!cityInfo.id}}" round custom-class="ticket_city" color="#000">{{items.city_name}}</van-tag>
         <view class="content">
@@ -28,11 +34,16 @@
             </view>
           </view>
         </view>
-      </view>
+      </navigator>
     </view>
 
     <view>
-      <view class="recommend_item" wx:for="{{recommend_list}}" wx:for-item="items" wx:if="{{index%2 != 0}}" wx:key="*this">
+      <navigator 
+      url="/pages/ticketDetail/index?schedular_url={{items.url}}" 
+      class="recommend_item" 
+      wx:for="{{recommend_list}}" 
+      wx:for-item="items" wx:if="{{index%2 != 0}}" 
+      wx:key="*this">
         <image class="recommend_image" src="{{items.pic}}" mode="cover"></image>
         <van-tag wx:if="{{!cityInfo.id}}" round custom-class="ticket_city" color="#000">{{items.city_name}}</van-tag>
         <view class="content">
@@ -62,7 +73,7 @@
             </view>
           </view>
         </view>
-      </view>
+      </navigator>
     </view>
 
 
