@@ -25,6 +25,9 @@ Component({
     },
     attached:function(){//在组件实例进入页面节点树时执行
       console.log("456---",this.data.listData);
+    },
+    ready:function(){
+      console.log("组件布局完成后执行")
     }
   },
 

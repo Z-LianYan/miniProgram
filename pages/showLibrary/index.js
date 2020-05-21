@@ -18,6 +18,9 @@ Page({
     isLoading:true,
 
     activeTabs:0,
+
+    // options:{}
+
   },
 
   /**
@@ -28,7 +31,7 @@ Page({
     this.setData({
       activeTabs:options.category?Number(options.category):0,
       "paramsOptions.category":options.category?options.category:0,
-      cityInfo:wx.getStorageSync("cityInfo")
+      cityInfo:options.city_id?{id:options.city_id,name:options.city_name,abbreviation:""}:wx.getStorageSync("cityInfo")
     })
     this.getShowList();
   },
@@ -81,7 +84,7 @@ Page({
       start_time: "",
       referer_type: "",
       page:this.data.paramsOptions.page
-    },{isLoading:false}).then(data=>{
+    },{isLoading:true}).then(data=>{
       let list = data.data.list
 
       for (let i = 0; i < list.length;i++){
@@ -122,9 +125,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      cityInfo:wx.getStorageSync('cityInfo')
-    })
+    // if(this.data.options.id){
+    //   return this.setData({
+    //     cityInfo:this.data.options
+    //   })
+    // }
+    // else{
+      // this.setData({
+      //   cityInfo:wx.getStorageSync('cityInfo')
+      // })
+    // }
+    
   },
 
   /**

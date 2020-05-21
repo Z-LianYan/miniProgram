@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    detailDate:{},
+    detailData:{},
     isShowDialog:false,
     isShowActionSheet:false,
     isShowSchedular:false,
@@ -43,16 +43,22 @@ Page({
     },
 
     // selectedTime:{}
+    relativeRecommend:[],
+    isShowMoreBtn:false
 
   },
 
-  fetchDetailData:function(){
+  fetchDetailData:function(schedular_id){
     httpsUtil.get(API.GET_TICKET_DETAIL,{
-      schedular_id: 111971
+      schedular_id: schedular_id
       // schedular_id: 110775
-    },{isLoading:true}).then(data=>{
+    },{isLoading:false}).then(data=>{
       console.log("演出详情",data.data);
       const detail = data.data;
+
+      this.fetchRelativeRecommend(detail.static_data.cate_parent_id,detail.static_data.city.city_id);
+
+
       detail.static_data.low_price = Number(detail.static_data.low_price).toFixed(0);
       detail.static_data.high_price = Number(detail.static_data.high_price).toFixed(0);
       
@@ -84,7 +90,7 @@ Page({
 
 
       this.setData({
-        detailDate:detail,
+        detailData:detail,
         schedular:schedular,
         reSchedular:reSchedular,
         sessionTime:selectedTime,
@@ -92,70 +98,6 @@ Page({
         // selectedTime:selectedTime[0]//选中项
       })
     })
-
-
-
-
-
-
-
-
-
-
-
-
-    // httpsUtil.get({
-    //   url: API.GET_TICKET_DETAIL,
-    //   data: {
-    //     schedular_id: 111971
-    //     // schedular_id: 110775
-    //   },
-    //   success: (data) => {
-    //     console.log("演出详情",data.data);
-    //     const detail = data.data.data;
-    //     detail.static_data.low_price = Number(detail.static_data.low_price).toFixed(0);
-    //     detail.static_data.high_price = Number(detail.static_data.high_price).toFixed(0);
-        
-    //     detail.static_data.venue.venueArr = detail.static_data.venue.venue_coordinate.split(',')
-
-    //     detail.static_data.show_time_scope = util.formatDate(detail.static_data.show_time_data.show_time_start * 1000, "Y.M.D")+' - '+util.formatDate(detail.static_data.show_time_data.show_time_end * 1000, "M.D");
-        
-
-    //     let schedular = data.data.data.item_list;
-    //     let reSchedular = [];
-    //     let uniqueObj={};
-    //     for(let i=0;i<schedular.length;i++){
-    //       if(!uniqueObj[schedular[i].project_time]){
-    //         uniqueObj[schedular[i].project_time] = true;
-    //         reSchedular.push(schedular[i]);
-    //       }
-    //     }
-
-    //     console.log("6666",detail.static_data.venue);
-
-    //     let selectedTime = [];
-    //     schedular.map(item=>{
-    //       if(reSchedular[0].project_time==item.project_time){
-    //         selectedTime.push(item);
-    //       }
-    //     })
-
-
-
-
-    //     this.setData({
-    //       detailDate:detail,
-    //       schedular:schedular,
-    //       reSchedular:reSchedular,
-    //       sessionTime:selectedTime,
-    //       'submitData.schedular_id':selectedTime[0].id,
-    //       // selectedTime:selectedTime[0]//选中项
-    //     })
-    //   },
-    //   fail: (err) => {
-    //     console.log("err", err);
-    //   }
-    // })
   },
 
 
@@ -191,7 +133,6 @@ Page({
       venue_id: options.venueId
     },{isLoading:true}).then(data=>{
       console.log("套票优惠",data.data);
-      wx.hideLoading()
 
       this.setData({
         isShowActionSheet:true
@@ -201,87 +142,20 @@ Page({
         discountsDetial:detail
       })
     })
-
-
-
-
-
-
-
-
-
-
-    // wx.showLoading({
-    //   title: '加载中',
-    //   mask:true
-    // })
-    // httpsUtil.get({
-    //   url: API.GET_TICKET_DISCOUNTS,
-    //   data: {
-    //     show_id: options.showId,
-    //     city_id: options.cityId,
-    //     venue_id: options.venueId
-    //   },
-    //   success: (data) => {
-    //     console.log("套票优惠",data.data);
-
-    //     wx.hideLoading()
-
-    //     this.setData({
-    //       isShowActionSheet:true
-    //     })
-    //     const detail = data.data.data.list;
-    //     this.setData({
-    //       discountsDetial:detail
-    //     })
-    //   },
-    //   fail: (err) => {
-    //     console.log("err", err);
-    //   }
-    // })
-
   },
 
 
   onGetPrice:function(schedular_id){
     this.setData({isShowSchedular:true})
     console.log("--",typeof(schedular_id))
-    wx.showLoading({
-      title: '加载中',
-      mask:true
-    })
-
     httpsUtil.get(API.GET_SCHEDULE_TICKET,{
       schedular_id: typeof(schedular_id)=="number"?schedular_id:this.data.reSchedular[0].id
     },{
-        isLoading:true
+      isLoading:true
     }).then(data=>{
       console.log("时间表",data);
       this.setData({prices:data.data.list})
     })
-
-
-
-
-
-    // httpsUtil.get({
-    //   url: API.GET_SCHEDULE_TICKET,
-    //   data: {
-    //     schedular_id: typeof(schedular_id)=="number"?schedular_id:this.data.reSchedular[0].id
-    //   },
-    //   success: (data) => {
-    //     console.log("时间表",data.data);
-    //     wx.hideLoading();
-    //     this.setData({prices:data.data.data.list})
-    //   },
-    //   fail: (err) => {
-    //     console.log("err", err);
-    //   }
-    // })
-
-
-
-
   },
 
   onCloseSchedular:function(){
@@ -400,13 +274,45 @@ Page({
     this.setData({isShowNoticeInfo:false});
   },
 
+  fetchRelativeRecommend(categoryId,city_id){
+    httpsUtil.get(API.GET_RECOMMEND_FOR_YOU,{
+      category: categoryId,
+      city_id: city_id
+    },{isLoading:false}).then(data=>{
+      console.log("相关推荐",data.data);
+
+      const list = data.data.list;
+
+      const recommend = [];
+      list.map(item=>{
+        if(this.data.detailData.static_data.show_id != item.show_id) recommend.push(item)
+      })
+
+      if(list.length){
+        for (let i = 0; i < list.length; i++) {
+          list[i].equality_start_end_date = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D");
+          list[i].equality_start_end_time = util.formatDate(list[i].start_show_timestamp * 1000, "h.m");
+          list[i].date_scope = util.formatDate(list[i].start_show_timestamp * 1000, "Y.M.D") + " - " + util.formatDate(list[i].end_show_timestamp * 1000, "M.D");
+        }
+      }
+    
+      this.setData({
+        isShowMoreBtn:recommend.length>3?true:false,
+        relativeRecommend:recommend.slice(0,3)
+      })
+
+    })
+  },
+
 
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.fetchDetailData();
+    console.log("options",options);
+    const schedular_id = options.schedular_url.replace("https://m.juooo.com/ticket/","")
+    this.fetchDetailData(schedular_id);
   },
   
 
@@ -414,7 +320,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    console.log("页面初次渲染完成")
   },
 
   /**

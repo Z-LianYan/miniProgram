@@ -1,10 +1,12 @@
 <!--pages/index/components/swiper/index.wxml-->
 <view class="swiper_wrapper" wx:if="{{slide_list.length}}">
   <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{2000}}" duration="{{500}}" circular="{{true}}">
-    <block wx:for="{{slide_list}}" wx:key="*this">
+    <navigator 
+    url="/pages/ticketDetail/index?schedular_url={{item.url}}"  
+    wx:for="{{slide_list}}" wx:key="*this">
       <swiper-item>
         <image style="width:100vw;height:100%;" src="{{item.image_url}}" mode="cover"></image>
       </swiper-item>
-    </block>
+    </navigator>
   </swiper>
 </view>

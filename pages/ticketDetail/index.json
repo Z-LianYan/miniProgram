@@ -5,6 +5,8 @@
     "van-button": "/components/dist/button/index",
     "van-action-sheet": "/components/dist/action-sheet/index",
     "van-tag": "/components/dist/tag/index",
-    "van-field": "/components/dist/field/index"
+    "my-relative-recommend": "/pages/calendar/components/list",
+    "van-field": "/components/dist/field/index",
+    "my-cell": "/components/myCell/index"
   }
 }

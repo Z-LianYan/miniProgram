@@ -113,16 +113,29 @@ Page({
       city_id: this.data.cityInfo.id,
       abbreviation: this.data.cityInfo.abbreviation
     },{isLoading:false}).then(data=>{
-      let classiyfList = data.data.classify_list;
-      let list = [];
-      classiyfList.map(item=>{
+      let classifyList = data.data.classify_list;
+      let slideList = data.data.slide_list;
+
+      let classifyData = [];
+      let slideData = [];
+
+
+      classifyList.map(item=>{
         if(item.category_id!=0){
-          list.push(item);
+          classifyData.push(item);
         }
       })
+      
+
+      slideList.map(item=>{
+        if(item.url.indexOf("https://m.juooo.com/ticket/")!=-1){
+          slideData.push(item)
+        }
+      })
+
       this.setData({
-        classifyList:list,
-        slide_list: data.data.slide_list
+        classifyList:classifyData,
+        slide_list: slideData
       })
     })
   },

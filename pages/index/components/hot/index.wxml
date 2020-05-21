@@ -6,7 +6,12 @@
   <view class="hot_wrapper padding_l padding_tb">
 
     <scroll-view scroll-x="true" class="scroll_box">
-      <navigator hover-class="none" url="/pages/ticketDetail/index" class="scroll_item" wx:for="{{hot_list}}" wx:key="*this">
+      <navigator 
+      hover-class="none" 
+      url="/pages/ticketDetail/index?schedular_url={{item.schedular_url}}" 
+      class="scroll_item"
+      wx:for="{{hot_list}}"
+      wx:key="*this">
         <image class="hot_image" src="{{item.pic}}" mode="cover"></image>
         <text class="hot_desc">{{item.show_name}}</text>
       </navigator>

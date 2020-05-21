@@ -33,24 +33,19 @@ App({
       }
     })
 
-
-
     this.setCityInfo();
-
-    
-
-
 
   },
 
   setCityInfo:function(){
     console.log("哈佛理发店哈是的")
-    wx.getStorageSync("cityInfo")?"":wx.setStorageSync('cityInfo', {"id":0,"name":"全国","abbreviation":""})
+    const cityInfo = wx.getStorageSync("cityInfo");
+    console.log("-----",Object.keys(cityInfo).length)
+    cityInfo.id?"":wx.setStorageSync('cityInfo', {"id":0,"name":"全国","abbreviation":""})
   },
 
   onShow: function () {//小程序初始化完成后，触发onShow方法 ，从后台进入前台显示，触发onShow方法
     console.log('App onShow');
-
   },
 
   onHide: function () {//小程序从前台进入后台，触发onHide方法
