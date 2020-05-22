@@ -70,11 +70,11 @@ Page({
 
     this.setData({
       'recommendOptions.page':1,
-      classifyList:[],
-      slide_list:[],
-      hot_list:[],
-      recommend_list: [],
-      tourSingList: [],
+      // classifyList:[],
+      // slide_list:[],
+      // hot_list:[],
+      // recommend_list: [],
+      // tourSingList: [],
       isLoading:true,
       cityInfo:wx.getStorageSync('cityInfo')
     })
@@ -93,6 +93,21 @@ Page({
       this.fetchTourSingList();
     }
   },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+    this.setData({
+      classifyList:[],
+      slide_list:[],
+      hot_list:[],
+      recommend_list: [],
+      tourSingList: [],
+    })
+  },
+
+
 
 
 
