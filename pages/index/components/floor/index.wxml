@@ -1,0 +1,61 @@
+<!--pages/index/components/hot/index.wxml-->
+<view class="floor_container">
+
+  <my-cell 
+  leftTitle="{{itemList.title}}" 
+  rightTitle="全部" 
+  isLeftArrow="true" 
+  url="/pages/showLibrary/index?search_url={{itemList.search_url}}"/>
+
+
+  <view class="top_wrapper">
+    <view class="img_box">
+      <image class="top_image" src="{{itemList.list[0].pic}}" mode="cover"></image>
+      <image 
+      class="top_sponsor" 
+      src="/images/sponsor.png" 
+      mode="aspectFit|aspectFill|widthFix" 
+      lazy-load="true"/>
+    </view>
+    <view class="top_right">
+      <view class="show_date">
+        {{itemList.list[0].show_date}} {{itemList.list[0].week}} {{itemList.list[0].time}}
+      </view>
+      <view class="schedular_name">
+        {{itemList.list[0].schedular_name}}
+      </view>
+    </view>
+  </view>
+
+
+
+
+  <view class="hot_wrapper padding_l padding_tb">
+
+    <scroll-view scroll-x="true" class="scroll_box">
+      <navigator 
+      hover-class="none" 
+      url="/pages/ticketDetail/index?schedular_url={{itm.url}}" 
+      class="scroll_item"
+      wx:for="{{itemList.list}}"
+      wx:for-index="idx"
+      wx:for-item="itm"
+      wx:if="{{idx!=0}}"
+      wx:key="*this">
+        <view class="img_box">
+          <image class="hot_image" src="{{itm.pic}}" mode="cover"></image>
+          <image 
+          class="sponsor" 
+          src="/images/sponsor.png" 
+          mode="aspectFit|aspectFill|widthFix" 
+          lazy-load="true"/>
+        </view>
+        <text class="hot_desc">{{itm.schedular_name}}</text>
+        <view class="price_box">
+          <view class="price">{{itm.low_price}}</view>起
+        </view>
+        
+      </navigator>
+    </scroll-view>
+  </view>
+</view>

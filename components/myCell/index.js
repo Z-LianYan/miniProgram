@@ -15,7 +15,8 @@ Component({
     isLeftArrow:{
       type: Boolean,
       value: false
-    }
+    },
+    url:String
 
   },
 

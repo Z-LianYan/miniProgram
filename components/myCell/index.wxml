@@ -2,13 +2,12 @@
 <view class="mycell_wrapper">
     <text class="left_title">{{leftTitle}}</text>
 
-    <view class="right_content" bindtap="onRight">
+    <navigator url="{{url}}" class="right_content" hover-class="none" bindtap="onRight">
         <text wx:if="rightTitle">{{rightTitle}}</text>
-
         
         <slot></slot>
 
         <van-icon class="right_arrow" wx:if="{{isLeftArrow}}" name="arrow"/>
 
-    </view>
+    </navigator>
 </view>

@@ -21,6 +21,7 @@ Page({
     hot_list:[],
     recommend_list: [],
     tourSingList:[],
+    floorData:[],
     total:'-',
 
     isLoading:true,
@@ -91,6 +92,7 @@ Page({
 
     if(this.data.cityInfo.id==0){
       this.fetchTourSingList();
+      this.fetchFloorShow();
     }
   },
 
@@ -104,6 +106,7 @@ Page({
       hot_list:[],
       recommend_list: [],
       tourSingList: [],
+      floorData:[]
     })
   },
 
@@ -211,6 +214,27 @@ Page({
       })
     })
   },
+
+  fetchFloorShow:function(){
+    httpsUtil.get(API.GET_FLOOR_SHOW,{
+      city_id: this.data.cityInfo.id
+    },{isLoading:false}).then( data => {
+      console.log("楼层", data.data);
+      let list = data.data;
+      for(var i=0;i<list.length;i++){
+        for(let j=0;j<list[i].list.length;j++){
+          list[i].list[j].show_date = util.formatDate(list[i].list[j].show_time * 1000, "Y.M.D");
+          list[i].list[j].time = util.formatDate(list[i].list[j].show_time * 1000, "h:m");
+        }
+      }
+      this.setData({
+        floorData: list,
+      })
+    })
+  },
+
+
+
 
 
   scrolltolower:function(){

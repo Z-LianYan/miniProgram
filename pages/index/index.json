@@ -9,7 +9,8 @@
     "van-loading": "/components/dist/loading/index",
     "van-divider": "/components/dist/divider/index",
     "my-tour-sing": "/pages/index/components/tourSing/index",
-    "my-cell": "/components/myCell/index"
+    "my-cell": "/components/myCell/index",
+    "my-floor": "/pages/index/components/floor/index"
   }
   
 }

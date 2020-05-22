@@ -1,7 +1,11 @@
 <!--pages/index/components/hot/index.wxml-->
 <view class="hot_container" wx:if="{{hot_list.length}}">
 
-  <my-cell leftTitle="热门演出" rightTitle="全部" isLeftArrow="true" bindonRightEvent="onRightEvent"/>
+  <my-cell 
+  leftTitle="热门演出" 
+  rightTitle="全部" 
+  isLeftArrow="true" 
+  url="/pages/showLibrary/index"/>
 
   <view class="hot_wrapper padding_l padding_tb">
 

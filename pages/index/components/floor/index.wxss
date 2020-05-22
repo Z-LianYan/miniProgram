@@ -1,0 +1,96 @@
+/* pages/index/components/hot/index.wxss */
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.floor_container .top_wrapper{
+  padding: 28.014rpx 30.016rpx;
+  display: flex;
+  align-items: center;
+}
+.floor_container .top_wrapper .img_box{
+  position: relative;
+}
+.floor_container .top_wrapper .img_box .top_image{
+  width: 200.1rpx;
+  height: 272.12rpx;
+}
+.floor_container .top_wrapper .img_box .top_sponsor{
+  position: absolute;
+  top: -2rpx;
+  left: 10rpx;
+  width: 60rpx;
+  height: 70rpx;
+}
+.floor_container .top_wrapper .top_right{
+  margin-left: 15rpx;
+
+}
+.floor_container .top_wrapper .top_right .schedular_name{
+  /* white-space:pre-line;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; */
+  
+}
+
+
+
+
+
+
+
+.hot_wrapper{
+  /* padding:20rpx 0 20rpx 20rpx; */
+}
+
+.hot_wrapper .scroll_box{
+  white-space: nowrap;
+}
+
+.hot_wrapper .scroll_box .scroll_item{
+  width: 200rpx;
+  display: inline-block;
+  margin-right: 20rpx;
+}
+
+.hot_wrapper .scroll_box .scroll_item .hot_image{
+  width: 100%;
+  height: 272rpx;
+  border-radius: 10rpx;
+}
+.hot_wrapper .scroll_box .scroll_item .hot_desc{
+  white-space:pre-line;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.hot_wrapper .scroll_box .scroll_item .price_box{
+  display: flex;
+  align-items: center;
+  color: #999;
+  font-size: 25rpx;
+}
+.hot_wrapper .scroll_box .scroll_item .price_box .price{
+  color: #ff6743;
+  font-size: 30rpx;
+  margin-right: 10rpx;
+}
+
+.hot_wrapper .scroll_box .scroll_item .img_box{
+ position: relative;
+}
+.hot_wrapper .scroll_box .scroll_item .img_box .sponsor{
+  position: absolute;
+  top: -2rpx;
+  left: 10rpx;
+  width: 60rpx;
+  height: 70rpx;
+ }

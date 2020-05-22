@@ -22,11 +22,16 @@
         <my-swiper slide_list="{{slide_list}}" />
 
         <my-classify-list classifyList="{{classifyList}}" />
-
+        
         <my-hot-list hot_list="{{hot_list}}" bindonAllCheck="onHotAllCheck"/>
         
         <my-tour-sing tourSingList="{{tourSingList}}" bindonAllCheck="onTourSingAllCheck"/>
 
+        
+        <my-floor 
+        wx:for="{{floorData}}" 
+        wx:key="*this"
+        itemList="{{item}}" wx:if="{{item.title!='演唱会'}}"/>
         
         <my-cell leftTitle="为你推荐" wx:if="{{recommend_list.length}}"/>
         

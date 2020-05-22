@@ -8,9 +8,9 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    hot_list:{
-      type:Array,
-      value:[]
+    itemList:{
+      type:Object,
+      value:{}
     }
   },
 
@@ -26,24 +26,26 @@ Component({
    */
   methods: {
 
-    // onRightEvent:function(){
-    //   wx.navigateTo({
-    //     url: '/pages/showLibrary/index'
-    //   })
-    //   // this.triggerEvent('onAllCheck', {})
-    // }
+    onRightEvent:function(){
+      wx.navigateTo({
+        url: '/pages/showLibrary/index'
+      })
+      // this.triggerEvent('onAllCheck', {})
+    }
 
   },
 
 
   lifetimes: {
 
-    created() {},
+    created() {
+      console.log("item组件")
+    },
 
     attached() {},
 
     ready() {
-      console.log("ready");
+      console.log("ready",this.data.itemList);
     },
   },
 

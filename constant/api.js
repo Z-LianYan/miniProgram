@@ -29,6 +29,9 @@ export const GET_SCHEDULE_TICKET = "/Schedule/Schedule/getScheduleTicket";//获�
 export const STOCKOUT_REGISTER = "/Schedule/Schedule/addUserBook";//缺货登记
 
 
+export const GET_FLOOR_SHOW = "/home/index/getFloorShow";//首页楼层显示
+
+
 
 
 
