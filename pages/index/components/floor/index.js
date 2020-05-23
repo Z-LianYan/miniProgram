@@ -26,26 +26,24 @@ Component({
    */
   methods: {
 
-    onRightEvent:function(){
-      wx.navigateTo({
-        url: '/pages/showLibrary/index'
-      })
-      // this.triggerEvent('onAllCheck', {})
-    }
+    // onRightEvent:function(){
+    //   wx.navigateTo({
+    //     url: '/pages/showLibrary/index'
+    //   })
+    //   // this.triggerEvent('onAllCheck', {})
+    // }
 
   },
 
 
   lifetimes: {
 
-    created() {
-      console.log("item组件")
-    },
+    created() {},
 
     attached() {},
 
     ready() {
-      console.log("ready",this.data.itemList);
+      console.log("ready");
     },
   },
 

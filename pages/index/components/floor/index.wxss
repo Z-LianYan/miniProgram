@@ -10,6 +10,7 @@
   padding: 28.014rpx 30.016rpx;
   display: flex;
   align-items: center;
+  background-color: rgba(0,0,0,0.2);
 }
 .floor_container .top_wrapper .img_box{
   position: relative;
@@ -17,6 +18,8 @@
 .floor_container .top_wrapper .img_box .top_image{
   width: 200.1rpx;
   height: 272.12rpx;
+  border-radius: 10rpx;
+  border: 1rpx solid #fff;
 }
 .floor_container .top_wrapper .img_box .top_sponsor{
   position: absolute;

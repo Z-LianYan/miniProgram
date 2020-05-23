@@ -96,8 +96,7 @@ Page({
         version: '6.1.1',
         referer: 2
       },{isLoading:false}).then(data=>{
-        console.log("热门城市---------",data.data.hot_city_List);
-
+        // console.log("热门城市---------",data.data.hot_city_List);
         let hotCityList = data.data.hot_city_List;
         hotCityList.unshift({
           name: "全国",

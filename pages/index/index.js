@@ -223,11 +223,17 @@ Page({
       let list = data.data;
       for(var i=0;i<list.length;i++){
         for(let j=0;j<list[i].list.length;j++){
+          list[i].query = list[i].search_url.replace("https://m.juooo.com/show/showsLibrary?","")
           list[i].list[j].show_date = util.formatDate(list[i].list[j].show_time * 1000, "Y.M.D");
           list[i].list[j].time = util.formatDate(list[i].list[j].show_time * 1000, "h:m");
-          if(list[i].list[j].ico.indexOf('<span class="logo_i"></span>')!=-1){
+          list[i].list[j].low_price = Number(list[i].list[j].low_price).toFixed(0);
+          if(list[i].list[j].ico.indexOf('logo_i')!=-1){
             list[i].list[j].method = 1
           }
+          if(list[i].list[j].ico.indexOf('ju_cheng')!=-1){
+            list[i].list[j].xjc_sponsor = 1
+          }
+          
         }
       }
       this.setData({

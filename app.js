@@ -38,9 +38,9 @@ App({
   },
 
   setCityInfo:function(){
-    console.log("哈佛理发店哈是的")
+    // console.log("哈佛理发店哈是的")
     const cityInfo = wx.getStorageSync("cityInfo");
-    console.log("-----",Object.keys(cityInfo).length)
+    // console.log("-----",Object.keys(cityInfo).length)
     cityInfo.id?"":wx.setStorageSync('cityInfo', {"id":0,"name":"全国","abbreviation":""})
   },
 

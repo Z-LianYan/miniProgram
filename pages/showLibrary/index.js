@@ -27,12 +27,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("options",options);
+    console.log("options---+++==",options);
+    if(options.caid || options.caid==0){
+      this.setData({
+        activeTabs:options.cid?Number(options.cid):0,
+        "paramsOptions.category":options.caid
+      })
+    }else{
+      this.setData({
+        activeTabs:options.category?Number(options.category):0,
+        "paramsOptions.category":options.category?options.category:0
+      })
+    }
+
     this.setData({
-      activeTabs:options.category?Number(options.category):0,
-      "paramsOptions.category":options.category?options.category:0,
       cityInfo:options.city_id?{id:options.city_id,name:options.city_name,abbreviation:""}:wx.getStorageSync("cityInfo")
     })
+    
     this.getShowList();
   },
 
