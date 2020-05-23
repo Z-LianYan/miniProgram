@@ -225,6 +225,9 @@ Page({
         for(let j=0;j<list[i].list.length;j++){
           list[i].list[j].show_date = util.formatDate(list[i].list[j].show_time * 1000, "Y.M.D");
           list[i].list[j].time = util.formatDate(list[i].list[j].show_time * 1000, "h:m");
+          if(list[i].list[j].ico.indexOf('<span class="logo_i"></span>')!=-1){
+            list[i].list[j].method = 1
+          }
         }
       }
       this.setData({

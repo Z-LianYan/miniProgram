@@ -12,6 +12,7 @@
     <view class="img_box">
       <image class="top_image" src="{{itemList.list[0].pic}}" mode="cover"></image>
       <image 
+      wx:if="{{itemList.list[0].method==1}}"
       class="top_sponsor" 
       src="/images/sponsor.png" 
       mode="aspectFit|aspectFill|widthFix" 
@@ -19,10 +20,13 @@
     </view>
     <view class="top_right">
       <view class="show_date">
-        {{itemList.list[0].show_date}} {{itemList.list[0].week}} {{itemList.list[0].time}}
+        {{itemList.list[0].show_date}} <text class="week_time">{{itemList.list[0].week}} {{itemList.list[0].time}}</text>
       </view>
       <view class="schedular_name">
         {{itemList.list[0].schedular_name}}
+      </view>
+      <view class="">
+        {{itemList.list[0].city_name}} | {{itemList.list[0].venue_name}}
       </view>
     </view>
   </view>
@@ -45,6 +49,7 @@
         <view class="img_box">
           <image class="hot_image" src="{{itm.pic}}" mode="cover"></image>
           <image 
+          wx:if="{{itemList.list[0].method==1}}"
           class="sponsor" 
           src="/images/sponsor.png" 
           mode="aspectFit|aspectFill|widthFix" 
@@ -52,7 +57,7 @@
         </view>
         <text class="hot_desc">{{itm.schedular_name}}</text>
         <view class="price_box">
-          <view class="price">{{itm.low_price}}</view>起
+          <view class="price">￥{{itm.low_price}}</view>起
         </view>
         
       </navigator>

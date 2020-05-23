@@ -27,16 +27,26 @@
 }
 .floor_container .top_wrapper .top_right{
   margin-left: 15rpx;
-
+  display: flex;
+  justify-content: space-around;
+  flex-flow: column;
+  height: 272.12rpx;
 }
 .floor_container .top_wrapper .top_right .schedular_name{
-  /* white-space:pre-line;
+  white-space:wrap;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical; */
+  -webkit-box-orient: vertical;
   
+}
+.floor_container .top_wrapper .top_right .show_date{
+  font-weight: bold;
+}
+.floor_container .top_wrapper .top_right .show_date .week_time{
+  font-size: 27.2rpx;
+  font-weight: none;
 }
 
 
