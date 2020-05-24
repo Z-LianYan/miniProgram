@@ -10,7 +10,7 @@
                     <text class="left"></text>
                     <text class="title">演出详情</text>
                     <view class="header_right_icon">
-                        <icon class="iconfont icon-fenxiang margin_right" bindtap="onShare"></icon>
+                        <!-- <icon class="iconfont icon-fenxiang margin_right" bindtap="onShare"></icon> -->
                         <van-icon name="wap-home-o" size="20" bindtap="onGoHome"/>
                     </view>
                 </view>
@@ -121,7 +121,7 @@
 
 
     
-    <van-dialog id="van-dialog" />
+    <!-- <van-dialog id="van-dialog" /> -->
 
     <van-action-sheet 
     show="{{ isShowActionSheet }}" 

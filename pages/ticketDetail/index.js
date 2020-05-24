@@ -2,7 +2,7 @@ const httpsUtil = require('../../utils/httpsUtil');
 const util = require('../../utils/util.js');
 const API = require('../../constant/api');
 
-import Dialog from '../../components/dist/dialog/dialog';
+// import Dialog from '../../components/dist/dialog/dialog';
 
 Page({
 
@@ -102,10 +102,10 @@ Page({
 
 
   onShare:function(){
-    Dialog.alert({
-      message: '使用浏览器的分享功能把演出分享出去',
-      confirmButtonText:"知道了"
-    }).then(() => {});
+    // Dialog.alert({
+    //   message: '使用浏览器的分享功能把演出分享出去',
+    //   confirmButtonText:"知道了"
+    // }).then(() => {});
   },
   onGoHome:function(){
     wx.switchTab({url: "/pages/index/index"})

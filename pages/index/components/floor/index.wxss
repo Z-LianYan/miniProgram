@@ -20,6 +20,7 @@
   height: 272.12rpx;
   border-radius: 10rpx;
   border: 1rpx solid #fff;
+  
 }
 .floor_container .top_wrapper .img_box .top_sponsor{
   position: absolute;
@@ -34,6 +35,7 @@
   justify-content: space-around;
   flex-flow: column;
   height: 272.12rpx;
+  /* color: #fff; */
 }
 .floor_container .top_wrapper .top_right .schedular_name{
   white-space:wrap;

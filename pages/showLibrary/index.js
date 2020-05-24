@@ -19,7 +19,6 @@ Page({
 
     activeTabs:0,
 
-    // options:{}
 
   },
 
@@ -28,24 +27,68 @@ Page({
    */
   onLoad: function (options) {
     console.log("options---+++==",options);
-    if(options.caid || options.caid==0){
-      this.setData({
-        activeTabs:options.cid?Number(options.cid):0,
-        "paramsOptions.category":options.caid
-      })
-    }else{
-      this.setData({
-        activeTabs:options.category?Number(options.category):0,
-        "paramsOptions.category":options.category?options.category:0
-      })
-    }
-
-    this.setData({
-      cityInfo:options.city_id?{id:options.city_id,name:options.city_name,abbreviation:""}:wx.getStorageSync("cityInfo")
-    })
+    console.log("cid---+++==",options.cid);
+    this.setData({isOnLoad:false})
     
-    this.getShowList();
+    this.fetchCityData((cityList)=>{
+      for(let key in cityList){
+        let list = cityList[key].list;
+        for(let j=0;j<list.length;j++){
+          if(options.cid == list[j].id){
+            console.log("list[j]---啊哈哈哈哈哈哈",list[j])
+            this.setData({
+              'cityInfo.id':list[j].id,
+              'cityInfo.name':list[j].name,
+              'cityInfo.abbreviation':list[j].Abbreviation,
+            })
+          }else{
+            this.setData({
+              'cityInfo.id':0,
+              'cityInfo.name':"全国",
+              'cityInfo.abbreviation':"",
+            })
+          }
+        }
+      }
+      
+      if(options.caid){
+        this.setData({
+          activeTabs:Number(options.caid),
+          "paramsOptions.category":options.caid
+        })
+      }else{
+        this.setData({
+          activeTabs:Number(options.caid),
+          "paramsOptions.category":options.caid
+        })
+        this.getShowList();
+      }
+
+      // if(options.caid || options.caid==0){
+        
+      // }
+    });
+    
+    
   },
+
+
+  fetchCityData:function(callBack){
+
+    httpsUtil.get(API.GET_CITY_LIST,{},{isLoading:true}).then(data=>{
+      let cityList = data.data;
+      // console.log("城市列表-----",cityList);
+      callBack && callBack(cityList);
+    })
+
+  },
+
+
+
+
+
+
+
 
   onGetCategoryId:function(e){
     console.log("-=---",e);
@@ -86,7 +129,7 @@ Page({
   },
 
   getShowList:function(){
-
+    
     httpsUtil.get(API.GET_RECOMMEND_FOR_YOU,{
       city_id: this.data.cityInfo.id,
       category: this.data.paramsOptions.category,

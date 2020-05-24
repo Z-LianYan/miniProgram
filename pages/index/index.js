@@ -139,7 +139,9 @@ Page({
 
 
       classifyList.map(item=>{
+
         if(item.category_id!=0){
+          item.query = item.url.replace("https://m.juooo.com/show/showsLibrary?","")
           classifyData.push(item);
         }
       })
@@ -150,6 +152,7 @@ Page({
           slideData.push(item)
         }
       })
+      console.log("classifyList",classifyList);
 
       this.setData({
         classifyList:classifyData,
@@ -227,10 +230,10 @@ Page({
           list[i].list[j].show_date = util.formatDate(list[i].list[j].show_time * 1000, "Y.M.D");
           list[i].list[j].time = util.formatDate(list[i].list[j].show_time * 1000, "h:m");
           list[i].list[j].low_price = Number(list[i].list[j].low_price).toFixed(0);
-          if(list[i].list[j].ico.indexOf('logo_i')!=-1){
+          if(list[i].list[j].ico.indexOf('<span class="logo_i"></span>')!=-1){
             list[i].list[j].method = 1
           }
-          if(list[i].list[j].ico.indexOf('ju_cheng')!=-1){
+          if(list[i].list[j].ico.indexOf('<span class="logo_i ju_cheng"></span>')!=-1){
             list[i].list[j].xjc_sponsor = 1
           }
           

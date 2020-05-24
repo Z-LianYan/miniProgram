@@ -79,7 +79,7 @@ Page({
 
   fetchCityData:function(){
 
-    httpsUtil.get(API.GET_CITY_LIST,this.data.fetchOptions,{isLoading:true}).then(data=>{
+    httpsUtil.get(API.GET_CITY_LIST,{},{isLoading:true}).then(data=>{
       let cityList = data.data;
       let indexList = Object.keys(cityList);
       indexList.unshift('热门');

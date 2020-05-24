@@ -1,6 +1,6 @@
 <view class="classify_list_box padding_trbl clearfix" wx:if="{{classifyList.length}}">
   <navigator
-  url="/pages/showLibrary/index?category={{items.category_id}}"
+  url="/pages/showLibrary/index?{{items.query}}"
   wx:for="{{classifyList}}" 
   wx:for-item="items" 
   wx:for-index="idx" 

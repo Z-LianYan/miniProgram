@@ -80,10 +80,11 @@
 .ticketDetail .header_wrapper .header_content .header_detail .img_box .img{
   width: 210rpx;
   height: 285.96rpx;
+  border-radius: 10rpx;
 }
 .ticketDetail .header_wrapper .header_content .header_detail .img_box .sponsor{
   position: absolute;
-  top: 0;
+  top: -2rpx;
   left: 10rpx;
   width: 57.96rpx;
   height: 69.96rpx;
