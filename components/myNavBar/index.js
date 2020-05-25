@@ -11,6 +11,10 @@ Component({
     arrowLeft:{
       type:Boolean,
       value:false
+    },
+    arrowRight:{
+      type:Boolean,
+      value:true
     }
   },
 

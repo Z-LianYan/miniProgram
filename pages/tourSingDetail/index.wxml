@@ -1,0 +1,25 @@
+<view class="container tour_sing_detail">
+    <my-detail-head detailData="{{detailData}}"/>
+
+    <view class="content padding_trbl">
+        <view class="list_item">
+            <view class="left_time">
+                <text class="month">10/</text>
+                <text class="day">02-19</text>
+            </view>
+            <view class="right_info padding_trbl" hover-class="true">
+                <view class="title">45654645651435123145654679887945645645</view>
+                <view class="venue">
+                    123 | 546
+                </view>
+                <view class="price_wrapper">
+                    <text >¥ 123</text>
+                    起
+                </view>
+            </view>
+        </view>
+    </view>
+
+
+
+</view>

@@ -9,6 +9,19 @@
     align-items: center;
     font-weight: bolder;
 }
+.navbar_wrapper .navbar_header .left_icon{
+    width: 120rpx;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.navbar_wrapper .navbar_header .right_icon{
+    width: 120rpx;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
 
 .navbar_wrapper .wrapper{
     position: absolute;

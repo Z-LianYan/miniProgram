@@ -1,8 +1,15 @@
 <view class="navbar_wrapper">
     <view class="navbar_header padding_lr">
-        <van-icon name="{{arrowLeft?'arrowLeft':''}}" size="25"/>
+        <view class="left_icon">
+            <van-icon name="{{arrowLeft?'arrowLeft':''}}" size="25"/>
+        </view>
+        
         {{title}}
-        <van-icon name="ellipsis" size="25" bindtap="onShowMenu"/>
+
+        <view class="right_icon">
+            <van-icon name="{{arrowRight?'ellipsis':''}}" size="25" bindtap="onShowMenu"/>
+        </view>
+        
     </view>
 
     <van-overlay show="{{ isShowOverlay }}" z-index="12" bind:click="onClickHide">

@@ -45,7 +45,8 @@
 }
 .my_tab_wrapper .city_list_box .content{
     display: flex;
-    height: calc(100vh - 92rpx);
+    height: calc(100vh - 90rpx);
+    box-sizing: border-box;
 }
 .my_tab_wrapper .city_list_box .mask{
     width: calc(100vw - 558rpx);
@@ -101,7 +102,7 @@
     display: flex;
     box-sizing: border-box;
     position: absolute;
-    bottom: 0;
+    bottom: 3rpx;
 }
 .my_tab_wrapper .city_list_box .citys .btn_wrapper .btn_item{
     width: 50%;

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "my-detail-head":"/pages/tourSingDetail/components/detailHead/index"
+  }
+}

@@ -24,9 +24,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onRightEvent:function(){
-      this.triggerEvent('onAllCheck', {})
-    }
+    // onRightEvent:function(){
+    //   this.triggerEvent('onAllCheck', {})
+    // }
   },
 
   lifetimes:{

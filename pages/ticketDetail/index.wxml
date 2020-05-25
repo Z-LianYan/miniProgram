@@ -1,38 +1,7 @@
 <view class="container ticketDetail">
     <scroll-view scroll-y="true" class="scroll_view">
-        <view class="header_wrapper">
-            <image
-            src="{{detailData.static_data.pic}}"
-            class="img_filter_blur"/>
-            
-            <view class="header_content" hover-class="none" hover-stop-propagation="false">
-                <view class="header padding_lr">
-                    <text class="left"></text>
-                    <text class="title">演出详情</text>
-                    <view class="header_right_icon">
-                        <!-- <icon class="iconfont icon-fenxiang margin_right" bindtap="onShare"></icon> -->
-                        <van-icon name="wap-home-o" size="20" bindtap="onGoHome"/>
-                    </view>
-                </view>
-                <view class="header_detail padding_lr">
-                    <view class="img_box">
-                        <image src="{{detailData.static_data.pic}}" class="img"/>
-                        <image wx:if="{{detailData.static_data.method}}" 
-                        class="sponsor" src="/images/sponsor.png" 
-                        lazy-load="true"/>
-                    </view>
-                    <view class="header_detail_right">
-                        <view class="title">
-                            {{detailData.static_data.show_name}}
-                        </view>
-                        
-                        <view class="price_scope">
-                            ¥ {{detailData.static_data.low_price}} - {{detailData.static_data.high_price}}
-                        </view>
-                    </view>
-                </view>
-            </view>
-        </view>
+
+        <my-ticket-detail-head detailData="{{detailData}}"/>
 
         
         <view class="content_wrapper">
@@ -97,7 +66,7 @@
             <my-relative-recommend listData="{{relativeRecommend}}"/>
             <navigator 
             wx:if="{{isShowMoreBtn}}"
-            url="/pages/showLibrary/index?category={{detailData.static_data.cate_parent_id}}&city_id={{detailData.static_data.city.city_id}}&city_name={{detailData.static_data.city.city_name}}" 
+            url="/pages/showLibrary/index?caid={{detailData.static_data.cate_parent_id}}&cid={{detailData.static_data.city.city_id}}&name={{detailData.static_data.city.city_name}}" 
             class="check_more" 
             hover-class="none">
                 <button class="btn" type="warn" plain="true">

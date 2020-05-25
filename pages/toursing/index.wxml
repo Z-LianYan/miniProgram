@@ -1,0 +1,51 @@
+<view class="container tour_sing_wrapper">
+
+    <my-nav-bar title="巡回演出" arrowRight="{{false}}"/>
+
+    <scroll-view 
+    scroll-y="true"
+    upper-threshold="50" 
+    lower-threshold="50"
+    bindscrolltolower="scrolltolower"
+    class="scroll_y">
+
+        <navigator
+        url="/pages/tourSingDetail/index?{{item.detail_query}}"
+        hover-class="none"
+        class="list_item" 
+        wx:for="{{tourSingData}}"
+        wx:key="*this">
+            <view class="left_img">
+                <image
+                class="img"
+                src="{{item.mobile_col_img}}" 
+                mode="aspectFit|aspectFill|widthFix" 
+                lazy-load="true"/> 
+            </view>
+            <view class="right_content">
+                <view class="title">{{item.name}}</view>
+                <scroll-view class="scroll_x_view" scroll-x="true">
+                    <view class="scroll_x_item" wx:for="{{item.citys}}" wx:for-index="idx" wx:for-item="itm">
+                        <view class="city_name">
+                            {{itm.name}}
+                        </view>
+                        <view class="separator_wrapper">
+                            <view class="line {{idx==0? 'rebg':''}}"></view>
+                            <view class="point"></view>
+                            <view class="line {{(idx+1)==item.citys.length? 'rebg':''}}"></view>
+                        </view>
+                        <view class="date">
+                            {{itm.date}}
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+        </navigator>
+        
+
+        <view style="text-align:center;height:50rpx; color:#ccc">
+            {{isMore?"":"我是有底线的"}}
+        </view>
+
+    </scroll-view>
+</view>

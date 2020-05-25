@@ -1,5 +1,5 @@
 {
-  "pages": [
+  "pages": ["pages/toursing/index",
     "pages/index/index",
     "pages/ticketDetail/index",
     "pages/calendar/index",
@@ -9,12 +9,15 @@
     "pages/detail/detail",
     "pages/search/index",
     "pages/index/components/tourSing/index",
-    "pages/showLibrary/index"
+    "pages/showLibrary/index",
+    
+    "pages/tourSingDetail/index"
   ],
   "usingComponents": {
     "van-cell": "/components/dist/cell/index",
     "van-icon": "/components/dist/icon/index",
-    "van-overlay": "/components/dist/overlay/index"
+    "van-overlay": "/components/dist/overlay/index",
+    "my-nav-bar": "/components/myNavBar/index"
   },
   "window": {
     "backgroundTextStyle": "light",

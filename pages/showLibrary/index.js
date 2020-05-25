@@ -28,46 +28,58 @@ Page({
   onLoad: function (options) {
     console.log("options---+++==",options);
     console.log("cid---+++==",options.cid);
-    this.setData({isOnLoad:false})
+    if(Object.keys(options).length){
+      this.setData({
+        activeTabs:Number(options.caid),
+        "paramsOptions.category":options.caid,
+        "cityInfo.id":options.cid
+      })
+      this.getShowList();
+    }else{
+      this.setData({
+        activeTabs:Number(options.caid),
+        "paramsOptions.category":0,
+        'cityInfo.id':0,
+        'cityInfo.name':"全国",
+        'cityInfo.abbreviation':"",
+      })
+      this.getShowList();
+      return;
+    }
     
-    this.fetchCityData((cityList)=>{
-      for(let key in cityList){
-        let list = cityList[key].list;
-        for(let j=0;j<list.length;j++){
-          if(options.cid == list[j].id){
-            console.log("list[j]---啊哈哈哈哈哈哈",list[j])
-            this.setData({
-              'cityInfo.id':list[j].id,
-              'cityInfo.name':list[j].name,
-              'cityInfo.abbreviation':list[j].Abbreviation,
-            })
-          }else{
-            this.setData({
-              'cityInfo.id':0,
-              'cityInfo.name':"全国",
-              'cityInfo.abbreviation':"",
-            })
+
+    if(options.cid != 0){
+      this.fetchCityData((cityList)=>{
+        for(let key in cityList){
+          let list = cityList[key].list;
+          for(let j=0;j<list.length;j++){
+            if(options.cid == list[j].id){
+              console.log("list[j]---啊哈哈哈哈哈哈",list[j])
+              this.setData({
+                'cityInfo.id':list[j].id,
+                'cityInfo.name':list[j].name,
+                'cityInfo.abbreviation':list[j].Abbreviation,
+              })
+            }
           }
         }
-      }
-      
-      if(options.caid){
-        this.setData({
-          activeTabs:Number(options.caid),
-          "paramsOptions.category":options.caid
-        })
-      }else{
-        this.setData({
-          activeTabs:Number(options.caid),
-          "paramsOptions.category":options.caid
-        })
-        this.getShowList();
-      }
+        console.log("=====",this.data.cityInfo)
+      });
+    }else{
+      console.log("全国")
+      this.setData({
+        'cityInfo.id':0,
+        'cityInfo.name':"全国",
+        'cityInfo.abbreviation':"",
+      })
+    }
+    
 
-      // if(options.caid || options.caid==0){
-        
-      // }
-    });
+    
+
+    
+
+
     
     
   },

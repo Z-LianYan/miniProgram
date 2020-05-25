@@ -107,9 +107,7 @@ Page({
     //   confirmButtonText:"知道了"
     // }).then(() => {});
   },
-  onGoHome:function(){
-    wx.switchTab({url: "/pages/index/index"})
-  },
+  
 
   onDiscounts:function(e){
     if(e.target.dataset.item=="套票优惠"){

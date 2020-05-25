@@ -18,6 +18,7 @@ export const GET_CITY_LIST = "/city/city/getSortedCityList";//获取城市列表
 export const GET_CITY_LIST_TABS = "/city/city/getCityList";//获取城市列表(tabs里的)
 
 export const GET_TOUR_SING_LIST = "/show/tour/getList";//获取巡回演唱列表
+export const GET_TOUR_DETAIL_LIST = "/show/tour/getInfo";//获取巡回演唱列表
 
 export const GET_HOT_SEARCH_LIST = "/Show/Search/getNewHotWord";//获取热搜索列表
 

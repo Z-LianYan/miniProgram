@@ -7,6 +7,7 @@
     "van-tag": "/components/dist/tag/index",
     "my-relative-recommend": "/pages/calendar/components/list",
     "van-field": "/components/dist/field/index",
-    "my-cell": "/components/myCell/index"
+    "my-cell": "/components/myCell/index",
+    "my-ticket-detail-head": "/pages/ticketDetail/components/ticketDetailHead/index"
   }
 }

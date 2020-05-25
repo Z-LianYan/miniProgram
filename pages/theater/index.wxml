@@ -1,7 +1,8 @@
 <!--pages/theater/index.wxml-->
 <view class="container">
 
-  <view class="theater_header">剧院</view>
+  <!-- <view class="theater_header">剧院</view> -->
+  <my-nav-bar title="剧院" arrowRight="{{false}}"/>
 
   <scroll-view  
   scroll-y="true" 

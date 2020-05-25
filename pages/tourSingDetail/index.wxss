@@ -1,0 +1,33 @@
+.tour_sing_detail{
+
+}
+.tour_sing_detail .content{
+    z-index: 1;
+    flex: 1;
+    background-color: #f5f5f5;
+}
+
+.tour_sing_detail .content .list_item{
+    display: flex;
+    height: 212rpx;
+}
+
+.tour_sing_detail .content .list_item .left_time{
+    width: 219.96rpx;
+    height: 100%; 
+    line-height: 212rpx;
+    text-align: center;
+    margin-right: 10rpx;
+    background-color: #fff;
+}
+.tour_sing_detail .content .list_item .right_info{
+    width: calc(100vw - 219.96rpx - 10rpx - 40rpx);
+    height: 100%;
+    background-color: #fff;
+}
+.tour_sing_detail .content .list_item .right_info .title{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
