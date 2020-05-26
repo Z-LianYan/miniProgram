@@ -199,9 +199,14 @@ Page({
     httpsUtil.get(API.GET_HOT_LIST,{
       city_id: this.data.cityInfo.id
     },{isLoading:false}).then(data=>{
-      this.setData({
-        hot_list: data.data.hots_show_list,
+      const list = data.data.hots_show_list;
+      list.map(item=>{
+        item.query = item.schedular_url.replace("https://m.juooo.com/ticket/","")
       })
+      this.setData({
+        hot_list: list
+      })
+      console.log("热门",list);
     })
   },
 
@@ -227,9 +232,11 @@ Page({
       for(var i=0;i<list.length;i++){
         for(let j=0;j<list[i].list.length;j++){
           list[i].query = list[i].search_url.replace("https://m.juooo.com/show/showsLibrary?","")
+          list[i].list[j].ticketQuery = list[i].list[j].url.replace("https://m.juooo.com/ticket/","")
           list[i].list[j].show_date = util.formatDate(list[i].list[j].show_time * 1000, "Y.M.D");
           list[i].list[j].time = util.formatDate(list[i].list[j].show_time * 1000, "h:m");
           list[i].list[j].low_price = Number(list[i].list[j].low_price).toFixed(0);
+          
           if(list[i].list[j].ico.indexOf('<span class="logo_i"></span>')!=-1){
             list[i].list[j].method = 1
           }

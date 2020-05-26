@@ -21,8 +21,15 @@ Page({
   fetchData:function(id){
     httpsUtil.get(API.GET_TOUR_DETAIL_LIST,{id},{isLoading:true}).then(data=>{
       const list = data.data;
-      console.log("巡回演出详情",list);
+      
       list.date_scope = util.formatDate(list.start_time * 1000, "Y.M.D") + " - " + util.formatDate(list.end_time * 1000, "M.D");
+      
+      list.list.map(item=>{
+        item.month = util.formatDate(item.start_time * 1000, "M")
+        item.day_scope = util.formatDate(item.start_time * 1000, "D")+"-"+util.formatDate(item.end_time * 1000, "D")
+      })
+      list.list.reverse()
+      console.log("巡回演出详情",list);
       this.setData({
         detailData:list
       })

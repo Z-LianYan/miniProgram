@@ -1,0 +1,47 @@
+.tour_city{
+    background-color: #fff;
+    padding-bottom: 20rpx;
+}
+.tour_city .session_box{
+    font-size: 25rpx;
+}
+.tour_city .session_box .cell_session{
+    color: #ff6743;
+}
+.tour_city .scroll_x_view{
+    white-space: nowrap;
+    padding-right: 2rpx;
+}
+.tour_city .scroll_x_view .item_list{
+    display: inline-block;
+    margin-left: 24rpx;
+}
+.tour_city .scroll_x_view .item_list .wrapper{
+    width: 176rpx;
+    height: 116rpx;
+    border-radius: 10rpx;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    border: 2rpx solid #ebebeb;
+}
+
+
+.tour_city .scroll_x_view .item_list .city_name{
+    font-weight: bold;
+}
+.tour_city .scroll_x_view .item_list .date_scope{
+    font-size: 25rpx;
+    color: #666;
+}
+
+
+
+.activate_item_list{
+    color: #ff6743;
+    border: 2rpx solid #ff6743 !important;
+}
+.activate_item_list .date_scope{
+    color: #ff6743 !important;
+}

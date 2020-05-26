@@ -15,7 +15,7 @@
 .mycell_wrapper .right_content{
   display: flex;
   align-items: center;
-  color: rgb(136, 132, 132);
+  /* color: rgb(136, 132, 132); */
 }
 
 .right_arrow{

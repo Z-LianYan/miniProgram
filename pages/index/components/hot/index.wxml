@@ -4,7 +4,7 @@
   <my-cell 
   leftTitle="热门演出" 
   rightTitle="全部" 
-  isLeftArrow="true" 
+  isRightArrow="true" 
   url="/pages/showLibrary/index"/>
 
   <view class="hot_wrapper padding_l padding_tb">
@@ -12,7 +12,7 @@
     <scroll-view scroll-x="true" class="scroll_box">
       <navigator 
       hover-class="none" 
-      url="/pages/ticketDetail/index?schedular_url={{item.schedular_url}}" 
+      url="/pages/ticketDetail/index?sch_id={{item.query}}" 
       class="scroll_item"
       wx:for="{{hot_list}}"
       wx:key="*this">

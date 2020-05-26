@@ -12,11 +12,16 @@ Component({
       type:String,
       value:""
     },
-    isLeftArrow:{
+    isRightArrow:{
       type: Boolean,
       value: false
     },
-    url:String
+    url:String,
+
+    isbg:{
+      type:String,
+      value:"#fff"
+    }
 
   },
 

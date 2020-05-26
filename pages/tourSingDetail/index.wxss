@@ -10,6 +10,7 @@
 .tour_sing_detail .content .list_item{
     display: flex;
     height: 212rpx;
+    margin-bottom: 30rpx;
 }
 
 .tour_sing_detail .content .list_item .left_time{
@@ -19,15 +20,51 @@
     text-align: center;
     margin-right: 10rpx;
     background-color: #fff;
+    border-top-left-radius: 10rpx;
+    border-bottom-left-radius: 10rpx;
 }
+
+.tour_sing_detail .content .list_item .left_time .month{
+    font-size: 40rpx;
+}
+
+
+
+
+
 .tour_sing_detail .content .list_item .right_info{
     width: calc(100vw - 219.96rpx - 10rpx - 40rpx);
-    height: 100%;
+    /* height: 100%; */
     background-color: #fff;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    border-top-right-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
 }
 .tour_sing_detail .content .list_item .right_info .title{
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    color: #232323;
+    font-weight: normal;
+    font-size: 35rpx;
+}
+.tour_sing_detail .content .list_item .right_info .venue{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #666;
+}
+
+.tour_sing_detail .content .list_item .right_info .price_wrapper{
+    color: #999;
+    font-size: 23rpx;
+}
+.tour_sing_detail .content .list_item .right_info .price_wrapper .price{
+    color: #FF6743;
+    font-size: 35rpx;
+    font-weight: bold;
+    margin-right: 10rpx;
 }
 

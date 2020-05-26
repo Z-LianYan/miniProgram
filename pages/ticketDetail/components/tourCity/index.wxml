@@ -1,0 +1,26 @@
+
+<view class="tour_city">
+    <my-cell url="/pages/tourSingDetail/index?sid={{tourCityData.id}}" leftTitle="巡演城市" isRightArrow="{{true}}">
+        <view class="session_box">
+            <text class="cell_session">{{tourCityData.show_num}}</text>场
+        </view>
+    </my-cell>
+    <scroll-view class="scroll_x_view" scroll-x="true">
+        <navigator
+        url="/pages/ticketDetail/index?sch_id={{item.sch_id}}"
+        class="item_list" 
+        wx:for="{{tourCityData.list}}" 
+        wx:key="*this" 
+        data-schId="{{item.sch_id}}" 
+        bindtap="onSelectCity">
+            <view class="wrapper {{schId==item.sch_id?'activate_item_list':''}}">
+                <view class="city_name">
+                    {{item.city_name}}
+                </view>
+                <view class="date_scope">
+                    {{item.day_scope}}
+                </view>
+            </view>
+        </navigator>
+    </scroll-view>
+</view>

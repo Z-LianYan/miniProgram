@@ -1,13 +1,12 @@
 <!--components/myCell/index.wxml-->
-<view class="mycell_wrapper">
+<view class="mycell_wrapper" style="background:{{isbg}}">
     <text class="left_title">{{leftTitle}}</text>
 
     <navigator url="{{url}}" class="right_content" hover-class="none" bindtap="onRight">
-        <text wx:if="rightTitle">{{rightTitle}}</text>
         
         <slot></slot>
-
-        <van-icon class="right_arrow" wx:if="{{isLeftArrow}}" name="arrow"/>
+        <text wx:if="rightTitle">{{rightTitle}}</text>
+        <van-icon class="right_arrow" wx:if="{{isRightArrow}}" name="arrow"/>
 
     </navigator>
 </view>

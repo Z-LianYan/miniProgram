@@ -3,7 +3,7 @@
     <my-cell 
     leftTitle="巡回演出" 
     rightTitle="全部" 
-    isLeftArrow="true" 
+    isRightArrow="true" 
     url="/pages/toursing/index"/>
     <scroll-view scroll-x="true" class="scroll_box padding_lr">
         <view class="scroll_item" wx:for="{{tourSingList}}" wx:for-index="idx" wx:for-item="it" wx:key="*this">

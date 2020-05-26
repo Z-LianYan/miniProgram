@@ -1,5 +1,5 @@
 {
-  "pages": ["pages/toursing/index",
+  "pages": [
     "pages/index/index",
     "pages/ticketDetail/index",
     "pages/calendar/index",
@@ -10,7 +10,7 @@
     "pages/search/index",
     "pages/index/components/tourSing/index",
     "pages/showLibrary/index",
-    
+    "pages/toursing/index",
     "pages/tourSingDetail/index"
   ],
   "usingComponents": {

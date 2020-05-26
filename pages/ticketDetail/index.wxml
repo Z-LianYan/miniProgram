@@ -5,7 +5,7 @@
 
         
         <view class="content_wrapper">
-            <van-cell>
+            <van-cell wx:if="{{detailData.static_data.support.list.length}}">
                 <view slot="title" class="support">
                     <view 
                     class="support_item" 
@@ -24,7 +24,7 @@
                     </view>
                 </view>
             </van-cell>
-            <view class="detail_content">
+            <view class="detail_content" wx:if="{{detailData.static_data}}">
                 <view class="performance_time_site">
                     <view 
                     class="performance_date_scope" 
@@ -43,11 +43,34 @@
             </view>
 
         </view>
+        
+        <view class="enter_wrapper">
 
-        <view class="enter_desc padding_trbl">
-            <text class="enter">入 场 : </text>
-            <text class="desc"> {{detailData.static_data.tips.desc}}</text>
+
+            <van-cell bindtap="onPromotion" wx:if="{{promotionData.length}}">
+                <view slot="title">
+                    <view >
+                        <text style="color: #999;">优 惠：</text>
+                        <van-tag color="#f2826a" plain>{{promotionData[0].tag}}</van-tag>
+                        {{promotionData[0].desc}}
+                    </view>
+                </view>
+                <van-icon slot="right-icon" name="ellipsis" class="custom-icon" />
+            </van-cell>
+
+
+
+            <view class="enter_desc padding_trbl">
+                <text class="enter">入 场：</text>
+                <text class="desc"> {{detailData.static_data.tips.desc}}</text>
+            </view>
         </view>
+
+        <view class="enter_wrapper" wx:if="{{tourCityData.list.length}}">
+            <my-tour-city tourCityData="{{tourCityData}}" sch-id="{{sch_id}}" bindonRightEvent="onRightEvent"/>
+        </view>
+
+       
 
         <view class="sweet_remind_wrapper padding_trbl" bindtap="onCheckNotice">
             <view class="sweet_remind">
@@ -227,5 +250,34 @@
             </view>
         </view>
     </van-action-sheet>
+
+
+    <van-action-sheet 
+    show="{{ isShowPromotion }}" 
+    bind:close="onClosePromotion"
+    title="优惠信息">
+        <view class="promotion_list padding_trbl">
+            <van-tag class="tag" color="#f2826a" plain>{{promotionData[0].tag}}</van-tag>{{promotionData[0].desc}}
+
+            <view class="item_list" wx:for="{{promotionData[0].schedular_map}}" wx:key="*this">
+                <view class="session">
+                    场次： {{item.date_week_time}} 
+                </view>
+                <view class="price">
+                    票价： 
+                    <text 
+                    wx:for="{{item.sku_list}}" 
+                    wx:key="*this"
+                    wx:for-index="idx" 
+                    wx:for-item="itm">{{itm.ticket_price+((idx+1)==item.sku_list.length?"":"、")}}</text>
+                    <!-- <text wx:if="{{(idx+1)!=item.sku_list.length}}"></text> -->
+                </view>
+            </view>
+
+        </view>
+    </van-action-sheet>
+
+
+
 
 </view>

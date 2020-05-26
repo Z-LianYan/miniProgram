@@ -40,7 +40,12 @@
 .padding_r{
   padding-left: 20rpx;
 }
-
+.padding_t{
+  padding-left: 20rpx;
+}
+.padding_b{
+  padding-left: 20rpx;
+}
 
 @font-face {font-family: "iconfont";
   src: url('iconfont.eot?t=1589790331695'); /* IE9 */

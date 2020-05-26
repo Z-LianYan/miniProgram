@@ -1,6 +1,6 @@
 <view class="content_list padding_lr">
     <navigator 
-    url="/pages/ticketDetail/index?schedular_url={{item.url}}"
+    url="/pages/ticketDetail/index?sch_id={{item.schedular_id}}"
     class="list_item" 
     wx:for="{{listData}}" 
     wx:key="index">

@@ -8,6 +8,8 @@
     "my-relative-recommend": "/pages/calendar/components/list",
     "van-field": "/components/dist/field/index",
     "my-cell": "/components/myCell/index",
-    "my-ticket-detail-head": "/pages/ticketDetail/components/ticketDetailHead/index"
+    "my-ticket-detail-head": "/pages/ticketDetail/components/ticketDetailHead/index",
+    "my-tour-city": "/pages/ticketDetail/components/tourCity/index"
+    
   }
 }

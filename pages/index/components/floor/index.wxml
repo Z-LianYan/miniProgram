@@ -3,12 +3,13 @@
 
   <my-cell 
   leftTitle="{{itemList.title}}" 
-  rightTitle="全部" 
-  isLeftArrow="true" 
+  isRightArrow="true" 
   url="/pages/showLibrary/index?{{itemList.query}}"/>
 
 
-  <view class="top_wrapper">
+  <navigator 
+  url="/pages/ticketDetail/index?sch_id={{itemList.list[0].ticketQuery}}" 
+  class="top_wrapper">
     <view class="img_box">
       <image class="top_image" src="{{itemList.list[0].pic}}" mode="cover"></image>
       <image 
@@ -37,7 +38,7 @@
         {{itemList.list[0].city_name}} | {{itemList.list[0].venue_name}}
       </view>
     </view>
-  </view>
+  </navigator>
 
 
 
@@ -47,7 +48,7 @@
     <scroll-view scroll-x="true" class="scroll_box">
       <navigator 
       hover-class="none" 
-      url="/pages/ticketDetail/index?schedular_url={{itm.url}}" 
+      url="/pages/ticketDetail/index?sch_id={{itm.ticketQuery}}" 
       class="scroll_item"
       wx:for="{{itemList.list}}"
       wx:for-index="idx"

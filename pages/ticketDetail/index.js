@@ -44,20 +44,31 @@ Page({
 
     // selectedTime:{}
     relativeRecommend:[],
-    isShowMoreBtn:false
+    isShowMoreBtn:false,
+
+    promotionData:[],
+
+    isShowPromotion:false,
+
+    tourCityData:{},
+
+    sch_id:""
 
   },
 
   fetchDetailData:function(schedular_id){
     httpsUtil.get(API.GET_TICKET_DETAIL,{
       schedular_id: schedular_id
-      // schedular_id: 110775
+      // schedular_id: 110902
     },{isLoading:false}).then(data=>{
       console.log("演出详情",data.data);
       const detail = data.data;
 
       this.fetchRelativeRecommend(detail.static_data.cate_parent_id,detail.static_data.city.city_id);
 
+      this.fetchPromotion(detail.static_data.show_id,detail.static_data.city.city_id,detail.static_data.venue.venue_id);
+      
+      this.fetchTourCity(detail.static_data.tour_id);
 
       detail.static_data.low_price = Number(detail.static_data.low_price).toFixed(0);
       detail.static_data.high_price = Number(detail.static_data.high_price).toFixed(0);
@@ -97,6 +108,67 @@ Page({
         'submitData.schedular_id':selectedTime.length?selectedTime[0].id:reSchedular[0].id,
         // selectedTime:selectedTime[0]//选中项
       })
+    })
+  },
+
+  fetchTourCity:function(id){
+    httpsUtil.get(API.GET_TOUR_DETAIL_LIST,{id},{isLoading:true}).then(data=>{
+      const list = data.data;
+
+      if(!Object.keys(list).length) return;
+
+      list.list.map(item=>{
+        item.day_scope = util.formatDate(item.start_time * 1000, "M")+"/"+util.formatDate(item.start_time * 1000, "D")+"-"+util.formatDate(item.start_time * 1000, "M")+"/"+util.formatDate(item.end_time * 1000, "D")
+      })
+      // list.list.reverse()
+      console.log("巡回演出详情",list);
+      this.setData({
+        tourCityData:list
+      })
+
+    })
+  },
+
+  fetchPromotion:function(show_id,city_id,venue_id){
+    httpsUtil.get(API.GET_PROMOTION_LIST,{
+      show_id,
+      city_id,
+      venue_id
+    },{isLoading:false}).then(data=>{
+
+      if(!data.data.act_list) return;
+
+      const list = data.data.act_list;
+
+      const schedular = this.data.schedular;
+
+      for(let i=0;i<list.length;i++){
+        const schedular_map = list[i].schedular_map
+        for(let k in schedular_map){
+          for(let j=0;j<schedular.length;j++){
+            if(schedular_map[schedular[j].id]){
+              schedular_map[schedular[j].id].date_week_time = schedular[j].project_time + " " + schedular[j].session_time
+            }
+          }
+        }
+      }
+
+      this.setData({
+        promotionData:list
+      })
+    })
+    
+  },
+
+  onPromotion:function(){
+    this.setData({
+      isShowPromotion:true
+    })
+  },
+
+  onClosePromotion:function(){
+    this.setData({
+      isShowPromotion:false
     })
   },
 
@@ -308,8 +380,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("options",options);
-    const schedular_id = options.schedular_url.replace("https://m.juooo.com/ticket/","")
+    console.log("options----",options);
+
+    const schedular_id = options.sch_id;
+
+    this.setData({
+      sch_id:schedular_id
+    })
+
     this.fetchDetailData(schedular_id);
   },
   
