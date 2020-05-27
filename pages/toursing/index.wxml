@@ -25,7 +25,12 @@
             <view class="right_content">
                 <view class="title">{{item.name}}</view>
                 <scroll-view class="scroll_x_view" scroll-x="true">
-                    <view class="scroll_x_item" wx:for="{{item.citys}}" wx:for-index="idx" wx:for-item="itm">
+                    <navigator 
+                    url="/pages/ticketDetail/index?sch_id={{itm.sch_id}}" 
+                    class="scroll_x_item" 
+                    wx:for="{{item.citys}}" 
+                    wx:for-index="idx" 
+                    wx:for-item="itm">
                         <view class="city_name">
                             {{itm.name}}
                         </view>
@@ -37,7 +42,7 @@
                         <view class="date">
                             {{itm.date}}
                         </view>
-                    </view>
+                    </navigator>
                 </scroll-view>
             </view>
         </navigator>

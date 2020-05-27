@@ -6,7 +6,12 @@
     isRightArrow="true" 
     url="/pages/toursing/index"/>
     <scroll-view scroll-x="true" class="scroll_box padding_lr">
-        <view class="scroll_item" wx:for="{{tourSingList}}" wx:for-index="idx" wx:for-item="it" wx:key="*this">
+        <navigator 
+        url="/pages/tourSingDetail/index?sid={{it.id}}" 
+        class="scroll_item" 
+        wx:for="{{tourSingList}}" 
+        wx:for-index="idx" 
+        wx:for-item="it" wx:key="*this">
             <image class="tour_sing_image" src="{{it.mobile_col_img}}" mode="cover"></image>
             <view class="tour_sing_content">
                 <view class="date_scope">
@@ -31,7 +36,7 @@
 
             </view>
 
-        </view>
+        </navigator>
     </scroll-view>
 
 

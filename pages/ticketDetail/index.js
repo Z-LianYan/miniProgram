@@ -285,10 +285,8 @@ Page({
   },
 
   selectPrice:function(e){
-    console.log("选择价格",e.currentTarget.dataset)
     const dataset = e.currentTarget.dataset;
-    // console.log("选择价格",dataset.limit_num)
-    if(!dataset.item.limit_num){
+    if(dataset.item.is_stock==2){
       this.setData({
         'submitData.ticket_id':dataset.item.ticket_id,
         isStockoutStatus:true
@@ -298,8 +296,6 @@ Page({
         isStockoutStatus:false
       })
     }
-    
-    console.log("呵呵",dataset.item.limit_num,this.data.isStockoutStatus)
 
     this.setData({
       priceIdx:dataset.priceIdx

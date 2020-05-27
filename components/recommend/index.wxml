@@ -39,7 +39,7 @@
 
     <view>
       <navigator 
-      url="/pages/ticketDetail/index?schedular_url={{items.url}}" 
+      url="/pages/ticketDetail/index?sch_id={{items.schedular_id}}" 
       class="recommend_item" 
       wx:for="{{recommend_list}}" 
       wx:for-item="items" wx:if="{{index%2 != 0}}" 
