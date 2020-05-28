@@ -149,6 +149,7 @@ Page({
 
       slideList.map(item=>{
         if(item.url.indexOf("https://m.juooo.com/ticket/")!=-1){
+          item.query = item.url.replace("https://m.juooo.com/ticket/","")
           slideData.push(item)
         }
       })

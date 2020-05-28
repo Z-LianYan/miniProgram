@@ -2,7 +2,7 @@
 <view class="swiper_wrapper" wx:if="{{slide_list.length}}">
   <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{2000}}" duration="{{500}}" circular="{{true}}">
     <navigator 
-    url="/pages/ticketDetail/index?schedular_url={{item.url}}"  
+    url="/pages/ticketDetail/index?sch_id={{item.query}}"  
     wx:for="{{slide_list}}" wx:key="*this">
       <swiper-item>
         <image style="width:100vw;height:100%;" src="{{item.image_url}}" mode="cover"></image>
