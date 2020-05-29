@@ -17,7 +17,15 @@ Page({
     searchHistory:[]
   },
 
-  onLoad:function(){
+  onLoad:function(options){
+    console.log("搜索页",options);
+    if(options.venue_id){
+      this.setData({
+        "fetchOptoins.venue_id":options.venue_id
+      })
+      this.getSearchList();
+    }
+    
     this.fetchHotSearch();
   },
   onShow:function(){

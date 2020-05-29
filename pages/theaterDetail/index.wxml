@@ -1,0 +1,13 @@
+<view class="container">
+    <view class="header_wrapper">
+        <image 
+        class="img" 
+        src="/images/theater_detail_head_bg.png" 
+        mode="aspectFit|aspectFill|widthFix" 
+        lazy-load="true"/>
+        <view class="content">
+            
+        </view>
+
+    </view>
+</view>

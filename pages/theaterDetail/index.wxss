@@ -1,0 +1,7 @@
+.header_wrapper{
+    height: 320rpx;
+}
+.header_wrapper .img{
+    width: 100%;
+    height: 100%;
+}

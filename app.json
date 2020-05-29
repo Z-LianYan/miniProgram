@@ -1,5 +1,5 @@
 {
-  "pages": [
+  "pages": ["pages/theaterDetail/index",
     "pages/index/index",
     "pages/ticketDetail/index",
     "pages/calendar/index",
