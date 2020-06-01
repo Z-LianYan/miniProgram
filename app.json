@@ -1,5 +1,5 @@
 {
-  "pages": ["pages/theaterDetail/index",
+  "pages": [
     "pages/index/index",
     "pages/ticketDetail/index",
     "pages/calendar/index",
@@ -11,7 +11,9 @@
     "pages/index/components/tourSing/index",
     "pages/showLibrary/index",
     "pages/toursing/index",
-    "pages/tourSingDetail/index"
+    "pages/tourSingDetail/index",
+    "pages/theaterDetail/index",
+    "pages/authorization/index"
   ],
   "usingComponents": {
     "van-cell": "/components/dist/cell/index",

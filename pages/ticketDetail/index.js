@@ -34,6 +34,8 @@ Page({
 
     isShowNoticeInfo:false,
 
+    isExistPage:true,
+
     submitData:{
       name: "",
       phone: "",
@@ -62,7 +64,15 @@ Page({
       // schedular_id: 110902
     },{isLoading:false}).then(data=>{
       console.log("演出详情",data.data);
+
       const detail = data.data;
+
+      if(!Object.keys(detail).length){
+        this.setData({
+          isExistPage:false
+        })
+        return;
+      }
 
       this.fetchRelativeRecommend(detail.static_data.cate_parent_id,detail.static_data.city.city_id);
 
@@ -385,6 +395,10 @@ Page({
     })
 
     this.fetchDetailData(schedular_id);
+  },
+
+  onBackIndex:function(){
+    wx.switchTab({url:"/pages/index/index"})
   },
   
 

@@ -9,5 +9,11 @@ Component({
       value:[]
     }
   },
-  methods: {}
+  methods: {
+    onNavigateTo:function(){
+      wx.navigateTo({
+        url:"/pages/authorization/index"
+      })
+    }
+  }
 })

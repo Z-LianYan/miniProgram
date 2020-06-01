@@ -1,112 +1,122 @@
 <view class="container ticketDetail">
-    <scroll-view scroll-y="true" class="scroll_view">
+    <view wx:if="{{isExistPage}}">
+        <scroll-view scroll-y="true" class="scroll_view">
 
-        <my-ticket-detail-head detailData="{{detailData}}"/>
+            <my-ticket-detail-head detailData="{{detailData}}"/>
+
+            
+            <view class="content_wrapper">
+                <van-cell wx:if="{{detailData.static_data.support.list.length}}">
+                    <view slot="title" class="support">
+                        <view 
+                        class="support_item" 
+                        wx:for="{{detailData.static_data.support.list}}" 
+                        wx:key="*this" 
+                        data-item="{{item}}" 
+                        data-show-id="{{detailData.static_data.show_id}}"
+                        data-city-id="{{detailData.static_data.city.city_id}}"
+                        data-venue-id="{{detailData.static_data.venue.venue_id}}" 
+                        bindtap="onDiscounts">
+                            <block>
+                                <icon class="iconfont icon-gou gou"></icon>
+                                {{item}}
+                                <icon class="iconfont icon-wenti wenti" wx:if="{{item=='套票优惠'}}"/>
+                            </block>
+                        </view>
+                    </view>
+                </van-cell>
+                <view class="detail_content" wx:if="{{detailData.static_data}}">
+                    <view class="performance_time_site">
+                        <view 
+                        class="performance_date_scope" 
+                        bindtap="onGetPrice">
+                            {{detailData.static_data.show_time_scope}}
+                            <van-icon name="arrow" class="icon_rightArrow"/>
+                        </view>
+                        <view class="performance_site">
+                            {{detailData.static_data.city.city_name}} | {{detailData.static_data.venue.venue_name}}
+                            <view class="detail_addr">{{detailData.static_data.venue.venue_address}}</view>
+                        </view>
+                    </view>
+                    <view bindtap="onNavigator" data-venue="{{detailData.static_data.venue}}" class="to_navigator_icon">
+                        <van-icon name="location-o" />
+                    </view>
+                </view>
+
+            </view>
+            
+            <view class="enter_wrapper">
+
+
+                <van-cell bindtap="onPromotion" wx:if="{{promotionData.length}}">
+                    <view slot="title">
+                        <view >
+                            <text style="color: #999;">优 惠：</text>
+                            <van-tag color="#f2826a" plain>{{promotionData[0].tag}}</van-tag>
+                            {{promotionData[0].desc}}
+                        </view>
+                    </view>
+                    <van-icon slot="right-icon" name="ellipsis" class="custom-icon" />
+                </van-cell>
+
+
+
+                <view class="enter_desc padding_trbl">
+                    <text class="enter">入 场：</text>
+                    <text class="desc"> {{detailData.static_data.tips.desc}}</text>
+                </view>
+            </view>
+
+            <view class="enter_wrapper" wx:if="{{tourCityData.list.length}}">
+                <my-tour-city tourCityData="{{tourCityData}}" sch-id="{{sch_id}}" bindonRightEvent="onRightEvent"/>
+            </view>
 
         
-        <view class="content_wrapper">
-            <van-cell wx:if="{{detailData.static_data.support.list.length}}">
-                <view slot="title" class="support">
-                    <view 
-                    class="support_item" 
-                    wx:for="{{detailData.static_data.support.list}}" 
-                    wx:key="*this" 
-                    data-item="{{item}}" 
-                    data-show-id="{{detailData.static_data.show_id}}"
-                    data-city-id="{{detailData.static_data.city.city_id}}"
-                    data-venue-id="{{detailData.static_data.venue.venue_id}}" 
-                    bindtap="onDiscounts">
-                        <block>
-                            <icon class="iconfont icon-gou gou"></icon>
-                            {{item}}
-                            <icon class="iconfont icon-wenti wenti" wx:if="{{item=='套票优惠'}}"/>
-                        </block>
-                    </view>
+
+            <view class="sweet_remind_wrapper padding_trbl" bindtap="onCheckNotice">
+                <view class="sweet_remind">
+                    <text class="sweet">温馨提醒</text>
+                    <van-icon name="arrow" />
                 </view>
-            </van-cell>
-            <view class="detail_content" wx:if="{{detailData.static_data}}">
-                <view class="performance_time_site">
-                    <view 
-                    class="performance_date_scope" 
-                    bindtap="onGetPrice">
-                        {{detailData.static_data.show_time_scope}}
-                        <van-icon name="arrow" class="icon_rightArrow"/>
+                <view class="desc_box">
+                    <view class="desc_item" wx:for="{{detailData.static_data.show_notice.list}}" wx:key="*this">
+                        <view class="point"></view>{{item.title}}
                     </view>
-                    <view class="performance_site">
-                        {{detailData.static_data.city.city_name}} | {{detailData.static_data.venue.venue_name}}
-                        <view class="detail_addr">{{detailData.static_data.venue.venue_address}}</view>
-                    </view>
-                </view>
-                <view bindtap="onNavigator" data-venue="{{detailData.static_data.venue}}" class="to_navigator_icon">
-                    <van-icon name="location-o" />
                 </view>
             </view>
 
-        </view>
-        
-        <view class="enter_wrapper">
-
-
-            <van-cell bindtap="onPromotion" wx:if="{{promotionData.length}}">
-                <view slot="title">
-                    <view >
-                        <text style="color: #999;">优 惠：</text>
-                        <van-tag color="#f2826a" plain>{{promotionData[0].tag}}</van-tag>
-                        {{promotionData[0].desc}}
-                    </view>
-                </view>
-                <van-icon slot="right-icon" name="ellipsis" class="custom-icon" />
-            </van-cell>
-
-
-
-            <view class="enter_desc padding_trbl">
-                <text class="enter">入 场：</text>
-                <text class="desc"> {{detailData.static_data.tips.desc}}</text>
+            <view class="relative_recommend" wx:if="{{relativeRecommend.length}}">
+                <my-cell leftTitle="相关推荐"/>
+                <my-relative-recommend listData="{{relativeRecommend}}"/>
+                <navigator 
+                wx:if="{{isShowMoreBtn}}"
+                url="/pages/showLibrary/index?caid={{detailData.static_data.cate_parent_id}}&cid={{detailData.static_data.city.city_id}}&name={{detailData.static_data.city.city_name}}" 
+                class="check_more" 
+                hover-class="none">
+                    <button class="btn" type="warn" plain="true">
+                        查看更多演出<van-icon class="icon" name="arrow" />
+                    </button>
+                </navigator>
+                <view class="separator"></view>
             </view>
+        </scroll-view>
+
+        <view class="btn_wrapper bottom_btn_wrapper">
+            <van-button 
+            color="#ff4d4a" 
+            round 
+            type="info" 
+            bindtap="onGetPrice">选座购买</van-button>
         </view>
-
-        <view class="enter_wrapper" wx:if="{{tourCityData.list.length}}">
-            <my-tour-city tourCityData="{{tourCityData}}" sch-id="{{sch_id}}" bindonRightEvent="onRightEvent"/>
-        </view>
-
-       
-
-        <view class="sweet_remind_wrapper padding_trbl" bindtap="onCheckNotice">
-            <view class="sweet_remind">
-                <text class="sweet">温馨提醒</text>
-                <van-icon name="arrow" />
-            </view>
-            <view class="desc_box">
-                <view class="desc_item" wx:for="{{detailData.static_data.show_notice.list}}" wx:key="*this">
-                    <view class="point"></view>{{item.title}}
-                </view>
-            </view>
-        </view>
-
-        <view class="relative_recommend" wx:if="{{relativeRecommend.length}}">
-            <my-cell leftTitle="相关推荐"/>
-            <my-relative-recommend listData="{{relativeRecommend}}"/>
-            <navigator 
-            wx:if="{{isShowMoreBtn}}"
-            url="/pages/showLibrary/index?caid={{detailData.static_data.cate_parent_id}}&cid={{detailData.static_data.city.city_id}}&name={{detailData.static_data.city.city_name}}" 
-            class="check_more" 
-            hover-class="none">
-                <button class="btn" type="warn" plain="true">
-                    查看更多演出<van-icon class="icon" name="arrow" />
-                </button>
-            </navigator>
-            <view class="separator"></view>
-        </view>
-    </scroll-view>
-
-    <view class="btn_wrapper bottom_btn_wrapper">
-        <van-button 
-        color="#ff4d4a" 
-        round 
-        type="info" 
-        bindtap="onGetPrice">选座购买</van-button>
     </view>
+
+    <view class="is_exist" wx:else>
+        演出不存在
+        <view class="backIndex" bindtap="onBackIndex">
+            返回首页
+        </view>
+    </view>
+    
     
     
 

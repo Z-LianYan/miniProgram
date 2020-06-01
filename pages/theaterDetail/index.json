@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "my-cell": "/components/myCell/index",
+    "my-hot-recommend": "/pages/calendar/components/list",
+    "van-loading": "/components/dist/loading/index"
+  }
 }

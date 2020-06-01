@@ -1,13 +1,48 @@
 <view class="container">
-    <view class="header_wrapper">
+    <view class="header_wrapper" wx:if="{{theaterInfo.theatre_name}}">
         <image 
         class="img" 
         src="/images/theater_detail_head_bg.png" 
         mode="aspectFit|aspectFill|widthFix" 
         lazy-load="true"/>
-        <view class="content">
-            
+        <view class="content padding_lr">
+            <view class="head_navigator" bindtap="onNavigateBack">
+                <van-icon size="20" name="arrow-left" />
+            </view>
+            <view class="theater_info">
+                <image 
+                class="img" 
+                src="{{theaterInfo.theatre_pic}}" 
+                mode="aspectFit|aspectFill|widthFix" 
+                lazy-load="false"/>
+                <view class="info_box">
+                    <view class="name">{{theaterInfo.theatre_name}}</view>
+                    <view class="num">{{theaterInfo.sch_num}} 场在售演出</view>
+                </view>
+            </view>
+            <view class="addr_wrapper">
+                <view class="info">
+                    {{theaterInfo.city_name}} | {{theaterInfo.theatre_address}}
+                </view>
+                <view bindtap="onNavigator" class="to_navigator_icon">
+                    <van-icon class="icon" name="location-o" />
+                </view>
+            </view>
         </view>
-
     </view>
+
+
+    <my-cell leftTitle="热门演出" listData="{{recommendData.length}}" />
+
+    <my-hot-recommend listData="{{recommendData}}"/>
+
+
+    <view style="text-align:center;height:50rpx;margin-top:50rpx;color:#666">
+        <text wx:if="{{recommendData.length==total || total==0}}" class="bottom">没有更多了</text>
+        <van-loading size="50rpx" color="#ff8b72" wx:else/>
+    </view>
+
+
+
+
 </view>

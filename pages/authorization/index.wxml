@@ -1,0 +1,40 @@
+<view class="container authorization">
+    <view class="wrapper">
+        <view class="logo_box">
+            <image 
+            class="logo" 
+            src="/images/logo.png"
+            lazy-load="true"/>
+        </view>
+
+        <text class="title">
+            聚橙票务
+        </text>
+
+        <view class="btn_box">
+            <button class="btn" size="mini" type="default" plain="true">
+                手机号一键授权登录
+            </button>
+        </view>
+
+        <van-radio-group value="{{ radio }}" bind:change="onChange" >
+            <van-radio 
+            custom-class="custom_class"
+            name="1" 
+            icon-size="25rpx" 
+            checked-color="#ec6901">
+                以阅读并同意
+                <text style="color:#ec6901">《聚橙用户协议声明》</text>
+            </van-radio>
+        </van-radio-group>
+        
+ 
+    </view>
+
+
+    
+
+
+
+
+</view>

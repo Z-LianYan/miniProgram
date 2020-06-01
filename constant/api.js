@@ -34,6 +34,10 @@ export const GET_FLOOR_SHOW = "/home/index/getFloorShow";//首页楼层显示
 
 export const GET_PROMOTION_LIST = "/Promotion/Promotion/getPromotionList";//优惠
 
+export const GET_THEATER_INFO = "/theatre/index/getTheatreInfo";
+
+
+
 
 
 

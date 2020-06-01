@@ -107,6 +107,15 @@ Page({
       })
       this.fetchData()
     }
+  },
+  onNavigatorTo:function(e){
+
+    console.log("---",e.currentTarget.dataset.theaterId)
+
+    wx.reLaunch({
+      url: '/pages/theaterDetail/index?theatre_id='+e.currentTarget.dataset.theaterId
+    })
+
   }
 
 

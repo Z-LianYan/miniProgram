@@ -1,7 +1,70 @@
 .header_wrapper{
     height: 320rpx;
+    color: #fff;
 }
 .header_wrapper .img{
     width: 100%;
     height: 100%;
+    position: relative;
+}
+.header_wrapper .content{
+    position: absolute;
+    top: 0;
+}
+.header_wrapper .content .head_navigator{
+    height: 87.96rpx;  
+    display: flex;
+    align-items: center;
+}
+
+.header_wrapper .content .theater_info{
+    margin-top: 20rpx;
+    display: flex;
+    align-items: center;
+}
+.header_wrapper .content .theater_info .img{
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 45rpx;
+}
+.header_wrapper .content .theater_info .info_box{
+    margin-left: 20rpx;
+}
+
+.header_wrapper .content .theater_info .name{
+    font-size: 45rpx;
+    font-weight: bolder;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 600rpx;
+}
+.header_wrapper .content .theater_info .num{
+    font-size: 25rpx;
+}
+
+.header_wrapper .content .addr_wrapper{
+    display: flex;
+    align-items: center;
+    margin-top: 25rpx;
+}
+.header_wrapper .content .addr_wrapper .info{
+    width: 652.04rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 25rpx;
+
+}
+.header_wrapper .content .addr_wrapper .to_navigator_icon{
+    width: 57.96rpx;
+    height: 57.96rpx;
+    background-color: #fff;
+    border-radius: 28.98rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header_wrapper .content .addr_wrapper .to_navigator_icon .icon{
+    color: #ff6643;
 }

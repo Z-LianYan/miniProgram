@@ -15,7 +15,11 @@
 
     <view class="padding_trbl">
       <view class="theater_item_box padding_trbl" wx:for="{{theater_list}}" wx:key="*this" wx:if="{{item.count}}">
-        <view class="theater_info">
+        <view
+        bindtap="onNavigatorTo"
+        hover-class="none" 
+        data-theater-id="{{item.id}}"
+        class="theater_info">
           <view class="info_wrapper">
             <van-image round style="margin-top:12rpx;" width="100rpx" height="100rpx" src="{{item.pic}}" />
 
