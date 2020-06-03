@@ -32,8 +32,13 @@
     padding: 0 100rpx;
 
 }
-.custom_class{
+
+.radio_box{
     display: flex;
     justify-content: center;
+    align-items: center;
     font-size: 20rpx;
+}
+.radio_box .label .radio{
+    transform:scale(0.5);
 }

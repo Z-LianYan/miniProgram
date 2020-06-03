@@ -1,6 +1,3 @@
 {
-  "usingComponents": {
-    "van-radio": "/components/dist/radio/index",
-    "van-radio-group": "/components/dist/radio-group/index"
-  }
+  "usingComponents": {}
 }
