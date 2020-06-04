@@ -23,22 +23,51 @@
 }
 .authorization .wrapper .btn_box .btn{
     margin-top: 30rpx;
-    background: linear-gradient(50deg, #ff9a34, #ff4d4a);
+    background: linear-gradient(50deg, #f2e5d8, #edcbca);
     border: none;
     color: #fff;
     height: 100rpx;
     line-height: 100rpx;
     border-radius: 50rpx;
     padding: 0 100rpx;
-
 }
+.authorization .wrapper .btn_box .activated{
+    background: linear-gradient(50deg, #ff9a34, #ff4d4a);
+}
+
+
 
 .radio_box{
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 20rpx;
+    margin-top: 15rpx;
+    
 }
+
+.radio_box .label{
+    position: relative;
+    width: 186rpx;
+    height: 40rpx;
+    display: flex;
+    align-items: center;
+}
+
+.radio_box .label .btn_getuserinfo{
+    display: inline-block;
+    padding: 0 0;
+    margin: 0 0;
+    width: 186rpx !important;
+    font-size: 20rpx;
+    background-color: transparent;
+    height: 40rpx;
+    position: absolute;
+    top:0;
+    left:0;
+}
+
+
 .radio_box .label .radio{
     transform:scale(0.5);
 }

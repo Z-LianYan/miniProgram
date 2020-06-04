@@ -12,19 +12,29 @@
         </text>
 
         <view class="btn_box">
-            <button class="btn" size="mini" type="default" plain="true">
+            <button 
+            class="btn {{isChecked?'activated':''}}" 
+            size="mini" 
+            type="default" 
+            open-type="getPhoneNumber"
+            plain="true" 
+            bindgetphonenumber="getPhoneNumber">
                 手机号一键授权登录
             </button>
         </view>
 
         <view class="radio_box">
-            <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-            <label class="label" data-value="1"  bindtap="onChange">
+            <label class="label">
                 <radio 
                 color="#ec6901"
                 class="radio" 
                 checked="{{isChecked}}"
                 />以阅读并同意
+                <button 
+                wx:if="{{canIUse}}" 
+                class="btn_getuserinfo"  
+                open-type="getUserInfo" 
+                bindgetuserinfo="getUserInfo"></button> 
             </label>
             <text style="color:#ec6901" bindtap="onNavigateAgreement">《聚橙用户协议声明》</text>
         </view>

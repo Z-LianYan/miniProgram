@@ -8,18 +8,19 @@
   <view class="padding_lr mine_header">
   
       <view class="mine_set_wrapper">
-        <van-icon size="30" name="setting-o" />
+        <van-icon bindtap="onNavigateTo" size="30" name="setting-o" />
       </view>
 
       <view class="userinfo_box padding_trbl">
         <view class="name_avatar_id">
           <van-image 
+          bindtap="onNavigateTo"
           class="avatar"
           round
           width="130rpx" 
           height="130rpx"  
           src="https://image.juooo.com/group1/M00/03/6F/rAoKNV0XF2uABEtSAAANUrP00o0602.png" />
-          <view class="name_id">
+          <view class="name_id" bindtap="onNavigateTo">
             <text class="username">{{userInfo.basic_info.nick_name?userInfo.basic_info.nick_name:"登录/注册"}}</text>
             <view class="user_id">
               {{userInfo.basic_info.nick_name?userInfo.basic_info.uid:"请点击登录"}}

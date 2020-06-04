@@ -23,38 +23,55 @@ Page({
     //   userInfo: e.detail.userInfo,
     //   // hasUserInfo: true
     // })
-  },
+    // this.onTrue();
+    // let that = this;
 
-
-
-  onChange(e) {
-    // wx.authorize({scope: "scope.userInfo"})
-
+    if(e.detail.userInfo){
+      this.onChange();
+    }else{
+      this.onFasle();
+    }
 
     // wx.getSetting({
     //   success(res) {
     //     console.log("---",res);
-    //     if (!res.authSetting['scope.record']) {
-    //       wx.authorize({
-    //         scope: 'scope.record',
-    //         success () {
-    //           // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
-    //           wx.startRecord()
-    //         }
-    //       })
+    //     if(res.authSetting['scope.userInfo']){
+    //       console.log("已授权")
+    //       that.onChange();
+    //     }else{
+    //       console.log("未授权")
+    //       that.onFasle();
     //     }
     //   }
     // })
 
 
+  },
 
+  onChange:function() {
+    console.log("改变")
     this.setData({
       isChecked: !this.data.isChecked
     });
-    // if(this.data.isChecked){
-    //   console.log('radio发生change事件，携带value值为：', e.currentTarget.dataset.value)
-    // }
   },
+
+  onFasle:function(){
+    this.setData({
+      isChecked: false
+    });
+  },
+
+
+  getPhoneNumber:function(e){
+    console.log("e",e)
+    if(!this.data.isChecked){
+      wx.showToast({
+        title: '请同意聚橙用户协议声明',
+        icon: 'none'
+      })
+    }
+  },
+
   onNavigateAgreement:function(){
     wx.navigateTo({url:"/pages/agreement/index"})
   },

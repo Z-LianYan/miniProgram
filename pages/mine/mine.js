@@ -120,6 +120,12 @@ Page({
     setTimeout(() => { wx.hideNavigationBarLoading()},2000)
   },
 
+  onNavigateTo:function(){
+    wx.navigateTo({
+      url:"/pages/authorization/index"
+    })
+  }
+
 
 
 
