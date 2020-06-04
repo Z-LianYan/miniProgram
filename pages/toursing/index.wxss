@@ -39,7 +39,9 @@
 
 
 .tour_sing_wrapper .list_item .right_content .scroll_x_view{
-    width: calc(100vw - 219.96rpx - 30rpx);
+    /* width: calc(100vw - 219.96rpx - 30rpx); */
+    width: 500.039999rpx;
+
     white-space: nowrap;
 }
 

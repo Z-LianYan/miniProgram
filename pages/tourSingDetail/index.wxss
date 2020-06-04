@@ -33,7 +33,8 @@
 
 
 .tour_sing_detail .content .list_item .right_info{
-    width: calc(100vw - 219.96rpx - 10rpx - 40rpx);
+    /* width: calc(100vw - 219.96rpx - 10rpx - 40rpx); */
+    width: 480.04rpx;
     /* height: 100%; */
     background-color: #fff;
     display: flex;

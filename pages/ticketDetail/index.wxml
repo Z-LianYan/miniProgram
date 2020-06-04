@@ -2,7 +2,7 @@
     <view wx:if="{{isExistPage}}">
         <scroll-view scroll-y="true" class="scroll_view">
 
-            <my-ticket-detail-head detailData="{{detailData}}"/>
+            <my-ticket-detail-head wx:if="{{detailData.static_data.pic}}" detailData="{{detailData}}"/>
 
             
             <view class="content_wrapper">
